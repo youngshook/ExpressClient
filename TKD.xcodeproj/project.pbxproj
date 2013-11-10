@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA21182F6DE6009E974A /* Foundation.framework */; };
+		B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA23182F6DE6009E974A /* CoreGraphics.framework */; };
+		B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA25182F6DE6009E974A /* UIKit.framework */; };
+		B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA2A182F6DE6009E974A /* InfoPlist.strings */; };
+		B56FAA2E182F6DE6009E974A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA2D182F6DE6009E974A /* main.m */; };
+		B56FAA32182F6DE6009E974A /* TKDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */; };
+		B56FAA53182F78F7009E974A /* TKDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA51182F78F7009E974A /* TKDLoginViewController.m */; };
+		B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA52182F78F7009E974A /* TKDLoginViewController.xib */; };
+		B56FAA58182F792A009E974A /* TKDRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA56182F792A009E974A /* TKDRegisteredViewController.m */; };
+		B56FAA59182F792A009E974A /* TKDRegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA57182F792A009E974A /* TKDRegisteredViewController.xib */; };
+		B56FAA73182F8302009E974A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA60182F8302009E974A /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA74182F8302009E974A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA63182F8302009E974A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA75182F8302009E974A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA65182F8302009E974A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA67182F8302009E974A /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA69182F8302009E974A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA6B182F8302009E974A /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA79182F8302009E974A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA6F182F8302009E974A /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA71182F8302009E974A /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA7C182F874A009E974A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA7B182F874A009E974A /* SystemConfiguration.framework */; };
+		B56FAA7E182F89B2009E974A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA7D182F89B2009E974A /* CFNetwork.framework */; };
+		B56FAA80182F89BC009E974A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA7F182F89BC009E974A /* QuartzCore.framework */; };
+		B56FAA82182F89C8009E974A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA81182F89C8009E974A /* MobileCoreServices.framework */; };
+		B56FAA84182F89DC009E974A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA83182F89DC009E974A /* Security.framework */; };
+		B56FAA86182F89F2009E974A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA85182F89F2009E974A /* CoreLocation.framework */; };
+		B56FAA8A182F8AAA009E974A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA89182F8AAA009E974A /* libxml2.dylib */; };
+		B56FAA8C182F8AC6009E974A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA8B182F8AC6009E974A /* libsqlite3.dylib */; };
+		B56FAA8E182F8ACF009E974A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA8D182F8ACF009E974A /* libz.dylib */; };
+		B56FAA92182F9826009E974A /* TKDKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA91182F9826009E974A /* TKDKit.m */; };
+		B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */; };
+		B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA97182FA351009E974A /* TKDSetViewController.m */; };
+		B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA98182FA351009E974A /* TKDSetViewController.xib */; };
+		B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA9B182FA4AF009E974A /* erweima@2x.png */; };
+		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		822A41E2FE8A4AFDA8AEB05E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56FAA1E182F6DE6009E974A /* TKD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B56FAA23182F6DE6009E974A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B56FAA25182F6DE6009E974A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B56FAA29182F6DE6009E974A /* TKD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TKD-Info.plist"; sourceTree = "<group>"; };
+		B56FAA2B182F6DE6009E974A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B56FAA2D182F6DE6009E974A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TKD-Prefix.pch"; path = "TKD/TKD-Prefix.pch"; sourceTree = "<group>"; };
+		B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDAppDelegate.h; sourceTree = "<group>"; };
+		B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDAppDelegate.m; sourceTree = "<group>"; };
+		B56FAA3A182F6DE7009E974A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B56FAA42182F6DE7009E974A /* TKDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TKDTests-Info.plist"; sourceTree = "<group>"; };
+		B56FAA44182F6DE7009E974A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B56FAA46182F6DE7009E974A /* TKDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDTests.m; sourceTree = "<group>"; };
+		B56FAA50182F78F7009E974A /* TKDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoginViewController.h; sourceTree = "<group>"; };
+		B56FAA51182F78F7009E974A /* TKDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDLoginViewController.m; sourceTree = "<group>"; };
+		B56FAA52182F78F7009E974A /* TKDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDLoginViewController.xib; sourceTree = "<group>"; };
+		B56FAA55182F792A009E974A /* TKDRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRegisteredViewController.h; sourceTree = "<group>"; };
+		B56FAA56182F792A009E974A /* TKDRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRegisteredViewController.m; sourceTree = "<group>"; };
+		B56FAA57182F792A009E974A /* TKDRegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRegisteredViewController.xib; sourceTree = "<group>"; };
+		B56FAA5F182F8302009E974A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		B56FAA60182F8302009E974A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		B56FAA61182F8302009E974A /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		B56FAA62182F8302009E974A /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		B56FAA63182F8302009E974A /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		B56FAA64182F8302009E974A /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		B56FAA65182F8302009E974A /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		B56FAA66182F8302009E974A /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		B56FAA67182F8302009E974A /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		B56FAA68182F8302009E974A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		B56FAA69182F8302009E974A /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		B56FAA6A182F8302009E974A /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		B56FAA6B182F8302009E974A /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		B56FAA6C182F8302009E974A /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		B56FAA6D182F8302009E974A /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		B56FAA6E182F8302009E974A /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		B56FAA6F182F8302009E974A /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		B56FAA70182F8302009E974A /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		B56FAA71182F8302009E974A /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		B56FAA72182F8302009E974A /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		B56FAA7B182F874A009E974A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		B56FAA7D182F89B2009E974A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B56FAA7F182F89BC009E974A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B56FAA81182F89C8009E974A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B56FAA83182F89DC009E974A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B56FAA85182F89F2009E974A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B56FAA87182F8A3B009E974A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		B56FAA89182F8AAA009E974A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		B56FAA8B182F8AC6009E974A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B56FAA8D182F8ACF009E974A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B56FAA8F182F8F8C009E974A /* TKDCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDCommonDefine.h; sourceTree = "<group>"; };
+		B56FAA90182F9826009E974A /* TKDKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDKit.h; sourceTree = "<group>"; };
+		B56FAA91182F9826009E974A /* TKDKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDKit.m; sourceTree = "<group>"; };
+		B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact_input_bg@2x.png"; sourceTree = "<group>"; };
+		B56FAA96182FA351009E974A /* TKDSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSetViewController.h; sourceTree = "<group>"; };
+		B56FAA97182FA351009E974A /* TKDSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSetViewController.m; sourceTree = "<group>"; };
+		B56FAA98182FA351009E974A /* TKDSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDSetViewController.xib; sourceTree = "<group>"; };
+		B56FAA9B182FA4AF009E974A /* erweima@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erweima@2x.png"; sourceTree = "<group>"; };
+		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B56FAA1B182F6DE6009E974A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B56FAA8E182F8ACF009E974A /* libz.dylib in Frameworks */,
+				B56FAA8C182F8AC6009E974A /* libsqlite3.dylib in Frameworks */,
+				B56FAA8A182F8AAA009E974A /* libxml2.dylib in Frameworks */,
+				B56FAA86182F89F2009E974A /* CoreLocation.framework in Frameworks */,
+				B56FAA84182F89DC009E974A /* Security.framework in Frameworks */,
+				B56FAA82182F89C8009E974A /* MobileCoreServices.framework in Frameworks */,
+				B56FAA80182F89BC009E974A /* QuartzCore.framework in Frameworks */,
+				B56FAA7E182F89B2009E974A /* CFNetwork.framework in Frameworks */,
+				B56FAA7C182F874A009E974A /* SystemConfiguration.framework in Frameworks */,
+				B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */,
+				B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */,
+				B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */,
+				B702E55E925843C989D762CE /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B56FAA15182F6DE6009E974A = {
+			isa = PBXGroup;
+			children = (
+				B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */,
+				B56FAA8F182F8F8C009E974A /* TKDCommonDefine.h */,
+				B56FAA93182F9C06009E974A /* Img */,
+				B56FAA27182F6DE6009E974A /* TKD */,
+				B56FAA5D182F8302009E974A /* External */,
+				B56FAA40182F6DE7009E974A /* TKDTests */,
+				B56FAA20182F6DE6009E974A /* Frameworks */,
+				B56FAA1F182F6DE6009E974A /* Products */,
+				E047CE83864F49FAB18D2970 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		B56FAA1F182F6DE6009E974A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA1E182F6DE6009E974A /* TKD.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B56FAA20182F6DE6009E974A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA8D182F8ACF009E974A /* libz.dylib */,
+				B56FAA8B182F8AC6009E974A /* libsqlite3.dylib */,
+				B56FAA89182F8AAA009E974A /* libxml2.dylib */,
+				B56FAA87182F8A3B009E974A /* libxml2.2.dylib */,
+				B56FAA85182F89F2009E974A /* CoreLocation.framework */,
+				B56FAA83182F89DC009E974A /* Security.framework */,
+				B56FAA81182F89C8009E974A /* MobileCoreServices.framework */,
+				B56FAA7F182F89BC009E974A /* QuartzCore.framework */,
+				B56FAA7D182F89B2009E974A /* CFNetwork.framework */,
+				B56FAA7B182F874A009E974A /* SystemConfiguration.framework */,
+				B56FAA21182F6DE6009E974A /* Foundation.framework */,
+				B56FAA23182F6DE6009E974A /* CoreGraphics.framework */,
+				B56FAA25182F6DE6009E974A /* UIKit.framework */,
+				B56FAA3A182F6DE7009E974A /* XCTest.framework */,
+				822A41E2FE8A4AFDA8AEB05E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B56FAA27182F6DE6009E974A /* TKD */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */,
+				B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */,
+				B56FAA50182F78F7009E974A /* TKDLoginViewController.h */,
+				B56FAA51182F78F7009E974A /* TKDLoginViewController.m */,
+				B56FAA52182F78F7009E974A /* TKDLoginViewController.xib */,
+				B56FAA55182F792A009E974A /* TKDRegisteredViewController.h */,
+				B56FAA56182F792A009E974A /* TKDRegisteredViewController.m */,
+				B56FAA57182F792A009E974A /* TKDRegisteredViewController.xib */,
+				B56FAA96182FA351009E974A /* TKDSetViewController.h */,
+				B56FAA97182FA351009E974A /* TKDSetViewController.m */,
+				B56FAA98182FA351009E974A /* TKDSetViewController.xib */,
+				B56FAA90182F9826009E974A /* TKDKit.h */,
+				B56FAA91182F9826009E974A /* TKDKit.m */,
+				B56FAA28182F6DE6009E974A /* Supporting Files */,
+			);
+			path = TKD;
+			sourceTree = "<group>";
+		};
+		B56FAA28182F6DE6009E974A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA29182F6DE6009E974A /* TKD-Info.plist */,
+				B56FAA2A182F6DE6009E974A /* InfoPlist.strings */,
+				B56FAA2D182F6DE6009E974A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B56FAA40182F6DE7009E974A /* TKDTests */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA46182F6DE7009E974A /* TKDTests.m */,
+				B56FAA41182F6DE7009E974A /* Supporting Files */,
+			);
+			path = TKDTests;
+			sourceTree = "<group>";
+		};
+		B56FAA41182F6DE7009E974A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA42182F6DE7009E974A /* TKDTests-Info.plist */,
+				B56FAA43182F6DE7009E974A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B56FAA5D182F8302009E974A /* External */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA5E182F8302009E974A /* ASIHTTP */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		B56FAA5E182F8302009E974A /* ASIHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA5F182F8302009E974A /* ASIAuthenticationDialog.h */,
+				B56FAA60182F8302009E974A /* ASIAuthenticationDialog.m */,
+				B56FAA61182F8302009E974A /* ASICacheDelegate.h */,
+				B56FAA62182F8302009E974A /* ASIDataCompressor.h */,
+				B56FAA63182F8302009E974A /* ASIDataCompressor.m */,
+				B56FAA64182F8302009E974A /* ASIDataDecompressor.h */,
+				B56FAA65182F8302009E974A /* ASIDataDecompressor.m */,
+				B56FAA66182F8302009E974A /* ASIDownloadCache.h */,
+				B56FAA67182F8302009E974A /* ASIDownloadCache.m */,
+				B56FAA68182F8302009E974A /* ASIFormDataRequest.h */,
+				B56FAA69182F8302009E974A /* ASIFormDataRequest.m */,
+				B56FAA6A182F8302009E974A /* ASIHTTPRequest.h */,
+				B56FAA6B182F8302009E974A /* ASIHTTPRequest.m */,
+				B56FAA6C182F8302009E974A /* ASIHTTPRequestConfig.h */,
+				B56FAA6D182F8302009E974A /* ASIHTTPRequestDelegate.h */,
+				B56FAA6E182F8302009E974A /* ASIInputStream.h */,
+				B56FAA6F182F8302009E974A /* ASIInputStream.m */,
+				B56FAA70182F8302009E974A /* ASINetworkQueue.h */,
+				B56FAA71182F8302009E974A /* ASINetworkQueue.m */,
+				B56FAA72182F8302009E974A /* ASIProgressDelegate.h */,
+			);
+			path = ASIHTTP;
+			sourceTree = "<group>";
+		};
+		B56FAA93182F9C06009E974A /* Img */ = {
+			isa = PBXGroup;
+			children = (
+				B56FAA9B182FA4AF009E974A /* erweima@2x.png */,
+				B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */,
+			);
+			name = Img;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B56FAA1D182F6DE6009E974A /* TKD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56FAA4A182F6DE7009E974A /* Build configuration list for PBXNativeTarget "TKD" */;
+			buildPhases = (
+				57A0EF58B90D41C9A5ED1EF3 /* Check Pods Manifest.lock */,
+				B56FAA1A182F6DE6009E974A /* Sources */,
+				B56FAA1B182F6DE6009E974A /* Frameworks */,
+				B56FAA1C182F6DE6009E974A /* Resources */,
+				530E14881D5B49B6A5D60870 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKD;
+			productName = TKD;
+			productReference = B56FAA1E182F6DE6009E974A /* TKD.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B56FAA16182F6DE6009E974A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TKD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = qfpay;
+				TargetAttributes = {
+					B56FAA1D182F6DE6009E974A = {
+						DevelopmentTeam = 6XX8659PN2;
+					};
+				};
+			};
+			buildConfigurationList = B56FAA19182F6DE6009E974A /* Build configuration list for PBXProject "TKD" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B56FAA15182F6DE6009E974A;
+			productRefGroup = B56FAA1F182F6DE6009E974A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B56FAA1D182F6DE6009E974A /* TKD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B56FAA1C182F6DE6009E974A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B56FAA59182F792A009E974A /* TKDRegisteredViewController.xib in Resources */,
+				B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */,
+				B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */,
+				B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */,
+				B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */,
+				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		530E14881D5B49B6A5D60870 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57A0EF58B90D41C9A5ED1EF3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B56FAA1A182F6DE6009E974A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B56FAA92182F9826009E974A /* TKDKit.m in Sources */,
+				B56FAA74182F8302009E974A /* ASIDataCompressor.m in Sources */,
+				B56FAA58182F792A009E974A /* TKDRegisteredViewController.m in Sources */,
+				B56FAA32182F6DE6009E974A /* TKDAppDelegate.m in Sources */,
+				B56FAA73182F8302009E974A /* ASIAuthenticationDialog.m in Sources */,
+				B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */,
+				B56FAA75182F8302009E974A /* ASIDataDecompressor.m in Sources */,
+				B56FAA2E182F6DE6009E974A /* main.m in Sources */,
+				B56FAA79182F8302009E974A /* ASIInputStream.m in Sources */,
+				B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */,
+				B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */,
+				B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */,
+				B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */,
+				B56FAA53182F78F7009E974A /* TKDLoginViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B56FAA2A182F6DE6009E974A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B56FAA2B182F6DE6009E974A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B56FAA43182F6DE7009E974A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B56FAA44182F6DE7009E974A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B56FAA48182F6DE7009E974A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos6.1;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B56FAA49182F6DE7009E974A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos6.1;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Release;
+		};
+		B56FAA4B182F6DE7009E974A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
+				INFOPLIST_FILE = "TKD/TKD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos6.1;
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B56FAA4C182F6DE7009E974A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
+				INFOPLIST_FILE = "TKD/TKD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos6.1;
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B56FAA19182F6DE6009E974A /* Build configuration list for PBXProject "TKD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56FAA48182F6DE7009E974A /* Debug */,
+				B56FAA49182F6DE7009E974A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B56FAA4A182F6DE7009E974A /* Build configuration list for PBXNativeTarget "TKD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56FAA4B182F6DE7009E974A /* Debug */,
+				B56FAA4C182F6DE7009E974A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B56FAA16182F6DE6009E974A /* Project object */;
+}
