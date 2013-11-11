@@ -7,7 +7,7 @@
 //
 
 #import "TKDLoginViewController.h"
-#import "TKDRegisteredViewController.h"
+#import "TKDActivateViewController.h"
 @interface TKDLoginViewController ()<UITextFieldDelegate>
 @property(nonatomic,weak)IBOutlet UITextField *accountwordT;
 @property(nonatomic,weak)IBOutlet UITextField *passwordT;
@@ -36,7 +36,7 @@
     self.title = @"淘快递";
     self.navigationController.navigationBar.tintColor = [UIColor redColor];
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAccount)];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(activateAccount)];
     [self.navigationItem setRightBarButtonItem:rightBtn animated:YES];
     
     self.HUD = [[MBProgressHUD alloc]initWithView:self.view];
@@ -90,8 +90,19 @@
 }
 
 -(void)login:(NSString*)u password:(NSString*)p{
-
-
+    NSURL *url = [NSURL URLWithString:API_ACCOUNT_LOGIN];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request addPostValue:@"mobile" forKey:u];
+    [request addPostValue:@"password" forKey:p];
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+    }];
+    [request setFailedBlock:^{
+        NetworkError
+    }];
 }
 
 -(IBAction)forgetPassWord:(id)sender{
@@ -104,8 +115,8 @@
 
 }
 
--(void)registerAccount{
-    TKDRegisteredViewController *regVC = [TKDRegisteredViewController new];
+-(void)activateAccount{
+    TKDActivateViewController *regVC = [TKDActivateViewController new];
     [self.navigationController pushViewController:regVC animated:YES];
 }
 

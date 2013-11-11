@@ -12,7 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (!isFisrtLaunch) {
+        [self getApplicationToken];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alreadyFirstLaunch"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     TKDLoginViewController *loginC = [TKDLoginViewController new];
@@ -20,6 +26,26 @@
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(void)getApplicationToken{
+    NSURL *url = [NSURL URLWithString:API_APP_INIT];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine
+    [request addPostValue:@"id" forKey:APP_ID];
+    [request addPostValue:@"secret" forKey:APP_SECRET];
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+        if ([dic objectForKey:@"ApplicationToken"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"ApplicationToken"] forKey:@"ApplicationToken"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }];
+    [request setFailedBlock:^{
+        NetworkError
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

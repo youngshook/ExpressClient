@@ -17,4 +17,68 @@
     #import "ASIHTTPRequest.h"
     #import "ASIFormDataRequest.h"
     #import "TKDKit.h"
+    #import "SynthesizeSingleton.h"
+    #import "TKDCommonDefine.h"
+    #import "NSString+JSONCategories.h"
+    #import "NSObject+JSONCategories.h"
 #endif
+
+
+#pragma mark -
+#pragma mark Common Define
+
+#define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define AppVersionShort [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define AppVersionBuild [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+#define AppVersion      [NSString stringWithFormat:@"%@.%@",AppVersionShort,AppVersionBuild]
+
+#define Deveice  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)?@"iPad":@"iPhone"
+
+#define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
+
+#define ImageFromRAM(_pointer) [UIImage imageNamed:_pointer]
+#define ImageFromFile(_pointer) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:_pointer ofType:@"png"]]
+
+#define VIEWWITHTAG(_OBJECT, _TAG) [_OBJECT viewWithTag : _TAG]
+
+#define degreesToRadian(x) (M_PI * (x) / 180.0)
+#define radianToDegrees(radian) (radian*180.0)/(M_PI)
+
+#define NSStringFromValue(value) [@(value) description]
+
+#define CLEARCOLOR [UIColor clearColor]
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGBLOG(RGBValue) NSLog(@"%f %f %f",((float)((RGBValue & 0xFF0000) >> 16)),((float)((RGBValue & 0xFF00) >> 8)),((float)(RGBValue & 0xFF)))
+
+
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+#define STRONGSELF typeof(weakSelf) __strong strongSelf = weakSelf;
+
+#define GCDBACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define GCDMAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+
+//判断字符串是否为空
+#define IS_NULL_STRING(__POINTER) \
+(__POINTER == nil || \
+__POINTER == (NSString *)[NSNull null] || \
+![__POINTER isKindOfClass:[NSString class]] || \
+![__POINTER length])
+
+#pragma mark -
+#pragma mark - Devices functions
+
+#define Version_iOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+
+#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define isSimulator (NSNotFound != [[[UIDevice currentDevice] model] rangeOfString:@"Simulator"].location)
+
+#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define iOS_Version [[UIDevice currentDevice].systemVersion floatValue]
+#define isFisrtLaunch [[NSUserDefaults standardUserDefaults] boolForKey:@"alreadyFirstLaunch"]
+#define isQPOSUser !IS_NULL_STRING([QFUser shared].session)
+
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)

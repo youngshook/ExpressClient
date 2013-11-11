@@ -1,5 +1,5 @@
 //
-//  TKDRegisteredViewController.h
+//  TKDActivateViewController.h
 //  TKD
 //
 //  Created by YoungShook on 13-11-10.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TKDRegisteredViewController : UIViewController
+@interface TKDActivateViewController : UIViewController
 
 @end
