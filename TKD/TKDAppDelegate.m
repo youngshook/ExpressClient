@@ -8,6 +8,7 @@
 
 #import "TKDAppDelegate.h"
 #import "TKDLoginViewController.h"
+#import "TKDRegisterViewController.h"
 @implementation TKDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,10 +20,10 @@
     }
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    TKDLoginViewController *loginC = [TKDLoginViewController new];
-    UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
+    //    TKDLoginViewController *loginC = [TKDLoginViewController new];
+    TKDRegisterViewController *regC = [TKDRegisterViewController new];
+    UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:regC];
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
     return YES;
@@ -46,6 +47,7 @@
     [request setFailedBlock:^{
         NetworkError
     }];
+    [request startAsynchronous];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

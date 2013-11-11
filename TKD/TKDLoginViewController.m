@@ -101,8 +101,9 @@
         WarningAlert
     }];
     [request setFailedBlock:^{
-        NetworkError
+        NetworkError_HUD
     }];
+    [request startAsynchronous];
 }
 
 -(IBAction)forgetPassWord:(id)sender{

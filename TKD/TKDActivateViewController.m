@@ -46,32 +46,12 @@
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
         if ([dic objectForKey:@"VerificationId"]) {
-            [self userRegister:[dic objectForKey:@"VerificationId"]];
         }
     }];
     [request setFailedBlock:^{
-        NetworkError
+        NetworkError_HUD
     }];
-
-}
-
--(void)userRegister:(NSString *)VerifId{
-    NSURL *url = [NSURL URLWithString:API_APP_VERIFY_CODE];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request addPostValue:@"mobile" forKey:self.verifyPhoneT.text];
-    [request addPostValue:@"purpose" forKey:@"Register"];
-    [request setCompletionBlock:^{
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        NSDictionary *dic = [[request responseString]JSONValue];
-        WarningAlert
-        if ([dic objectForKey:@"VerificationId"]) {
-            [self userRegister:[dic objectForKey:@"VerificationId"]];
-        }
-    }];
-    [request setFailedBlock:^{
-        NetworkError
-    }];
+    [request startAsynchronous];
 }
 
 

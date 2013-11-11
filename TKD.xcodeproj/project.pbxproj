@@ -43,6 +43,8 @@
 		B56FAAA5183117C8009E974A /* NSObject+JSONCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA2183117C8009E974A /* NSObject+JSONCategories.m */; };
 		B56FAAA9183121E1009E974A /* TKDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA7183121E1009E974A /* TKDRegisterViewController.m */; };
 		B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */; };
+		B5C74F651831497800E33386 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F611831497800E33386 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F631831497800E33386 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,10 @@
 		B56FAAA6183121E1009E974A /* TKDRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRegisterViewController.h; sourceTree = "<group>"; };
 		B56FAAA7183121E1009E974A /* TKDRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRegisterViewController.m; sourceTree = "<group>"; };
 		B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRegisterViewController.xib; sourceTree = "<group>"; };
+		B5C74F611831497800E33386 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
+		B5C74F621831497800E33386 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
+		B5C74F631831497800E33386 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
+		B5C74F641831497800E33386 /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
 		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +248,10 @@
 		B56FAA5D182F8302009E974A /* External */ = {
 			isa = PBXGroup;
 			children = (
+				B5C74F611831497800E33386 /* UIKeyboardView.m */,
+				B5C74F621831497800E33386 /* UIKeyboardViewController.h */,
+				B5C74F631831497800E33386 /* UIKeyboardViewController.m */,
+				B5C74F641831497800E33386 /* UIKeyboardView.h */,
 				B56FAAA0183117C8009E974A /* NSString+JSONCategories.m */,
 				B56FAAA1183117C8009E974A /* NSString+JSONCategories.h */,
 				B56FAAA2183117C8009E974A /* NSObject+JSONCategories.m */,
@@ -400,6 +410,7 @@
 				B56FAAA9183121E1009E974A /* TKDRegisterViewController.m in Sources */,
 				B56FAA74182F8302009E974A /* ASIDataCompressor.m in Sources */,
 				B56FAA58182F792A009E974A /* TKDActivateViewController.m in Sources */,
+				B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */,
 				B56FAA32182F6DE6009E974A /* TKDAppDelegate.m in Sources */,
 				B56FAA73182F8302009E974A /* ASIAuthenticationDialog.m in Sources */,
 				B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */,
@@ -411,6 +422,7 @@
 				B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */,
 				B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */,
 				B56FAAA4183117C8009E974A /* NSString+JSONCategories.m in Sources */,
+				B5C74F651831497800E33386 /* UIKeyboardView.m in Sources */,
 				B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */,
 				B56FAA53182F78F7009E974A /* TKDLoginViewController.m in Sources */,
 			);

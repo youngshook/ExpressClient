@@ -69,9 +69,13 @@
 if ([dic objectForKey:@"errors"] || [dic objectForKey:@"error"] ){\
 QFAlert(@"提示", @"系统繁忙,请重试", @"我知道了");\
 return ;\
-}\
+}
 
 #define NetworkError QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");
+
+#define NetworkError_HUD         [self.HUD hide:YES];\
+QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");
+
 
 #define ASIFormDataRequestDefine \
 [request setRequestMethod:@"POST"];\
@@ -79,7 +83,7 @@ return ;\
 [request setShouldAttemptPersistentConnection:YES];\
 [request setPersistentConnectionTimeoutSeconds:300];\
 [request addRequestHeader:@"Host" value:[request.url host]];\
-request.defaultResponseEncoding = NSUTF8StringEncoding;\
+request.defaultResponseEncoding = NSUTF8StringEncoding;
 
 #define ASIFormDataRequestDefine_ToKen \
 [request setRequestMethod:@"POST"];\
@@ -89,6 +93,6 @@ request.defaultResponseEncoding = NSUTF8StringEncoding;\
 [request addRequestHeader:@"Host" value:[request.url host]];\
 request.defaultResponseEncoding = NSUTF8StringEncoding;\
 [request addPostValue:@"applicationToken" forKey:APP_TOKEN];\
-[request addPostValue:@"applicationId" forKey:APP_ID];\
+[request addPostValue:@"applicationId" forKey:APP_ID];
 
 #endif
