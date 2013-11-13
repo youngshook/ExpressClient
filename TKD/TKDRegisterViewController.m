@@ -7,6 +7,7 @@
 //
 
 #import "TKDRegisterViewController.h"
+#import "TKDActivateViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 @interface TKDRegisterViewController ()
 @property(nonatomic,weak)IBOutlet UITextField *phoneT;
@@ -24,17 +25,16 @@
 	[super viewWillAppear:animated];
 	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
+    if (!IS_NULL_STRING(self.verifyCode)) {
+        self.verifyCodeT.text = self.verifyCode;
+    }
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"会员注册";
-    self.HUD = [[MBProgressHUD alloc]initWithView:self.view];
-    [self.view addSubview:self.HUD];
+    HUD_Define
     RACSignal *formValid = [RACSignal
                             combineLatest:@[
                                             self.phoneT.rac_textSignal,
@@ -74,17 +74,18 @@
     NSURL *url = [NSURL URLWithString:API_ACCOUNT_REGISTER];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
-    [request addPostValue:@"mobile" forKey:self.phoneT.text];
-    [request addPostValue:@"password" forKey:self.passwordT.text];
-    [request addPostValue:@"realname" forKey:self.usernameT.text];
-    [request addPostValue:@"verifycode" forKey:self.verifyCodeT.text];
-    [request addPostValue:@"verificationId" forKey:self.passwordT.text];
+    [request addPostValue:self.phoneT.text forKey:@"mobile"];
+    [request addPostValue:self.passwordT.text forKey:@"password"];
+    [request addPostValue:self.usernameT.text forKey:@"realname"];
+    [request addPostValue:self.verifyCodeT.text forKey:@"verifycode"];
+    [request addPostValue:self.passwordT.text forKey:@"verificationId"];
     [request setCompletionBlock:^{
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
-        QFAlert(@"提示", @"注册成功", @"我知道了");
+        QFAlert(@"提示", @"注册成功,请使用注册账号登录!", @"我知道了");
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }];
     [request setFailedBlock:^{
         NetworkError_HUD

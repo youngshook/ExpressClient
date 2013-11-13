@@ -21,6 +21,7 @@
     #import "TKDCommonDefine.h"
     #import "NSString+JSONCategories.h"
     #import "NSObject+JSONCategories.h"
+    #import "CHKeychain.h"
 #endif
 
 
@@ -78,7 +79,6 @@ __POINTER == (NSString *)[NSNull null] || \
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define iOS_Version [[UIDevice currentDevice].systemVersion floatValue]
 #define isFisrtLaunch [[NSUserDefaults standardUserDefaults] boolForKey:@"alreadyFirstLaunch"]
-#define isQPOSUser !IS_NULL_STRING([QFUser shared].session)
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)

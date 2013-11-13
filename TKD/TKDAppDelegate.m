@@ -21,9 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
     self.window.backgroundColor = [UIColor whiteColor];
-    //    TKDLoginViewController *loginC = [TKDLoginViewController new];
-    TKDRegisterViewController *regC = [TKDRegisterViewController new];
-    UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:regC];
+    TKDLoginViewController *loginC = [TKDLoginViewController new];
+    UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
     return YES;
@@ -33,8 +32,8 @@
     NSURL *url = [NSURL URLWithString:API_APP_INIT];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine
-    [request addPostValue:@"id" forKey:APP_ID];
-    [request addPostValue:@"secret" forKey:APP_SECRET];
+    [request addPostValue:APP_ID forKey:@"id"];
+    [request addPostValue:APP_SECRET forKey:@"secret"];
     [request setCompletionBlock:^{
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];

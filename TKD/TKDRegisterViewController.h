@@ -11,4 +11,5 @@
 @interface TKDRegisterViewController : UIViewController<UIKeyboardViewControllerDelegate>{
     UIKeyboardViewController *keyBoardController;
 }
+@property(nonatomic,copy)NSString *verifyCode;
 @end

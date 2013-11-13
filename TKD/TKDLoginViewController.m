@@ -7,6 +7,7 @@
 //
 
 #import "TKDLoginViewController.h"
+#import "TKDResetPasswordViewController.h"
 #import "TKDActivateViewController.h"
 @interface TKDLoginViewController ()<UITextFieldDelegate>
 @property(nonatomic,weak)IBOutlet UITextField *accountwordT;
@@ -14,13 +15,13 @@
 @property(nonatomic,weak)IBOutlet UIImageView *checkImg;
 @property(nonatomic,weak)IBOutlet UIButton *LoginBtn;
 @property(nonatomic,strong)MBProgressHUD *HUD;
+
 @end
 
 @implementation TKDLoginViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.accountwordT becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -35,12 +36,26 @@
     
     self.title = @"淘快递";
     self.navigationController.navigationBar.tintColor = [UIColor redColor];
-    
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(activateAccount)];
     [self.navigationItem setRightBarButtonItem:rightBtn animated:YES];
     
-    self.HUD = [[MBProgressHUD alloc]initWithView:self.view];
-    [self.view addSubview:self.HUD];
+    HUD_Define
+    
+    if ([USER_DEFAULTS boolForKey:@"remPassword"]) {
+        self.checkImg.image = [UIImage imageNamed:@"check"];
+        NSDictionary *dic = [CHKeychain load:@"userAccount"];
+        self.accountwordT.text = [dic objectForKey:@"account"];
+        self.passwordT.text = [dic objectForKey:@"password"];
+    }else{
+        self.checkImg.image = [UIImage imageNamed:@"uncheck"];
+        NSDictionary *dic = [CHKeychain load:@"userAccount"];
+        if (dic) {
+            self.accountwordT.text = [dic objectForKey:@"account"];
+            [self.passwordT becomeFirstResponder];
+        }else{
+            [self.accountwordT becomeFirstResponder];
+        }
+    }
 }
 
 
@@ -93,27 +108,40 @@
     NSURL *url = [NSURL URLWithString:API_ACCOUNT_LOGIN];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
-    [request addPostValue:@"mobile" forKey:u];
-    [request addPostValue:@"password" forKey:p];
+    [request addPostValue:u forKey:@"mobile"];
+    [request addPostValue:p forKey:@"password"];
     [request setCompletionBlock:^{
+        [self setWaitStop];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
+        [self updateUserInfo:dic];
     }];
     [request setFailedBlock:^{
-        NetworkError_HUD
+        [self setWaitStop];
+        NetworkError
     }];
     [request startAsynchronous];
 }
 
+-(void)updateUserInfo:(NSDictionary *)dic{
+    NSDictionary *keychainData = @{@"account":self.accountwordT.text,@"password":self.passwordT.text};
+    [CHKeychain save:@"userAccount" data:keychainData];
+}
+
 -(IBAction)forgetPassWord:(id)sender{
-
-
+    TKDResetPasswordViewController *resetVC = [TKDResetPasswordViewController new];
+    [self.navigationController pushViewController:resetVC animated:YES];
 }
 
 -(IBAction)checkRemPassword:(id)sender{
-
-
+    if ([USER_DEFAULTS boolForKey:@"remPassword"]) {
+        [USER_DEFAULTS setBool:NO forKey:@"remPassword"];
+        self.checkImg.image = [UIImage imageNamed:@"uncheck"];
+    }else{
+        [USER_DEFAULTS setBool:YES forKey:@"remPassword"];
+        self.checkImg.image = [UIImage imageNamed:@"check"];
+    }
 }
 
 -(void)activateAccount{

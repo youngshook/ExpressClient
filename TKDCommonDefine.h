@@ -71,11 +71,16 @@ QFAlert(@"提示", @"系统繁忙,请重试", @"我知道了");\
 return ;\
 }
 
-#define NetworkError QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");
-
-#define NetworkError_HUD         [self.HUD hide:YES];\
+#define NetworkError  \
 QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");
 
+#define NetworkError_HUD \
+[self.HUD hide:YES];\
+QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");
+
+#define HUD_Define \
+self.HUD = [[MBProgressHUD alloc]initWithView:self.view];\
+[self.view addSubview:self.HUD];
 
 #define ASIFormDataRequestDefine \
 [request setRequestMethod:@"POST"];\
@@ -92,7 +97,7 @@ request.defaultResponseEncoding = NSUTF8StringEncoding;
 [request setPersistentConnectionTimeoutSeconds:300];\
 [request addRequestHeader:@"Host" value:[request.url host]];\
 request.defaultResponseEncoding = NSUTF8StringEncoding;\
-[request addPostValue:@"applicationToken" forKey:APP_TOKEN];\
-[request addPostValue:@"applicationId" forKey:APP_ID];
+[request addPostValue:APP_TOKEN forKey:@"applicationToken"];\
+[request addPostValue:APP_ID forKey:@"applicationId"];
 
 #endif

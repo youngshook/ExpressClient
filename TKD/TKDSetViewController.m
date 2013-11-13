@@ -7,9 +7,12 @@
 //
 
 #import "TKDSetViewController.h"
-
+#import "TKDMsgViewController.h"
+#import "TKDAboutViewController.h"
+#import "TKDAgreementViewController.h"
+#import "TKDLoginViewController.h"
 @interface TKDSetViewController ()
-
+@property(nonatomic,strong)MBProgressHUD *HUD;
 @end
 
 @implementation TKDSetViewController
@@ -18,6 +21,49 @@
 {
     [super viewDidLoad];
     self.title = @"设置";
+    HUD_Define
+}
+
+-(IBAction)serviceMessage:(id)sender{
+    TKDMsgViewController *msgVC = [TKDMsgViewController new];
+    [self.navigationController  pushViewController:msgVC animated:YES];
+}
+
+-(IBAction)versionUpdate:(id)sender{
+    [self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_APP_UPGRADE];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+        if ([dic objectForKey:@"Version"]) {
+            QFAlert([NSString stringWithFormat:@"%@版本发布了!",[dic objectForKey:@"Version"]],[NSString stringWithFormat:@"%@",[dic objectForKey:@"Description"]] , @"我知道了");
+        }else{
+            QFAlert(@"提示", @"您当前软件版本是最新的!", @"我知道了");
+        }
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
+}
+
+-(IBAction)aboutUs:(id)sender{
+    TKDAboutViewController *aboutC = [TKDAboutViewController new];
+    [self.navigationController pushViewController:aboutC animated:YES];
+}
+
+-(IBAction)agreement:(id)sender{
+    TKDAgreementViewController *agreementC = [TKDAgreementViewController new];
+    [self.navigationController pushViewController:agreementC animated:YES];
+}
+
+-(IBAction)logout:(id)sender{
+    TKDLoginViewController *loginC = [TKDLoginViewController new];
+    [self presentViewController:loginC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
