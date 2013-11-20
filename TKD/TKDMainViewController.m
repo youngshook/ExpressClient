@@ -9,24 +9,35 @@
 #import "TKDMainViewController.h"
 
 @interface TKDMainViewController ()
-
+@property(nonatomic,strong)MBProgressHUD *HUD;
 @end
 
 @implementation TKDMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    HUD_Define
+}
+
+-(void)fetchDataSource{
+
+    [self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_NEWS_DETAILS];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
+
+
 }
 
 - (void)didReceiveMemoryWarning

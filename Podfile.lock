@@ -29,7 +29,7 @@ SPEC CHECKSUMS:
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   ReactiveCocoa: fd1154d51223db76172d3a644bf6ade275c821bb
 
-COCOAPODS: 0.27.1
+COCOAPODS: 0.28.0
