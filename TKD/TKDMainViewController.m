@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"淘快递";
     HUD_Define
 }
 

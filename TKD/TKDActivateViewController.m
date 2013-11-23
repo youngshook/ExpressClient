@@ -9,6 +9,7 @@
 #import "TKDActivateViewController.h"
 #import "TKDAgreementViewController.h"
 #import "TKDRegisterViewController.h"
+#import "TKDResetPasswordViewController.h"
 @interface TKDActivateViewController ()<UITextFieldDelegate>
 @property(nonatomic,weak)IBOutlet UITextField *verifyPhoneT;
 @property(nonatomic,weak)IBOutlet UIImageView *checkImg;
@@ -28,30 +29,62 @@
     [super viewDidLoad];
     self.title = @"获取验证";
     HUD_Define
+    
+    if ([self.activateType isEqualToString:@"ResetPassword"]) {
+        UIView *tipsView = [self.view viewWithTag:3000];
+        tipsView.hidden = YES;
+        UIView *checkImg = [self.view viewWithTag:3001];
+        checkImg.hidden = YES;
+        self.checkImg.tag = 1200;
+    }
 }
 
 -(IBAction)checkImg:(id)sender{
     if (self.checkImg.tag == 1200) {
         self.checkImg.image = [UIImage imageNamed:@"uncheck"];
         self.checkImg.tag = 1201;
-        self.verifyBtn.enabled = NO;
     }else{
         self.checkImg.tag = 1200;
         self.checkImg.image = [UIImage imageNamed:@"check"];
         TKDAgreementViewController *agreementVC = [TKDAgreementViewController new];
         [self.navigationController pushViewController:agreementVC animated:YES];
-        self.verifyBtn.enabled = YES;
     }
+}
+
+//手机号校验
+-(BOOL)VerifyPhoneNum:(NSString *)phoneString{
+    if (phoneString.length == 11) {
+        //手机号以13， 15，18开头，八个 \d 数字字符
+        NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9])|(14[0-9]))\\d{8}$";
+        NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+        return [phoneTest evaluateWithObject:phoneString];
+    }
+    return NO;
 }
 
 -(IBAction)verifyCode:(id)sender{
     
+    if (self.checkImg.tag == 1201) {
+        QFAlert(@"提示", @"请先同意会员协议", @"我知道了");
+        return;
+    }
+    
+    if (![self VerifyPhoneNum:self.verifyPhoneT.text]) {
+        QFAlert(@"提示", @"无效手机号,请重新输入", @"我知道了");
+        return;
+    }
+    [self.HUD show:YES];
     NSURL *url = [NSURL URLWithString:API_APP_VERIFY_CODE];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
     [request addPostValue:self.verifyPhoneT.text forKey:@"mobile"];
-    [request addPostValue:@"Register" forKey:@"purpose"];
+    if ([self.activateType isEqualToString:@"ResetPassword"]) {
+        [request addPostValue:@"Recover" forKey:@"purpose"];
+    }else{
+        [request addPostValue:@"Register" forKey:@"purpose"];
+    }
     [request setCompletionBlock:^{
+        [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
@@ -69,9 +102,15 @@
 
 -(void)registerAccount:(NSString *)verificationId{
     QFAlert(@"提示", @"验证码获取成功,请填写注册信息!", @"我知道了");
-    TKDRegisterViewController *regVC = [TKDRegisterViewController new];
-    regVC.verifyCode = verificationId;
-    [self.navigationController pushViewController:regVC animated:YES];
+    if ([self.activateType isEqualToString:@"ResetPassword"]) {
+        TKDResetPasswordViewController *regVC = [TKDResetPasswordViewController new];
+        regVC.verCode = verificationId;
+        [self.navigationController pushViewController:regVC animated:YES];
+    }else{
+        TKDRegisterViewController *regVC = [TKDRegisterViewController new];
+        regVC.verifyCode = verificationId;
+        [self.navigationController pushViewController:regVC animated:YES];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

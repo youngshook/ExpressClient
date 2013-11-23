@@ -25,9 +25,6 @@
 	[super viewWillAppear:animated];
 	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
-    if (!IS_NULL_STRING(self.verifyCode)) {
-        self.verifyCodeT.text = self.verifyCode;
-    }
 }
 
 - (void)viewDidLoad
@@ -68,8 +65,29 @@
                             withObjects:buttonTextColor, @(UIControlStateNormal)];
 }
 
+//手机号校验
+-(BOOL)VerifyPhoneNum:(NSString *)phoneString{
+    if (phoneString.length == 11) {
+        //手机号以13， 15，18开头，八个 \d 数字字符
+        NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9])|(14[0-9]))\\d{8}$";
+        NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+        return [phoneTest evaluateWithObject:phoneString];
+    }
+    return NO;
+}
 
 -(IBAction)registerBtn:(id)sender{
+    
+    if (IS_NULL_STRING(self.phoneT.text ) || IS_NULL_STRING(self.passwordT.text) || IS_NULL_STRING(self.usernameT.text)|| IS_NULL_STRING(self.verifyCodeT.text) || IS_NULL_STRING(self.rePasswordT.text)) {
+        QFAlert(@"提示", @"请把信息填写完整", @"确定");
+        return;
+    }
+    
+    if (![self VerifyPhoneNum:self.phoneT.text]) {
+        QFAlert(@"提示", @"无效手机号,请重新输入", @"我知道了");
+        return;
+    }
+    
     [self.HUD show:YES];
     NSURL *url = [NSURL URLWithString:API_ACCOUNT_REGISTER];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -78,7 +96,7 @@
     [request addPostValue:self.passwordT.text forKey:@"password"];
     [request addPostValue:self.usernameT.text forKey:@"realname"];
     [request addPostValue:self.verifyCodeT.text forKey:@"verifycode"];
-    [request addPostValue:self.passwordT.text forKey:@"verificationId"];
+    [request addPostValue:self.verifyCode forKey:@"verificationId"];
     [request setCompletionBlock:^{
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
@@ -93,17 +111,6 @@
     [request startAsynchronous];
 
 }
-
-- (void)alttextFieldDidEndEditing:(UITextField *)textField{
-
-
-}
-
-- (void)alttextViewDidEndEditing:(UITextView *)textView{
-
-
-}
-
 
 - (void)didReceiveMemoryWarning
 {

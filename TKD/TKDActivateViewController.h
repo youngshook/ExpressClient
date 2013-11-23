@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TKDActivateViewController : UIViewController
-
+@property(nonatomic,copy)NSString *activateType;
 @end

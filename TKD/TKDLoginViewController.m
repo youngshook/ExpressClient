@@ -130,8 +130,8 @@
 }
 
 -(IBAction)forgetPassWord:(id)sender{
-    TKDResetPasswordViewController *resetVC = [TKDResetPasswordViewController new];
-    [self.navigationController pushViewController:resetVC animated:YES];
+    TKDActivateViewController *activateVC = [TKDActivateViewController new];
+    [self.navigationController pushViewController:activateVC animated:YES];
 }
 
 -(IBAction)checkRemPassword:(id)sender{

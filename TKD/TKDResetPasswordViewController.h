@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TKDResetPasswordViewController : UIViewController
-
+@property(nonatomic,copy)NSString *verCode;
 @end
