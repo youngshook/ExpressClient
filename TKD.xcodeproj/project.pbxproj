@@ -34,8 +34,8 @@
 		B56FAA74182F8302009E974A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA63182F8302009E974A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B56FAA75182F8302009E974A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA65182F8302009E974A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA67182F8302009E974A /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA69182F8302009E974A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA6B182F8302009E974A /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA69182F8302009E974A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-O0 -fno-objc-arc"; }; };
+		B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA6B182F8302009E974A /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-O0 -fno-objc-arc"; }; };
 		B56FAA79182F8302009E974A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA6F182F8302009E974A /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA71182F8302009E974A /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B56FAA7C182F874A009E974A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA7B182F874A009E974A /* SystemConfiguration.framework */; };
@@ -78,6 +78,8 @@
 		B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00331183411DB005778AB /* iTunesArtwork.png */; };
 		B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00332183411DB005778AB /* iTunesArtwork@2x.png */; };
 		B5A0034418341A3D005778AB /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0034318341A3D005778AB /* btn@2x.png */; };
+		B5BE5FCD18411368004248C8 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BE5FCC18411368004248C8 /* Empty.xib */; };
+		B5BE5FCF1841EA4F004248C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5BE5FCE1841EA4F004248C8 /* InfoPlist.strings */; };
 		B5C74F651831497800E33386 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F611831497800E33386 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F631831497800E33386 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5C74F6E1833D34700E33386 /* TKDMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */; };
@@ -107,7 +109,7 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
-		B56FAA1E182F6DE6009E974A /* TKD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B56FAA23182F6DE6009E974A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B56FAA25182F6DE6009E974A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -118,8 +120,6 @@
 		B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDAppDelegate.h; sourceTree = "<group>"; };
 		B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDAppDelegate.m; sourceTree = "<group>"; };
 		B56FAA3A182F6DE7009E974A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B56FAA42182F6DE7009E974A /* TKDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TKDTests-Info.plist"; sourceTree = "<group>"; };
-		B56FAA44182F6DE7009E974A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B56FAA46182F6DE7009E974A /* TKDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDTests.m; sourceTree = "<group>"; };
 		B56FAA50182F78F7009E974A /* TKDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoginViewController.h; sourceTree = "<group>"; };
 		B56FAA51182F78F7009E974A /* TKDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDLoginViewController.m; sourceTree = "<group>"; };
@@ -195,6 +195,9 @@
 		B5A00331183411DB005778AB /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		B5A00332183411DB005778AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B5A0034318341A3D005778AB /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
+		B5BE5FCC18411368004248C8 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		B5BE5FCE1841EA4F004248C8 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		B5BE5FD01841EA55004248C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/TKDTests-Info.plist"; sourceTree = "<group>"; };
 		B5C74F611831497800E33386 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
 		B5C74F621831497800E33386 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
 		B5C74F631831497800E33386 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
@@ -264,6 +267,7 @@
 			children = (
 				B51A86E51833F3490008F7E4 /* TKDMainViewController.h */,
 				B51A86E61833F3490008F7E4 /* TKDMainViewController.m */,
+				B5BE5FCC18411368004248C8 /* Empty.xib */,
 				B51A86E81833F36B0008F7E4 /* TKDMainDetailViewController.h */,
 				B51A86E91833F36B0008F7E4 /* TKDMainDetailViewController.m */,
 				B51A86EA1833F36B0008F7E4 /* TKDMainDetailViewController.xib */,
@@ -317,7 +321,7 @@
 		B56FAA1F182F6DE6009E974A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B56FAA1E182F6DE6009E974A /* TKD.app */,
+				B56FAA1E182F6DE6009E974A /* 淘快递.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -380,8 +384,8 @@
 		B56FAA41182F6DE7009E974A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B56FAA42182F6DE7009E974A /* TKDTests-Info.plist */,
-				B56FAA43182F6DE7009E974A /* InfoPlist.strings */,
+				B5BE5FD11841EA55004248C8 /* TKDTests-Info.plist */,
+				B5BE5FCE1841EA4F004248C8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -493,7 +497,7 @@
 			);
 			name = TKD;
 			productName = TKD;
-			productReference = B56FAA1E182F6DE6009E974A /* TKD.app */;
+			productReference = B56FAA1E182F6DE6009E974A /* 淘快递.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -538,6 +542,7 @@
 				B5A0033C183411DB005778AB /* Icon-Small-50@2x.png in Resources */,
 				B5A0033E183411DB005778AB /* Icon-Small@2x.png in Resources */,
 				B5A00338183411DB005778AB /* Icon-72@2x.png in Resources */,
+				B5BE5FCF1841EA4F004248C8 /* InfoPlist.strings in Resources */,
 				B56FAA59182F792A009E974A /* TKDActivateViewController.xib in Resources */,
 				B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */,
 				B5A00337183411DB005778AB /* Icon-72.png in Resources */,
@@ -554,6 +559,7 @@
 				B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */,
 				B5A00340183411DB005778AB /* Icon@2x.png in Resources */,
 				B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */,
+				B5BE5FCD18411368004248C8 /* Empty.xib in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
 				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
@@ -653,12 +659,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		B56FAA43182F6DE7009E974A /* InfoPlist.strings */ = {
+		B5BE5FD11841EA55004248C8 /* TKDTests-Info.plist */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B56FAA44182F6DE7009E974A /* en */,
+				B5BE5FD01841EA55004248C8 /* en */,
 			);
-			name = InfoPlist.strings;
+			name = "TKDTests-Info.plist";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -747,9 +753,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "淘快递";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -761,13 +767,15 @@
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "淘快递";
+				PROVISIONING_PROFILE = "1BBE32CA-46A2-4606-99A2-C975A9696F64";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

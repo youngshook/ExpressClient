@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TKDMainDetailViewController : UIViewController
-
+@property (nonatomic,copy) NSDictionary *dic;
 @end

@@ -9,6 +9,7 @@
 #import "TKDLoginViewController.h"
 #import "TKDResetPasswordViewController.h"
 #import "TKDActivateViewController.h"
+#import "TKDMainViewController.h"
 @interface TKDLoginViewController ()<UITextFieldDelegate>
 @property(nonatomic,weak)IBOutlet UITextField *accountwordT;
 @property(nonatomic,weak)IBOutlet UITextField *passwordT;
@@ -115,6 +116,8 @@
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
+        [self getExpressList];
+        [self getAddressList];
         [self updateUserInfo:dic];
     }];
     [request setFailedBlock:^{
@@ -125,8 +128,11 @@
 }
 
 -(void)updateUserInfo:(NSDictionary *)dic{
+    
+    
     NSDictionary *keychainData = @{@"account":self.accountwordT.text,@"password":self.passwordT.text};
     [CHKeychain save:@"userAccount" data:keychainData];
+    [self.navigationController pushViewController:TKDMainViewController.new animated:YES];
 }
 
 -(IBAction)forgetPassWord:(id)sender{
@@ -177,6 +183,43 @@
         }
     }
     return NO;
+}
+
+-(void)getExpressList{
+    
+    NSURL *url = [NSURL URLWithString:API_INFO_VENDOR];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSArray *dic = [[request responseString]JSONValue];
+        [USER_DEFAULTS setObject:dic forKey:@"expressList"];
+        [USER_DEFAULTS synchronize];
+    }];
+    [request setFailedBlock:^{
+        NetworkError
+    }];
+    [request startAsynchronous];
+    
+}
+
+
+-(void)getAddressList{
+    
+    NSURL *url = [NSURL URLWithString:API_INFO_STATION];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSArray *array = [[request responseString]JSONValue];
+        [USER_DEFAULTS setObject:array forKey:@"addressList"];
+        [USER_DEFAULTS synchronize];
+    }];
+    [request setFailedBlock:^{
+        NetworkError
+    }];
+    [request startAsynchronous];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

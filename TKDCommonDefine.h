@@ -67,7 +67,7 @@
 
 #define WarningAlert \
 if ([dic objectForKey:@"errors"] || [dic objectForKey:@"error"] ){\
-QFAlert(@"提示", @"系统繁忙,请重试", @"我知道了");\
+QFAlert(@"提示", [NSString stringWithFormat:@"%@",[dic objectForKey:@"error"]], @"我知道了");\
 return ;\
 }
 

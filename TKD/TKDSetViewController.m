@@ -62,8 +62,7 @@
 }
 
 -(IBAction)logout:(id)sender{
-    TKDLoginViewController *loginC = [TKDLoginViewController new];
-    [self presentViewController:loginC animated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

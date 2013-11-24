@@ -52,17 +52,7 @@
     
     RACCommand *createAccountCommand = [RACCommand commandWithCanExecuteSignal:formValid];
     [[self.registerBtn rac_signalForControlEvents:UIControlEventTouchUpInside] executeCommand:createAccountCommand];
-    
-    RACSignal *buttonEnabled = RACAbleWithStart(createAccountCommand, canExecute);
-    RAC(self.registerBtn.enabled) = buttonEnabled;
-    
-    UIColor *defaultButtonTitleColor = self.registerBtn.titleLabel.textColor;
-    RACSignal *buttonTextColor = [buttonEnabled map:^id(NSNumber *x) {
-        return x.boolValue ? defaultButtonTitleColor : [UIColor lightGrayColor];
-    }];
-    
-    [self.registerBtn rac_liftSelector:@selector(setTitleColor:forState:)
-                            withObjects:buttonTextColor, @(UIControlStateNormal)];
+
 }
 
 //手机号校验

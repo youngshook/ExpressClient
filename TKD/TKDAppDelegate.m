@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self loadUserlocalString];
     if (!isFisrtLaunch) {
         [self getApplicationToken];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alreadyFirstLaunch"];
@@ -25,6 +26,7 @@
     UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -47,6 +49,16 @@
         NetworkError
     }];
     [request startAsynchronous];
+}
+
+
+
+-(void)loadUserlocalString{
+
+    [USER_DEFAULTS setObject:@"取件" forKey:@"Retrieveable"];
+    [USER_DEFAULTS setObject:@"已取件" forKey:@"Retrieved"];
+    [USER_DEFAULTS setObject:@"其他" forKey:@"Other"];
+    [USER_DEFAULTS  synchronize];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
