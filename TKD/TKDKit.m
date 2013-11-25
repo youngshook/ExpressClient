@@ -101,10 +101,6 @@ UIImage* resizeImageWithImage(NSString* imageName, UIEdgeInsets capInsets, UIIma
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     CLLocationCoordinate2D coor = newLocation.coordinate;
-    //    [QFPhone shared].gpslon = [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.longitude]];
-    //    [QFPhone shared].gpslat = [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.latitude]];
-    
-    //将更新过的GPS信息写入到NSUserDefaults中
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.longitude]] forKey:@"gpslon"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.latitude]] forKey:@"gpslat"];
     [[NSUserDefaults standardUserDefaults] synchronize];

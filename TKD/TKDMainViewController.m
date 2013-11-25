@@ -134,12 +134,10 @@
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
     
     UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 34)];
-    sheetSN.backgroundColor = [UIColor clearColor];
     sheetSN.text = [dic objectForKey:@"SheetNo"];
     [cell.contentView addSubview:sheetSN];
     
     UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
-    expressType.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:expressType];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
@@ -151,16 +149,19 @@
     }];
     
     UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
-    Status.backgroundColor = [UIColor clearColor];
     Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
     [cell.contentView addSubview:Status];
     
     if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
-        cell.contentView.backgroundColor = RGBACOLOR(64, 128, 0, 1);
+        sheetSN.textColor = RGBACOLOR(64, 128, 0, 1);
+        expressType.textColor = RGBACOLOR(64, 128, 0, 1);
+        Status.textColor = RGBACOLOR(64, 128, 0, 1);
     }
     
     if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieved"]) {
-        cell.contentView.backgroundColor = RGBACOLOR(237, 97, 96, 1);
+        sheetSN.textColor = RGBACOLOR(237, 97, 96, 1);
+        expressType.textColor = RGBACOLOR(237, 97, 96, 1);
+        Status.textColor = RGBACOLOR(237, 97, 96, 1);
     }
 
     

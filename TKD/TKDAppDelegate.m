@@ -55,7 +55,7 @@
 
 -(void)loadUserlocalString{
 
-    [USER_DEFAULTS setObject:@"取件" forKey:@"Retrieveable"];
+    [USER_DEFAULTS setObject:@"可取" forKey:@"Retrieveable"];
     [USER_DEFAULTS setObject:@"已取件" forKey:@"Retrieved"];
     [USER_DEFAULTS setObject:@"其他" forKey:@"Other"];
     [USER_DEFAULTS  synchronize];

@@ -58,22 +58,27 @@
 }
 
 -(IBAction)verifyBtn{
-    [self.HUD show:YES];
-    NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"requestid"];
-    [request setCompletionBlock:^{
-        [self.HUD hide:YES];
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        NSDictionary *dic = [[request responseString]JSONValue];
-        WarningAlert
-        QFAlert(@"提示", @"当前取件正常", @"确定");
+    
+    UIAlertView * av = [UIAlertView alertViewWithTitle:@"提示" message:@"请务必于在取件处3米范围内点击，否则可能造成丢失，请确认!"];
+    [av addButtonWithTitle:@"确认" handler:^{
+        [self.HUD show:YES];
+        NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
+        __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        ASIFormDataRequestDefine_ToKen
+        [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"requestid"];
+        [request setCompletionBlock:^{
+            [self.HUD hide:YES];
+            NSLog(@"%@:%@",[url path],[request responseString]);
+            NSDictionary *dic = [[request responseString]JSONValue];
+            WarningAlert
+            QFAlert(@"提示", @"当前取件正常", @"确定");
+        }];
+        [request setFailedBlock:^{
+            NetworkError_HUD
+        }];
+        [request startAsynchronous];
     }];
-    [request setFailedBlock:^{
-        NetworkError_HUD
-    }];
-    [request startAsynchronous];
+    [av addButtonWithTitle:@"取消"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

@@ -22,6 +22,7 @@
     #import "NSString+JSONCategories.h"
     #import "NSObject+JSONCategories.h"
     #import "CHKeychain.h"
+    #import "BlocksKit.h"
 #endif
 
 
