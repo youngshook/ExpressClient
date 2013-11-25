@@ -9,10 +9,12 @@
 #import "TKDMainViewController.h"
 #import "TKDSetViewController.h"
 #import "TKDMainDetailViewController.h"
+#import "ODRefreshControl.h"
 @interface TKDMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,copy)NSMutableArray *dataArray;
+@property(nonatomic,strong)ODRefreshControl *refreshControl;
 
 @end
 
@@ -37,6 +39,8 @@
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.myTableView];
     HUD_Define
+    self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
+    [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     [self fetchDataSource];
 }
 
@@ -47,6 +51,7 @@
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
     [request setCompletionBlock:^{
+        [_refreshControl endRefreshing];
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         if ([[[request responseString]JSONValue] isKindOfClass:[NSDictionary class]]) {
@@ -61,6 +66,7 @@
         }
     }];
     [request setFailedBlock:^{
+        [_refreshControl endRefreshing];
         NetworkError_HUD
     }];
     [request startAsynchronous];
@@ -90,6 +96,14 @@
     
     UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 56, 30)];
     Status.text = @"状态";
+    expressType.backgroundColor = [UIColor clearColor];
+    expressID.backgroundColor = [UIColor clearColor];
+    Status.backgroundColor = [UIColor clearColor];
+    sectionView.backgroundColor = [UIColor grayColor];
+    
+    expressID.font = [UIFont boldSystemFontOfSize:18];
+    expressType.font = [UIFont boldSystemFontOfSize:18];
+    Status.font = [UIFont boldSystemFontOfSize:18];
     
     [sectionView addSubview:expressID];
     [sectionView addSubview:expressType];
@@ -120,14 +134,12 @@
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
     
     UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 34)];
+    sheetSN.backgroundColor = [UIColor clearColor];
     sheetSN.text = [dic objectForKey:@"SheetNo"];
     [cell.contentView addSubview:sheetSN];
     
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
-    Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
-    [cell.contentView addSubview:Status];
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
+    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
+    expressType.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:expressType];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
@@ -137,6 +149,21 @@
             expressType.text = [dic objectForKey:@"Name"];
         }
     }];
+    
+    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
+    Status.backgroundColor = [UIColor clearColor];
+    Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
+    [cell.contentView addSubview:Status];
+    
+    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
+        cell.contentView.backgroundColor = RGBACOLOR(64, 128, 0, 1);
+    }
+    
+    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieved"]) {
+        cell.contentView.backgroundColor = RGBACOLOR(237, 97, 96, 1);
+    }
+
+    
     return cell;
 }
 
@@ -151,6 +178,14 @@
 -(void)setting{
     TKDSetViewController *setVC = [TKDSetViewController new];
     [self.navigationController pushViewController:setVC animated:YES];
+}
+
+#pragma mark - ODRefreshControl Delegate
+#pragma mark -
+
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshCon{
+    [self.refreshControl beginRefreshing];
+    [self fetchDataSource];
 }
 
 - (void)didReceiveMemoryWarning
