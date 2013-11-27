@@ -27,7 +27,6 @@
     self.idLabel.text = [self.dic objectForKey:@"SheetNo"];
     self.dateLabel.text = [self.dic objectForKey:@"ArrivalTime"];
     
-    
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [self.dic objectForKey:@"VendorId"];
     [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -60,25 +59,40 @@
 -(IBAction)verifyBtn{
     
     UIAlertView * av = [UIAlertView alertViewWithTitle:@"提示" message:@"请务必于在取件处3米范围内点击，否则可能造成丢失，请确认!"];
+    [av addButtonWithTitle:@"取消"];
     [av addButtonWithTitle:@"确认" handler:^{
         [self.HUD show:YES];
-        NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
+        NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
         __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         ASIFormDataRequestDefine_ToKen
+        NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
+        NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
+        
+        [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
+        [request addPostValue:latitude?:@0.00 forKey:@"latitude"];
         [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"requestid"];
         [request setCompletionBlock:^{
             [self.HUD hide:YES];
             NSLog(@"%@:%@",[url path],[request responseString]);
             NSDictionary *dic = [[request responseString]JSONValue];
             WarningAlert
-            QFAlert(@"提示", @"当前取件正常", @"确定");
+            NSString *RetrieveRequestId = [dic objectForKey:@"RetrieveRequestId"];
+            [USER_DEFAULTS setObject:RetrieveRequestId forKey:@"requestid"];
+            [USER_DEFAULTS setObject:[NSDate date] forKey:@"date"];
+            [USER_DEFAULTS synchronize];
+            
+            UIAlertView *alert = [UIAlertView alertViewWithTitle:@"已请求取件,请稍等"];
+            [alert addButtonWithTitle:@"我知道了" handler:^{
+               QFEvent(@"referRetrieveStatus", nil);
+            }];
+            [alert show];
         }];
         [request setFailedBlock:^{
             NetworkError_HUD
         }];
         [request startAsynchronous];
     }];
-    [av addButtonWithTitle:@"取消"];
+    [av show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

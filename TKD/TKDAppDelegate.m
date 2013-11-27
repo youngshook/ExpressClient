@@ -14,6 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self loadUserlocalString];
+    QFListenEvent(@"referRetrieveStatus", self, @selector(referRetrieveStatus));
     if (!isFisrtLaunch) {
         [self getApplicationToken];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alreadyFirstLaunch"];
@@ -59,6 +60,35 @@
     [USER_DEFAULTS setObject:@"已取件" forKey:@"Retrieved"];
     [USER_DEFAULTS setObject:@"其他" forKey:@"Other"];
     [USER_DEFAULTS  synchronize];
+}
+
+
+-(void)referRetrieveStatus{
+    
+    NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request addPostValue:[USER_DEFAULTS objectForKey:@"RetrieveRequestId"] forKey:@"requestid"];
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+        
+        int delay = [[dic objectForKey:@"Delay"]intValue];
+        NSTimeInterval sed = [[USER_DEFAULTS objectForKey:@"date"] timeIntervalSinceNow];
+        if (delay > 0) {
+            if (sed < -30) {
+                QFAlert(@"提示", @"您的验证申请超时，请到前台与工作人员联系取件", @"我知道了");
+            }else{
+                [self performSelector:@selector(referRetrieveStatus) withObject:nil afterDelay:delay];
+            }
+        }else{
+            QFAlert(@"提示",[NSString stringWithFormat:@"取件成功，单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]],@"我知道了");
+        }
+    }];
+    [request setFailedBlock:^{
+    }];
+    [request startAsynchronous];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

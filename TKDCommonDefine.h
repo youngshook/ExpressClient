@@ -66,10 +66,17 @@
 #define APP_TOKEN  [[NSUserDefaults standardUserDefaults]objectForKey:@"ApplicationToken"]
 
 #define WarningAlert \
-if ([dic objectForKey:@"errors"] || [dic objectForKey:@"error"] ){\
+if (!dic) {\
+QFAlert(@"提示", @"服务器错误,请稍后再试", @"确定");\
+return;\
+}else{\
+if ([dic objectForKey:@"errors"] || [dic objectForKey:@"error"]){\
 QFAlert(@"提示", [NSString stringWithFormat:@"%@",[dic objectForKey:@"error"]], @"我知道了");\
-return ;\
-}
+return;\
+}\
+}\
+
+
 
 #define NetworkError  \
 QFAlert(@"提示", @"您当前网络不佳,请检查网络后再试", @"我知道了");

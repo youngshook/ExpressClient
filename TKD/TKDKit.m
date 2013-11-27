@@ -101,8 +101,8 @@ UIImage* resizeImageWithImage(NSString* imageName, UIEdgeInsets capInsets, UIIma
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     CLLocationCoordinate2D coor = newLocation.coordinate;
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.longitude]] forKey:@"gpslon"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:coor.latitude]] forKey:@"gpslat"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithDouble:coor.longitude] forKey:@"gpslon"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithDouble:coor.latitude] forKey:@"gpslat"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [locationMgr stopUpdatingLocation];
