@@ -70,7 +70,7 @@
         
         [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
         [request addPostValue:latitude?:@0.00 forKey:@"latitude"];
-        [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"requestid"];
+        [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
         [request setCompletionBlock:^{
             [self.HUD hide:YES];
             NSLog(@"%@:%@",[url path],[request responseString]);

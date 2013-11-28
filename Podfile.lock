@@ -1,4 +1,5 @@
 PODS:
+  - ALAlertBanner (0.3.1)
   - BlocksKit (1.8.3):
     - libffi
   - JRSwizzle (1.0)
@@ -25,6 +26,7 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - ALAlertBanner (~> 0.3.1)
   - BlocksKit
   - MBProgressHUD
   - ODRefreshControl
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 1.5.0)
 
 SPEC CHECKSUMS:
+  ALAlertBanner: 16235298226059cd876a9de0a5d7f9bac6a79459
   BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98

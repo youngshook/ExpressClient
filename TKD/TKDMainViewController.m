@@ -23,6 +23,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TKDKit refreshGPS];
+    NSString *enabel = [MobClick getConfigParams:@"enabel"];
+    if ([enabel isEqualToString:@"NO"]) {
+        UIAlertView *av = [UIAlertView alertViewWithTitle:@"警告" message:@"当前应用被锁定,请联系开发者!"];
+        [av show];
+    }
 }
 
 

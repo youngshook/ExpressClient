@@ -20,6 +20,7 @@
 		B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A86FB1833FF230008F7E4 /* CHKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FD1834019C0008F7E4 /* check@2x.png */; };
 		B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FE1834019C0008F7E4 /* uncheck@2x.png */; };
+		B56D7DA31847B354006CD91D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D7DA21847B354006CD91D /* libMobClickLibrary.a */; };
 		B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA21182F6DE6009E974A /* Foundation.framework */; };
 		B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA23182F6DE6009E974A /* CoreGraphics.framework */; };
 		B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA25182F6DE6009E974A /* UIKit.framework */; };
@@ -109,6 +110,8 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		B56D7DA11847B338006CD91D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		B56D7DA21847B354006CD91D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = "../Desktop/未命名文件夹/libMobClickLibrary.a"; sourceTree = "<group>"; };
 		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B56FAA23182F6DE6009E974A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56D7DA31847B354006CD91D /* libMobClickLibrary.a in Frameworks */,
 				B56FAA8E182F8ACF009E974A /* libz.dylib in Frameworks */,
 				B56FAA8C182F8AC6009E974A /* libsqlite3.dylib in Frameworks */,
 				B56FAA8A182F8AAA009E974A /* libxml2.dylib in Frameworks */,
@@ -254,6 +258,7 @@
 		B51A86DD1833F2510008F7E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B56D7DA11847B338006CD91D /* MobClick.h */,
 				B56FAA90182F9826009E974A /* TKDKit.h */,
 				B56FAA91182F9826009E974A /* TKDKit.m */,
 				B51A86ED1833F3A60008F7E4 /* TKDUser.h */,
@@ -329,6 +334,7 @@
 		B56FAA20182F6DE6009E974A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B56D7DA21847B354006CD91D /* libMobClickLibrary.a */,
 				B56FAA8D182F8ACF009E974A /* libz.dylib */,
 				B56FAA8B182F8AC6009E974A /* libsqlite3.dylib */,
 				B56FAA89182F8AAA009E974A /* libxml2.dylib */,
@@ -754,7 +760,7 @@
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "/Users/YoungShook/Desktop/未命名文件夹";
 				PRODUCT_NAME = "淘快递";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -773,7 +779,7 @@
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "/Users/YoungShook/Desktop/未命名文件夹";
 				PRODUCT_NAME = "淘快递";
 				PROVISIONING_PROFILE = "1BBE32CA-46A2-4606-99A2-C975A9696F64";
 				SDKROOT = iphoneos6.1;

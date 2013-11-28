@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
 
+static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
+
 #import "TKDAppDelegate.h"
 #import "TKDLoginViewController.h"
 #import "TKDRegisterViewController.h"
@@ -13,6 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self umengTrack];
     [self loadUserlocalString];
     QFListenEvent(@"referRetrieveStatus", self, @selector(referRetrieveStatus));
     if (!isFisrtLaunch) {
@@ -27,8 +30,16 @@
     UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
-
     return YES;
+}
+
+-(void)umengTrack{
+
+    [MobClick setAppVersion:AppVersionShort]; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
+                                              //
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:(ReportPolicy) REALTIME channelId:nil];
+    
+    [MobClick updateOnlineConfig];
 }
 
 -(void)getApplicationToken{
@@ -78,12 +89,24 @@
         NSTimeInterval sed = [[USER_DEFAULTS objectForKey:@"date"] timeIntervalSinceNow];
         if (delay > 0) {
             if (sed < -30) {
-                QFAlert(@"提示", @"您的验证申请超时，请到前台与工作人员联系取件", @"我知道了");
+                ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
+                                                                    style:ALAlertBannerStyleFailure
+                                                                 position:ALAlertBannerPositionUnderNavBar
+                                                                    title:@"提示!"
+                                                                 subtitle:@"您的验证申请超时，请到前台与工作人员联系取件."];
+                [banner show];
+                
             }else{
                 [self performSelector:@selector(referRetrieveStatus) withObject:nil afterDelay:delay];
             }
         }else{
             QFAlert(@"提示",[NSString stringWithFormat:@"取件成功，单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]],@"我知道了");
+            ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
+                                                                style:ALAlertBannerStyleSuccess
+                                                             position:ALAlertBannerPositionUnderNavBar
+                                                                title:@"取件成功!"
+                                                             subtitle:[NSString stringWithFormat:@"单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]]];
+            [banner show];
         }
     }];
     [request setFailedBlock:^{
