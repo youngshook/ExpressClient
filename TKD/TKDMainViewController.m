@@ -68,6 +68,7 @@
             if ([data count] > 0) {
                 self.dataArray = [data mutableCopy];
                 [self.myTableView reloadData];
+                [self fetchSiteList];
             }
         }
     }];
@@ -201,4 +202,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)fetchSiteList{
+    NSURL *url = [NSURL URLWithString:API_INFO_STATION];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        return ;
+        if ([[[request responseString]JSONValue] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = [[request responseString]JSONValue];
+            WarningAlert
+        }else{
+            NSArray *data = [[request responseString]JSONValue];
+            if ([data count] > 0) {
+                self.dataArray = [data mutableCopy];
+                [self.myTableView reloadData];
+            }
+        }
+    }];
+    [request setFailedBlock:^{
+    }];
+    [request startAsynchronous];
+}
+
+/*
+ "Id": "站点ID",
+ "Name": "站点名称",
+ "Description": "站点说明",
+ "Address": "站点地址",
+ "Phone": "站点电话",
+ "Mobile": "站点手机",
+ "Contact": "站点联系人",
+ "Longitude": 12.345678, //站点所在地的经度
+ "Latitude": 98.765432	//站点所在地的纬度
+ 
+ */
+
+
 @end
+
