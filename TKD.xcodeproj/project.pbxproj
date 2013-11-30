@@ -760,10 +760,7 @@
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/YoungShook/Desktop/未命名文件夹",
-					/Users/YoungShook/TKD,
-				);
+				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
 				PRODUCT_NAME = "淘快递";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -782,12 +779,9 @@
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/YoungShook/Desktop/未命名文件夹",
-					/Users/YoungShook/TKD,
-				);
+				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
 				PRODUCT_NAME = "淘快递";
-				PROVISIONING_PROFILE = "E8202B99-A8C4-421C-B138-E4381D17D1C9";
+				PROVISIONING_PROFILE = "1BBE32CA-46A2-4606-99A2-C975A9696F64";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

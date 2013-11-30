@@ -79,7 +79,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
-    [request addPostValue:[USER_DEFAULTS objectForKey:@"RetrieveRequestId"] forKey:@"requestid"];
+    [request addPostValue:[USER_DEFAULTS objectForKey:@"requestid"] forKey:@"requestid"];
     [request setCompletionBlock:^{
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
@@ -100,7 +100,6 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
                 [self performSelector:@selector(referRetrieveStatus) withObject:nil afterDelay:delay];
             }
         }else{
-            QFAlert(@"提示",[NSString stringWithFormat:@"取件成功，单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]],@"我知道了");
             ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
                                                                 style:ALAlertBannerStyleSuccess
                                                              position:ALAlertBannerPositionUnderNavBar
