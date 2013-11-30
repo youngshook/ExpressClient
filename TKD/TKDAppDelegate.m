@@ -100,11 +100,14 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
                 [self performSelector:@selector(referRetrieveStatus) withObject:nil afterDelay:delay];
             }
         }else{
+            [USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[dic objectForKey:@"SheetNo"]];
+            QFEvent(@"addGroupChest", nil);
             ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
                                                                 style:ALAlertBannerStyleSuccess
                                                              position:ALAlertBannerPositionUnderNavBar
                                                                 title:@"取件成功!"
                                                              subtitle:[NSString stringWithFormat:@"单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]]];
+            banner.showAnimationDuration = 4;
             [banner show];
         }
     }];

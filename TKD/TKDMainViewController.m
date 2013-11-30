@@ -193,7 +193,7 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshCon{
     [self.refreshControl beginRefreshing];
-    [self fetchDataSource];
+    //[self fetchDataSource];
 }
 
 - (void)didReceiveMemoryWarning
@@ -224,20 +224,6 @@
     }];
     [request startAsynchronous];
 }
-
-/*
- "Id": "站点ID",
- "Name": "站点名称",
- "Description": "站点说明",
- "Address": "站点地址",
- "Phone": "站点电话",
- "Mobile": "站点手机",
- "Contact": "站点联系人",
- "Longitude": 12.345678, //站点所在地的经度
- "Latitude": 98.765432	//站点所在地的纬度
- 
- */
-
 
 @end
 

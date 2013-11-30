@@ -26,7 +26,7 @@
     self.title = @"运单快递";
     self.idLabel.text = [self.dic objectForKey:@"SheetNo"];
     self.dateLabel.text = [self.dic objectForKey:@"ArrivalTime"];
-    
+    QFListenEvent(@"addGroupChest", self, @selector(addGroupChest));
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [self.dic objectForKey:@"VendorId"];
     [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -44,6 +44,7 @@
             self.addressTextView.text = [dic objectForKey:@"Address"];
         }
     }];
+    [self addGroupChest];
     HUD_Define
     
     // Do any additional setup after loading the view from its nib.
@@ -130,6 +131,11 @@
     }
 }
 
+-(void)addGroupChest{
+    NSString *groupChest = [USER_DEFAULTS objectForKey:[self.dic objectForKey:@"SheetNo"]];
+    self.localLabel.text = groupChest;
+}
+
 //手机号校验
 -(BOOL)VerifyPhoneNum:(NSString *)phoneString{
     if (phoneString.length == 11) {
@@ -144,6 +150,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    QFForgetEvent(@"addGroupChest", self);
     // Dispose of any resources that can be recreated.
 }
 
