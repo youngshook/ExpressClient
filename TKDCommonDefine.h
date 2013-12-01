@@ -70,12 +70,14 @@ if (!dic) {\
 QFAlert(@"提示", @"服务器错误,请稍后再试", @"确定");\
 return;\
 }else{\
-if ([dic objectForKey:@"errors"] || [dic objectForKey:@"error"]){\
+if ([dic objectForKey:@"Error"]) {\
+QFAlert(@"提示", [NSString stringWithFormat:@"%@",[dic objectForKey:@"Error"]], @"我知道了");\
+return;\
+}else if ([dic objectForKey:@"error"]){\
 QFAlert(@"提示", [NSString stringWithFormat:@"%@",[dic objectForKey:@"error"]], @"我知道了");\
 return;\
 }\
 }\
-
 
 
 #define NetworkError  \

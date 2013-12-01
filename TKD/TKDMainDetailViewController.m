@@ -66,10 +66,10 @@
         NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
         __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         ASIFormDataRequestDefine_ToKen
-//        NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
-//        NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
-        NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
-        NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
+     NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
+     NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
+   // NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
+   // NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
         
         [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
         [request addPostValue:latitude?:@0.00 forKey:@"latitude"];

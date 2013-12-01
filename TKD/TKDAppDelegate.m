@@ -84,7 +84,6 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
-        
         int delay = [[dic objectForKey:@"Delay"]intValue];
         NSTimeInterval sed = [[USER_DEFAULTS objectForKey:@"date"] timeIntervalSinceNow];
         if (delay > 0) {
