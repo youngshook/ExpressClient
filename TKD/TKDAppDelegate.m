@@ -7,7 +7,7 @@
 //
 
 static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
-
+#import "APService.h"
 #import "TKDAppDelegate.h"
 #import "TKDLoginViewController.h"
 #import "TKDRegisterViewController.h"
@@ -30,6 +30,12 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
     self.window.rootViewController = navC;
     [self.window makeKeyAndVisible];
+    
+    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                         UIRemoteNotificationTypeSound |
+                                         UIRemoteNotificationTypeAlert)];
+    [APService setupWithOption:launchOptions];
+    
     return YES;
 }
 
@@ -76,6 +82,15 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 -(void)referRetrieveStatus{
 
 
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [APService registerDeviceToken:deviceToken];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [APService handleRemoteNotification:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -20,6 +20,10 @@
 		B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A86FB1833FF230008F7E4 /* CHKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FD1834019C0008F7E4 /* check@2x.png */; };
 		B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FE1834019C0008F7E4 /* uncheck@2x.png */; };
+		B54B66BA1858E32D000684F0 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66B91858E32D000684F0 /* libPushSDK.a */; };
+		B54B66BD1858E36F000684F0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BC1858E36F000684F0 /* CoreFoundation.framework */; };
+		B54B66BF1858E37A000684F0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BE1858E37A000684F0 /* CoreTelephony.framework */; };
+		B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B54B66C01858E3F8000684F0 /* PushConfig.plist */; };
 		B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA21182F6DE6009E974A /* Foundation.framework */; };
 		B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA23182F6DE6009E974A /* CoreGraphics.framework */; };
 		B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA25182F6DE6009E974A /* UIKit.framework */; };
@@ -110,6 +114,11 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		B54B66B91858E32D000684F0 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
+		B54B66BB1858E33F000684F0 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		B54B66BC1858E36F000684F0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		B54B66BE1858E37A000684F0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B54B66C01858E3F8000684F0 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		B56D7DA11847B338006CD91D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -217,10 +226,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54B66BF1858E37A000684F0 /* CoreTelephony.framework in Frameworks */,
+				B54B66BD1858E36F000684F0 /* CoreFoundation.framework in Frameworks */,
 				B5BDC86F1848A37B001963D7 /* libMobClickLibrary.a in Frameworks */,
 				B56FAA8E182F8ACF009E974A /* libz.dylib in Frameworks */,
 				B56FAA8C182F8AC6009E974A /* libsqlite3.dylib in Frameworks */,
 				B56FAA8A182F8AAA009E974A /* libxml2.dylib in Frameworks */,
+				B54B66BA1858E32D000684F0 /* libPushSDK.a in Frameworks */,
 				B56FAA86182F89F2009E974A /* CoreLocation.framework in Frameworks */,
 				B56FAA84182F89DC009E974A /* Security.framework in Frameworks */,
 				B56FAA82182F89C8009E974A /* MobileCoreServices.framework in Frameworks */,
@@ -335,10 +347,13 @@
 			isa = PBXGroup;
 			children = (
 				B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */,
+				B54B66B91858E32D000684F0 /* libPushSDK.a */,
 				B56FAA8D182F8ACF009E974A /* libz.dylib */,
 				B56FAA8B182F8AC6009E974A /* libsqlite3.dylib */,
 				B56FAA89182F8AAA009E974A /* libxml2.dylib */,
 				B56FAA87182F8A3B009E974A /* libxml2.2.dylib */,
+				B54B66BE1858E37A000684F0 /* CoreTelephony.framework */,
+				B54B66BC1858E36F000684F0 /* CoreFoundation.framework */,
 				B56FAA85182F89F2009E974A /* CoreLocation.framework */,
 				B56FAA83182F89DC009E974A /* Security.framework */,
 				B56FAA81182F89C8009E974A /* MobileCoreServices.framework */,
@@ -399,6 +414,7 @@
 		B56FAA5D182F8302009E974A /* External */ = {
 			isa = PBXGroup;
 			children = (
+				B54B66BB1858E33F000684F0 /* APService.h */,
 				B51A86FA1833FF230008F7E4 /* CHKeychain.h */,
 				B51A86FB1833FF230008F7E4 /* CHKeychain.m */,
 				B5C74F641831497800E33386 /* UIKeyboardView.h */,
@@ -457,6 +473,7 @@
 				B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */,
 				B51A86FD1834019C0008F7E4 /* check@2x.png */,
 				B51A86FE1834019C0008F7E4 /* uncheck@2x.png */,
+				B54B66C01858E3F8000684F0 /* PushConfig.plist */,
 			);
 			name = res;
 			sourceTree = "<group>";
@@ -573,6 +590,7 @@
 				B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */,
 				B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */,
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
+				B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */,
 				B5A0033D183411DB005778AB /* Icon-Small.png in Resources */,
 				B51A86EC1833F36B0008F7E4 /* TKDMainDetailViewController.xib in Resources */,
 				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
