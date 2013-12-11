@@ -73,46 +73,9 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     [USER_DEFAULTS  synchronize];
 }
 
-
 -(void)referRetrieveStatus{
-    
-    NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE_STATUS];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request addPostValue:[USER_DEFAULTS objectForKey:@"requestid"] forKey:@"requestid"];
-    [request setCompletionBlock:^{
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        NSDictionary *dic = [[request responseString]JSONValue];
-        WarningAlert
-        int delay = [[dic objectForKey:@"Delay"]intValue];
-        NSTimeInterval sed = [[USER_DEFAULTS objectForKey:@"date"] timeIntervalSinceNow];
-        if (delay > 0) {
-            if (sed < -30) {
-                ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
-                                                                    style:ALAlertBannerStyleFailure
-                                                                 position:ALAlertBannerPositionUnderNavBar
-                                                                    title:@"提示!"
-                                                                 subtitle:@"您的验证申请超时，请到前台与工作人员联系取件."];
-                [banner show];
-                
-            }else{
-                [self performSelector:@selector(referRetrieveStatus) withObject:nil afterDelay:delay];
-            }
-        }else{
-            [USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[dic objectForKey:@"SheetNo"]];
-            QFEvent(@"addGroupChest", nil);
-            ALAlertBanner *banner = [ALAlertBanner alertBannerForView:self.window
-                                                                style:ALAlertBannerStyleSuccess
-                                                             position:ALAlertBannerPositionUnderNavBar
-                                                                title:@"取件成功!"
-                                                             subtitle:[NSString stringWithFormat:@"单号%@,柜组号%@,请核对收件人姓名取件，感谢使用祝您愉快",[dic objectForKey:@"SheetNo"],[dic objectForKey:@"GroupChest"]]];
-            banner.showAnimationDuration = 4;
-            [banner show];
-        }
-    }];
-    [request setFailedBlock:^{
-    }];
-    [request startAsynchronous];
+
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
