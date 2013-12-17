@@ -11,13 +11,13 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 #import "TKDAppDelegate.h"
 #import "TKDLoginViewController.h"
 #import "TKDRegisterViewController.h"
+#import "TKDMainDetailViewController.h"
 @implementation TKDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self umengTrack];
     [self loadUserlocalString];
-    QFListenEvent(@"referRetrieveStatus", self, @selector(referRetrieveStatus));
     if (!isFisrtLaunch) {
         [self getApplicationToken];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alreadyFirstLaunch"];
@@ -72,24 +72,32 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
 
 -(void)loadUserlocalString{
-
     [USER_DEFAULTS setObject:@"可取" forKey:@"Retrieveable"];
     [USER_DEFAULTS setObject:@"已取件" forKey:@"Retrieved"];
     [USER_DEFAULTS setObject:@"其他" forKey:@"Other"];
     [USER_DEFAULTS  synchronize];
 }
 
--(void)referRetrieveStatus{
-
-
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [APService registerDeviceToken:deviceToken];
 }
 
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if (application.applicationState == UIApplicationStateActive || UIApplicationStateInactive == application.applicationState) {
+        if ([[userInfo objectForKey:@"type"] isEqualToString:@"1"] && self.listData) {
+            NSString *listId = [userInfo objectForKey:@"data"];
+            [self.listData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if ([[obj objectForKey:@"Id"] isEqualToString:listId]) {
+                    TKDMainDetailViewController *mainDetailVC = [TKDMainDetailViewController new];
+                    mainDetailVC.dic = obj;
+                    mainDetailVC.type = @"apns";
+                    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mainDetailVC];
+                    [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                    return;
+                }
+            }];
+        }
+    }
     [APService handleRemoteNotification:userInfo];
 }
 
@@ -103,11 +111,13 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+     [application setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

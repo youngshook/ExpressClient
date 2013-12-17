@@ -34,9 +34,17 @@
     [self.view addSubview:self.textView];
     self.textView.textColor = [UIColor colorWithWhite:0.183 alpha:1.000];
     
+    if (IS_NULL_STRING(self.messageTitle)) {
+        UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
+        [self.navigationItem setRightBarButtonItem:backBtn animated:YES];
+    }
     HUD_Define
     
     [self refreshMessageDetail];
+}
+
+-(void)onLeftBtn{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)refreshMessageDetail{

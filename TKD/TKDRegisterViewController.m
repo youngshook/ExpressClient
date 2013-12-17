@@ -5,7 +5,7 @@
 //  Created by YoungShook on 13-11-11.
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
-
+#import "APService.h"
 #import "TKDRegisterViewController.h"
 #import "TKDActivateViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -52,6 +52,8 @@
     
     RACCommand *createAccountCommand = [RACCommand commandWithCanExecuteSignal:formValid];
     [[self.registerBtn rac_signalForControlEvents:UIControlEventTouchUpInside] executeCommand:createAccountCommand];
+    UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000);
+    [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
 
 }
 
@@ -91,6 +93,7 @@
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
+        [APService setTags:[NSSet setWithArray:[dic objectForKey:@"Tags"]] alias:[dic objectForKey:@"Id"] callbackSelector:nil object:nil];
         WarningAlert
         QFAlert(@"提示", @"注册成功,请使用注册账号登录!", @"我知道了");
         [self.navigationController popToRootViewControllerAnimated:YES];

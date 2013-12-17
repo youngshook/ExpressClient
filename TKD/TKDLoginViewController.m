@@ -5,7 +5,7 @@
 //  Created by YoungShook on 13-11-10.
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
-
+#import "APService.h"
 #import "TKDLoginViewController.h"
 #import "TKDResetPasswordViewController.h"
 #import "TKDActivateViewController.h"
@@ -39,7 +39,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor redColor];
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(activateAccount)];
     [self.navigationItem setRightBarButtonItem:rightBtn animated:YES];
-    
+    [self.LoginBtn setBackgroundImage:[[UIImage imageNamed:@"button_b"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     HUD_Define
     
     if ([USER_DEFAULTS boolForKey:@"remPassword"]) {
@@ -128,10 +128,9 @@
 }
 
 -(void)updateUserInfo:(NSDictionary *)dic{
-    
-    
     NSDictionary *keychainData = @{@"account":self.accountwordT.text,@"password":self.passwordT.text};
     [CHKeychain save:@"userAccount" data:keychainData];
+    [APService setTags:[NSSet setWithArray:[dic objectForKey:@"Tags"]] alias:[dic objectForKey:@"Id"] callbackSelector:nil object:nil];
     [self.navigationController pushViewController:TKDMainViewController.new animated:YES];
 }
 

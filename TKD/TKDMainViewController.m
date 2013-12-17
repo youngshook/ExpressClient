@@ -10,6 +10,7 @@
 #import "TKDSetViewController.h"
 #import "TKDMainDetailViewController.h"
 #import "ODRefreshControl.h"
+#import "TKDAppDelegate.h"
 @interface TKDMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)UITableView *myTableView;
@@ -67,6 +68,7 @@
             NSArray *data = [[request responseString]JSONValue];
             if ([data count] > 0) {
                 self.dataArray = [data mutableCopy];
+                ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
                 [self fetchSiteList];
             }
@@ -193,7 +195,7 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshCon{
     [self.refreshControl beginRefreshing];
-    //[self fetchDataSource];
+    [self fetchDataSource];
 }
 
 - (void)didReceiveMemoryWarning

@@ -5,7 +5,7 @@
 //  Created by YoungShook on 13-11-10.
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
-
+#import "TKDAppDelegate.h"
 #import "TKDSetViewController.h"
 #import "TKDMsgViewController.h"
 #import "TKDAboutViewController.h"
@@ -21,6 +21,11 @@
 {
     [super viewDidLoad];
     self.title = @"设置";
+    for (int i = 0; i < 5; i++) {
+        UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
+        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+    }
+    
     HUD_Define
 }
 
@@ -62,6 +67,8 @@
 }
 
 -(IBAction)logout:(id)sender{
+    [CHKeychain delete:@"userAccount"];
+    [ApplicationDelegate.listData removeAllObjects];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

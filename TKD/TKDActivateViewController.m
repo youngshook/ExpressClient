@@ -30,6 +30,8 @@
     self.title = @"获取验证";
     HUD_Define
     self.checkImg.tag = 1201;
+    UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000);
+    [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     if ([self.activateType isEqualToString:@"ResetPassword"]) {
         UIView *tipsView = [self.view viewWithTag:3000];
         tipsView.hidden = YES;

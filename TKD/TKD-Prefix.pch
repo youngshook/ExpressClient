@@ -31,7 +31,7 @@
 #pragma mark -
 #pragma mark Common Define
 
-#define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define ApplicationDelegate ((TKDAppDelegate *)[UIApplication sharedApplication].delegate)
 
 #define AppVersionShort [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define AppVersionBuild [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]

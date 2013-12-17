@@ -11,5 +11,5 @@
 @interface TKDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (copy, nonatomic) NSMutableArray *listData;
 @end

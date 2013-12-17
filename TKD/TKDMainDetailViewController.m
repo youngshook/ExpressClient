@@ -46,8 +46,22 @@
     }];
     [self addGroupChest];
     HUD_Define
-    
+
+    for (int i = 0; i < 2; i++) {
+        UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
+        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+    }
+    if ([self.type isEqualToString:@"apns"]) {
+        UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
+        self.navigationItem.leftBarButtonItem = backBtnItem;
+    }
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)onLeftBtn{
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 -(IBAction)substitutionBtn{
@@ -55,7 +69,6 @@
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.delegate = self;
     [alertView show];
-}
 
 -(IBAction)verifyBtn{
     
@@ -66,8 +79,8 @@
         NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
         __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         ASIFormDataRequestDefine_ToKen
-     NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
-     NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
+        NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
+        NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
    // NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
    // NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
         [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
@@ -79,16 +92,8 @@
             NSLog(@"%@:%@",[url path],[request responseString]);
             NSDictionary *dic = [[request responseString]JSONValue];
             WarningAlert
-            NSString *RetrieveRequestId = [dic objectForKey:@"RetrieveRequestId"];
-            [USER_DEFAULTS setObject:RetrieveRequestId forKey:@"requestid"];
-            [USER_DEFAULTS setObject:[NSDate date] forKey:@"date"];
-            [USER_DEFAULTS synchronize];
-            
-            UIAlertView *alert = [UIAlertView alertViewWithTitle:@"已请求取件,请稍等"];
-            [alert addButtonWithTitle:@"我知道了" handler:^{
-               QFEvent(@"referRetrieveStatus", nil);
-            }];
-            [alert show];
+            self.localLabel.text = [dic objectForKey:@"GroupChest"];
+            QFAlert(@"提示", @"已请求取件,请稍等", @"我知道了");
         }];
         [request setFailedBlock:^{
             NetworkError_HUD
