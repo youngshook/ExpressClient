@@ -26,7 +26,6 @@
     self.title = @"运单快递";
     self.idLabel.text = [self.dic objectForKey:@"SheetNo"];
     self.dateLabel.text = [self.dic objectForKey:@"ArrivalTime"];
-    QFListenEvent(@"addGroupChest", self, @selector(addGroupChest));
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [self.dic objectForKey:@"VendorId"];
     [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -44,9 +43,7 @@
             self.addressTextView.text = [dic objectForKey:@"Address"];
         }
     }];
-    [self addGroupChest];
-    HUD_Define
-
+    
     for (int i = 0; i < 2; i++) {
         UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
         [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
@@ -55,7 +52,9 @@
         UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
         self.navigationItem.leftBarButtonItem = backBtnItem;
     }
-    // Do any additional setup after loading the view from its nib.
+    HUD_Define
+    
+    self.localLabel.text = [USER_DEFAULTS objectForKey:[self.dic objectForKey:@"Id"]];
 }
 
 -(void)onLeftBtn{
@@ -69,7 +68,7 @@
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.delegate = self;
     [alertView show];
-
+}
 -(IBAction)verifyBtn{
     
     UIAlertView * av = [UIAlertView alertViewWithTitle:@"提示" message:@"请务必于在取件处3米范围内点击，否则可能造成丢失，请确认!"];
@@ -81,8 +80,8 @@
         ASIFormDataRequestDefine_ToKen
         NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
         NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
-   // NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
-   // NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
+        // NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
+        //NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
         [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
         [request addPostValue:latitude?:@0.00 forKey:@"latitude"];
         [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
@@ -93,6 +92,7 @@
             NSDictionary *dic = [[request responseString]JSONValue];
             WarningAlert
             self.localLabel.text = [dic objectForKey:@"GroupChest"];
+            [USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[self.dic objectForKey:@"Id"]];
             QFAlert(@"提示", @"已请求取件,请稍等", @"我知道了");
         }];
         [request setFailedBlock:^{
@@ -136,11 +136,6 @@
     }
 }
 
--(void)addGroupChest{
-    NSString *groupChest = [USER_DEFAULTS objectForKey:[self.dic objectForKey:@"SheetNo"]];
-    self.localLabel.text = groupChest;
-}
-
 //手机号校验
 -(BOOL)VerifyPhoneNum:(NSString *)phoneString{
     if (phoneString.length == 11) {
@@ -155,7 +150,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    QFForgetEvent(@"addGroupChest", self);
     // Dispose of any resources that can be recreated.
 }
 

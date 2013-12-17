@@ -4,8 +4,8 @@
 if [ "${CONFIGURATION}" = "Release" ]; then
 
 # Local Display App Name And Default Icon@2x.png ------------ need developer custom
-DISPLAY_NAME="钱喵喵"
-ICON_NAME="Icon@2x.png"
+DISPLAY_NAME="淘快递"
+ICON_NAME="Icon-76@2x.png"
 
 #Clear
 /bin/rm "/tmp/firim.log"
