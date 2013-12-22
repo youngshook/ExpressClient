@@ -68,7 +68,7 @@
 
 -(IBAction)logout:(id)sender{
     [CHKeychain delete:@"userAccount"];
-    [ApplicationDelegate.listData removeAllObjects];
+    QFEvent(@"clearApnsList", nil);
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

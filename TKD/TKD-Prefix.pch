@@ -24,7 +24,6 @@
     #import "CHKeychain.h"
     #import "BlocksKit.h"
     #import "MobClick.h"
-    #import <ALAlertBanner/ALAlertBanner.h>
 #endif
 
 

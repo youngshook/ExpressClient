@@ -25,6 +25,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     }
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
+    QFListenEvent(@"clearApnsList", self, @selector(clearApnsList));
     self.window.backgroundColor = [UIColor whiteColor];
     TKDLoginViewController *loginC = [TKDLoginViewController new];
     UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
@@ -99,6 +100,12 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
         }
     }
     [APService handleRemoteNotification:userInfo];
+}
+
+- (void)clearApnsList {
+    if ([self.listData count]) {
+        self.listData = nil;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

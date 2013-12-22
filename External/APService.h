@@ -4,10 +4,9 @@
 //
 //  Created by JPush on 12-8-15.
 //  Copyright (c) 2012年 HXHG. All rights reserved.
-//  Version: 1.5.2
+//  Version: 1.6.0
 
 #import <Foundation/Foundation.h>
-
 
 extern NSString * const kAPNetworkDidSetupNotification;          // 建立连接
 extern NSString * const kAPNetworkDidCloseNotification;          // 关闭连接
@@ -28,6 +27,7 @@ extern NSString * const kAPServiceErrorNotification;             // 错误提示
 // 下面的接口是可选的
 // 设置标签和(或)别名（若参数为nil，则忽略；若是空对象，则清空；详情请参考文档：http://docs.jpush.cn/pages/viewpage.action?pageId=3309913）
 + (void)setTags:(NSSet *)tags alias:(NSString *)alias DEPRECATED_ATTRIBUTE;
++ (void)setTags:(NSSet *)tags alias:(NSString *)alias callbackSelector:(SEL)cbSelector target:(id)theTarget;
 + (void)setTags:(NSSet *)tags alias:(NSString *)alias callbackSelector:(SEL)cbSelector object:(id)theTarget;
 + (void)setTags:(NSSet *)tags callbackSelector:(SEL)cbSelector object:(id)theTarget;
 + (void)setAlias:(NSString *)alias callbackSelector:(SEL)cbSelector object:(id)theTarget;
