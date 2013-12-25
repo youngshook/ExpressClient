@@ -88,6 +88,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
         QFEvent(@"fetchDataSource", nil);
         if ([[userInfo objectForKey:@"type"] isEqualToString:@"1"] && self.listData) {
             NSString *listId = [userInfo objectForKey:@"data"];
+            [self notificationCounter:listId];
             [self.listData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 if ([[obj objectForKey:@"Id"] isEqualToString:listId]) {
                     TKDMainDetailViewController *mainDetailVC = [TKDMainDetailViewController new];
@@ -101,6 +102,20 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
         }
     }
     [APService handleRemoteNotification:userInfo];
+}
+
+-(void)notificationCounter:(NSString *)ids{
+    NSURL *url = [NSURL URLWithString:API_SHEET_NOTIFIED];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request addPostValue:ids forKey:@"ids"];
+    [request setCompletionBlock:^{
+        NSLog(@"%@:%@",[url path],[request responseString]);
+    }];
+    [request setFailedBlock:^{
+        NSLog(@"notificationCounter fail");
+    }];
+    [request startAsynchronous];
 }
 
 - (void)clearApnsList {
