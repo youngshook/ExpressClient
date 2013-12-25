@@ -35,11 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    QFListenEvent(@"fetchDataSource", self, @selector(fetchDataSource));
     self.navigationItem.hidesBackButton = YES;
     self.dataArray = [NSMutableArray new];
     self.title = @"淘快递";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
-    self.myTableView  = [[UITableView alloc]initWithFrame:self.view.bounds];
+    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 548 - 44)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;

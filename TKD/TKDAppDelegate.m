@@ -85,6 +85,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     if (application.applicationState == UIApplicationStateActive || UIApplicationStateInactive == application.applicationState) {
+        QFEvent(@"fetchDataSource", nil);
         if ([[userInfo objectForKey:@"type"] isEqualToString:@"1"] && self.listData) {
             NSString *listId = [userInfo objectForKey:@"data"];
             [self.listData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
