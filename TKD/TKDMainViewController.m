@@ -29,7 +29,6 @@
         UIAlertView *av = [UIAlertView alertViewWithTitle:@"警告" message:@"当前应用被锁定,请联系开发者!"];
         [av show];
     }
-    [self fetchDataSource];
 }
 
 - (void)viewDidLoad
@@ -49,6 +48,7 @@
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+    [self fetchDataSource];
 }
 
 -(void)fetchDataSource{
