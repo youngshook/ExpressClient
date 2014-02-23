@@ -24,6 +24,18 @@
     #import "CHKeychain.h"
     #import "BlocksKit.h"
     #import "MobClick.h"
+
+	#import "APService.h"
+	#import "TKDAppDelegate.h"
+	#import "TKDSetViewController.h"
+	#import "TKDRegisterViewController.h"
+
+	#import "TKDLoginViewController.h"
+	#import "TKDMainViewController.h"
+	#import "TKDSendExpressVc.h"
+	#import "TKDMsgViewController.h"
+
+	#import "TKDMainDetailViewController.h"
 #endif
 
 

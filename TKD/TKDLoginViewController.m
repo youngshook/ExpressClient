@@ -131,7 +131,10 @@
     NSDictionary *keychainData = @{@"account":self.accountwordT.text,@"password":self.passwordT.text};
     [CHKeychain save:@"userAccount" data:keychainData];
     [APService setTags:[NSSet setWithArray:[dic objectForKey:@"Tags"]] alias:[dic objectForKey:@"Id"] callbackSelector:nil object:nil];
-    [self.navigationController pushViewController:TKDMainViewController.new animated:YES];
+	[USER_DEFAULTS setBool:YES forKey:@"userLogined"];
+	[self dismissViewControllerAnimated:YES completion:^{
+		QFEvent(@"fetchDataSource", nil);
+	}];
 }
 
 -(IBAction)forgetPassWord:(id)sender{

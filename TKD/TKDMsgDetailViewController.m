@@ -19,6 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setHidesBottomBarWhenPushed:YES];
+    
     self.title = @"详情";
     self.titleView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
     self.titleView.font = [UIFont boldSystemFontOfSize:15];

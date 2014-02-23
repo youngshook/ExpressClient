@@ -69,7 +69,9 @@
 -(IBAction)logout:(id)sender{
     [CHKeychain delete:@"userAccount"];
     QFEvent(@"clearApnsList", nil);
-    [self.navigationController popToRootViewControllerAnimated:YES];
+	
+	TKDLoginViewController *loginVC = [TKDLoginViewController new];
+	[self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,11 +7,7 @@
 //
 
 static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
-#import "APService.h"
-#import "TKDAppDelegate.h"
-#import "TKDLoginViewController.h"
-#import "TKDRegisterViewController.h"
-#import "TKDMainDetailViewController.h"
+
 @implementation TKDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,15 +17,30 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     if (!isFisrtLaunch) {
         [self getApplicationToken];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alreadyFirstLaunch"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
     QFListenEvent(@"clearApnsList", self, @selector(clearApnsList));
     self.window.backgroundColor = [UIColor whiteColor];
-    TKDLoginViewController *loginC = [TKDLoginViewController new];
-    UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginC];
-    self.window.rootViewController = navC;
+    
+    TKDMainViewController *mainVC = [TKDMainViewController new];
+    TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
+    TKDMsgViewController *msgVC = [TKDMsgViewController new];
+    
+    UINavigationController *navMainVc = [[UINavigationController alloc]initWithRootViewController:mainVC];
+    UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
+    UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
+    
+    navMainVc.tabBarItem.title = @"取快递";
+    navSendExpressVC.tabBarItem.title = @"寄快递";
+    navMsgVC.tabBarItem.title = @"校园";
+    
+    self.tabBarVC = [UITabBarController new];
+    [self.tabBarVC setViewControllers:@[navMainVc,navSendExpressVC,navMsgVC]];
+    
+    
+    self.window.rootViewController = self.tabBarVC;
     [self.window makeKeyAndVisible];
     
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |

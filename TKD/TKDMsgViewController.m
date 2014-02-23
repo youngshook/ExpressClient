@@ -8,6 +8,7 @@
 
 #import "TKDMsgViewController.h"
 #import "TKDMsgDetailViewController.h"
+
 @interface TKDMsgViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -29,6 +30,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
+    
     [self.view addSubview:self.tableView];
     HUD_Define
 }
@@ -54,6 +58,11 @@
         NetworkError_HUD
     }];
     [request startAsynchronous];
+}
+
+-(void)setting{
+    TKDSetViewController *setVC = [TKDSetViewController new];
+    [self.navigationController pushViewController:setVC animated:YES];
 }
 
 #pragma mark -

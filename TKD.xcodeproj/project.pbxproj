@@ -90,6 +90,7 @@
 		B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */; };
 		B5CADF6A1860A0C3000D6FB3 /* button_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CADF691860A0C3000D6FB3 /* button_b@2x.png */; };
 		B5CADF6C1860A112000D6FB3 /* button_y@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CADF6B1860A112000D6FB3 /* button_y@2x.png */; };
+		B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */; };
 		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -128,8 +129,8 @@
 		B56FAA2B182F6DE6009E974A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B56FAA2D182F6DE6009E974A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TKD-Prefix.pch"; path = "TKD/TKD-Prefix.pch"; sourceTree = "<group>"; };
-		B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDAppDelegate.h; sourceTree = "<group>"; };
-		B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDAppDelegate.m; sourceTree = "<group>"; };
+		B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKDAppDelegate.h; path = TKD/TKDAppDelegate.h; sourceTree = "<group>"; };
+		B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TKDAppDelegate.m; path = TKD/TKDAppDelegate.m; sourceTree = "<group>"; };
 		B56FAA3A182F6DE7009E974A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B56FAA46182F6DE7009E974A /* TKDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDTests.m; sourceTree = "<group>"; };
 		B56FAA50182F78F7009E974A /* TKDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoginViewController.h; sourceTree = "<group>"; };
@@ -220,6 +221,8 @@
 		B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgDetailViewController.m; sourceTree = "<group>"; };
 		B5CADF691860A0C3000D6FB3 /* button_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_b@2x.png"; sourceTree = "<group>"; };
 		B5CADF6B1860A112000D6FB3 /* button_y@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_y@2x.png"; sourceTree = "<group>"; };
+		B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressVc.h; sourceTree = "<group>"; };
+		B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressVc.m; sourceTree = "<group>"; };
 		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,10 +260,6 @@
 				B56FAA96182FA351009E974A /* TKDSetViewController.h */,
 				B56FAA97182FA351009E974A /* TKDSetViewController.m */,
 				B56FAA98182FA351009E974A /* TKDSetViewController.xib */,
-				B5C74F6C1833D34700E33386 /* TKDMsgViewController.h */,
-				B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */,
-				B5C74F6F1833E4E700E33386 /* TKDMsgDetailViewController.h */,
-				B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */,
 				B51A86D71833F0DC0008F7E4 /* TKDAboutViewController.h */,
 				B51A86D81833F0DC0008F7E4 /* TKDAboutViewController.m */,
 				B51A86F41833F6260008F7E4 /* TKDAgreementViewController.h */,
@@ -281,7 +280,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		B51A86DE1833F2690008F7E4 /* MainController */ = {
+		B51A86DE1833F2690008F7E4 /* TakeExpressController */ = {
 			isa = PBXGroup;
 			children = (
 				B51A86E51833F3490008F7E4 /* TKDMainViewController.h */,
@@ -290,7 +289,7 @@
 				B51A86E91833F36B0008F7E4 /* TKDMainDetailViewController.m */,
 				B51A86EA1833F36B0008F7E4 /* TKDMainDetailViewController.xib */,
 			);
-			name = MainController;
+			name = TakeExpressController;
 			sourceTree = "<group>";
 		};
 		B51A86DF1833F2820008F7E4 /* LoginController */ = {
@@ -326,9 +325,11 @@
 				B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */,
 				B56FAA8F182F8F8C009E974A /* TKDCommonDefine.h */,
 				B56FAA9D18310C42009E974A /* SynthesizeSingleton.h */,
-				B56FAA93182F9C06009E974A /* res */,
+				B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */,
+				B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */,
 				B56FAA27182F6DE6009E974A /* TKD */,
 				B56FAA5D182F8302009E974A /* External */,
+				B56FAA93182F9C06009E974A /* res */,
 				B56FAA40182F6DE7009E974A /* TKDTests */,
 				B56FAA20182F6DE6009E974A /* Frameworks */,
 				B56FAA1F182F6DE6009E974A /* Products */,
@@ -373,10 +374,10 @@
 		B56FAA27182F6DE6009E974A /* TKD */ = {
 			isa = PBXGroup;
 			children = (
-				B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */,
-				B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */,
 				B51A86DF1833F2820008F7E4 /* LoginController */,
-				B51A86DE1833F2690008F7E4 /* MainController */,
+				B51A86DE1833F2690008F7E4 /* TakeExpressController */,
+				B5F9B26318B91A53000D8B92 /* SendExpressController */,
+				B5F9B26A18B91BC0000D8B92 /* MessageController */,
 				B51A86DC1833F2340008F7E4 /* SettingController */,
 				B51A86DD1833F2510008F7E4 /* Model */,
 				B56FAA28182F6DE6009E974A /* Supporting Files */,
@@ -502,6 +503,26 @@
 				B5A00332183411DB005778AB /* iTunesArtwork@2x.png */,
 			);
 			name = icon;
+			sourceTree = "<group>";
+		};
+		B5F9B26318B91A53000D8B92 /* SendExpressController */ = {
+			isa = PBXGroup;
+			children = (
+				B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */,
+				B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */,
+			);
+			name = SendExpressController;
+			sourceTree = "<group>";
+		};
+		B5F9B26A18B91BC0000D8B92 /* MessageController */ = {
+			isa = PBXGroup;
+			children = (
+				B5C74F6C1833D34700E33386 /* TKDMsgViewController.h */,
+				B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */,
+				B5C74F6F1833E4E700E33386 /* TKDMsgDetailViewController.h */,
+				B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */,
+			);
+			name = MessageController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,6 +687,7 @@
 				B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */,
 				B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */,
 				B51A86E71833F3490008F7E4 /* TKDMainViewController.m in Sources */,
+				B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */,
 				B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */,
 				B51A86EF1833F3A60008F7E4 /* TKDUser.m in Sources */,
 				B56FAAA4183117C8009E974A /* NSString+JSONCategories.m in Sources */,

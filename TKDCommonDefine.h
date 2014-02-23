@@ -65,6 +65,8 @@
 
 #define APP_TOKEN  [[NSUserDefaults standardUserDefaults]objectForKey:@"ApplicationToken"]
 
+#define USER_LOGIN [USER_DEFAULTS boolForKey:@"userLogined"]
+
 #define WarningAlert \
 if (!dic) {\
 QFAlert(@"提示", @"服务器错误,请稍后再试", @"确定");\

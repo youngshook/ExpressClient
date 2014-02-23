@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (copy, nonatomic) NSMutableArray *listData;
+@property (nonatomic, strong) UITabBarController *tabBarVC;
 @end

@@ -31,24 +31,32 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+	if (!USER_LOGIN) {
+		UINavigationController *navLogin = [[UINavigationController alloc]initWithRootViewController:[TKDLoginViewController new]];
+		[self presentViewController:navLogin animated:YES completion:nil];
+	}
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     QFListenEvent(@"fetchDataSource", self, @selector(fetchDataSource));
     self.navigationItem.hidesBackButton = YES;
     self.dataArray = [NSMutableArray new];
     self.title = @"淘快递";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
+
     self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 548 - 44)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.myTableView];
+    
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-    [self fetchDataSource];
 }
 
 -(void)fetchDataSource{
@@ -172,7 +180,6 @@
         expressType.textColor = RGBACOLOR(237, 97, 96, 1);
         Status.textColor = RGBACOLOR(237, 97, 96, 1);
     }
-
     
     return cell;
 }
@@ -183,11 +190,6 @@
     detailVC.dic = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
--(void)setting{
-    TKDSetViewController *setVC = [TKDSetViewController new];
-    [self.navigationController pushViewController:setVC animated:YES];
 }
 
 #pragma mark - ODRefreshControl Delegate
