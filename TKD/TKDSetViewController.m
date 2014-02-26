@@ -29,11 +29,6 @@
     HUD_Define
 }
 
--(IBAction)serviceMessage:(id)sender{
-    TKDMsgViewController *msgVC = [TKDMsgViewController new];
-    [self.navigationController  pushViewController:msgVC animated:YES];
-}
-
 -(IBAction)versionUpdate:(id)sender{
     [self.HUD show:YES];
     NSURL *url = [NSURL URLWithString:API_APP_UPGRADE];
@@ -67,11 +62,19 @@
 }
 
 -(IBAction)logout:(id)sender{
-    [CHKeychain delete:@"userAccount"];
-    QFEvent(@"clearApnsList", nil);
+	[UIView transitionWithView:ApplicationDelegate.window
+					  duration:0.65
+					   options:UIViewAnimationOptionTransitionFlipFromLeft
+					animations:^{
+						UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:ApplicationDelegate.loginVC];
+						ApplicationDelegate.window.rootViewController = nav;
+					}
+					completion:^(BOOL finished){
+						[CHKeychain delete:@"userAccount"];
+						QFEvent(@"clearApnsList", nil);
+						[ApplicationDelegate resetTabBarVC];
+					}];
 	
-	TKDLoginViewController *loginVC = [TKDLoginViewController new];
-	[self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -31,13 +31,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-	if (!USER_LOGIN) {
-		UINavigationController *navLogin = [[UINavigationController alloc]initWithRootViewController:[TKDLoginViewController new]];
-		[self presentViewController:navLogin animated:YES completion:nil];
-	}
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

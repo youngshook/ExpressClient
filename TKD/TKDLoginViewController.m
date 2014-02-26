@@ -132,9 +132,16 @@
     [CHKeychain save:@"userAccount" data:keychainData];
     [APService setTags:[NSSet setWithArray:[dic objectForKey:@"Tags"]] alias:[dic objectForKey:@"Id"] callbackSelector:nil object:nil];
 	[USER_DEFAULTS setBool:YES forKey:@"userLogined"];
-	[self dismissViewControllerAnimated:YES completion:^{
-		QFEvent(@"fetchDataSource", nil);
-	}];
+	
+	[UIView transitionWithView:ApplicationDelegate.window
+					  duration:0.65
+					   options:UIViewAnimationOptionTransitionFlipFromLeft
+					animations:^{
+						ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarVC;
+					}
+					completion:^(BOOL finished){
+						QFEvent(@"fetchDataSource", nil);
+					}];
 }
 
 -(IBAction)forgetPassWord:(id)sender{

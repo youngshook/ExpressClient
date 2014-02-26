@@ -23,26 +23,16 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     QFListenEvent(@"getApplicationToken", self, @selector(getApplicationToken));
     QFListenEvent(@"clearApnsList", self, @selector(clearApnsList));
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    TKDMainViewController *mainVC = [TKDMainViewController new];
-    TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
-    TKDMsgViewController *msgVC = [TKDMsgViewController new];
-    
-    UINavigationController *navMainVc = [[UINavigationController alloc]initWithRootViewController:mainVC];
-    UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
-    UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
-    
-    navMainVc.tabBarItem.title = @"取快递";
-    navSendExpressVC.tabBarItem.title = @"寄快递";
-    navMsgVC.tabBarItem.title = @"校园";
-    
-    self.tabBarVC = [UITabBarController new];
-    [self.tabBarVC setViewControllers:@[navMainVc,navSendExpressVC,navMsgVC]];
-    
-    
-    self.window.rootViewController = self.tabBarVC;
+	
+	self.loginVC = [TKDLoginViewController new];
+
+    UINavigationController *loginVC = [[UINavigationController alloc]initWithRootViewController:self.loginVC];
+	
+    self.window.rootViewController = loginVC;
     [self.window makeKeyAndVisible];
     
+	[self resetTabBarVC];
+	
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                          UIRemoteNotificationTypeSound |
                                          UIRemoteNotificationTypeAlert)];
@@ -81,7 +71,30 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     [request startAsynchronous];
 }
 
+-(void)resetTabBarVC{
+	
+	TKDMainViewController *mainVC = [TKDMainViewController new];
+	TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
+	TKDMsgViewController *msgVC = [TKDMsgViewController new];
+	
+	UINavigationController *navMainVc = [[UINavigationController alloc]initWithRootViewController:mainVC];
+	UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
+	UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
+	
+	navMainVc.tabBarItem.title = @"取快递";
+	navSendExpressVC.tabBarItem.title = @"寄快递";
+	navMsgVC.tabBarItem.title = @"校园";
+	
+	navMainVc.tabBarItem.image = [UIImage imageNamed:@"take"];
+	navSendExpressVC.tabBarItem.image = [UIImage imageNamed:@"send"];
+	navMsgVC.tabBarItem.image = [UIImage imageNamed:@"msg"];
+	
+	UITabBarController *tabBarVC = [UITabBarController new];
+	[tabBarVC setViewControllers:@[navMainVc,navSendExpressVC,navMsgVC]];
+	
+	self.tabBarVC = tabBarVC;
 
+}
 
 -(void)loadUserlocalString{
     [USER_DEFAULTS setObject:@"可取" forKey:@"Retrieveable"];

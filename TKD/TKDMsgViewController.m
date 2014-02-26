@@ -51,7 +51,6 @@
             self.dataArray = [dic objectForKey:@"Items"];
             [self.tableView reloadData];
         }else{
-            QFAlert(@"提示", @"当前暂时无服务信息", @"我知道了");
         }
     }];
     [request setFailedBlock:^{
@@ -62,6 +61,7 @@
 
 -(void)setting{
     TKDSetViewController *setVC = [TKDSetViewController new];
+	setVC.hidesBottomBarWhenPushed =YES;
     [self.navigationController pushViewController:setVC animated:YES];
 }
 
@@ -101,6 +101,7 @@
     TKDMsgDetailViewController *msgDetailVc = [TKDMsgDetailViewController new];
     msgDetailVc.messageId = msgId;
     msgDetailVc.messageTitle = msgTitle;
+	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

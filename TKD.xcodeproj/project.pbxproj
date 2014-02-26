@@ -20,6 +20,9 @@
 		B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A86FB1833FF230008F7E4 /* CHKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FD1834019C0008F7E4 /* check@2x.png */; };
 		B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FE1834019C0008F7E4 /* uncheck@2x.png */; };
+		B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34718BE496400B25AC5 /* msg@2x.png */; };
+		B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34818BE496400B25AC5 /* send@2x.png */; };
+		B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34918BE496400B25AC5 /* take@2x.png */; };
 		B54B66BA1858E32D000684F0 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66B91858E32D000684F0 /* libPushSDK.a */; };
 		B54B66BD1858E36F000684F0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BC1858E36F000684F0 /* CoreFoundation.framework */; };
 		B54B66BF1858E37A000684F0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BE1858E37A000684F0 /* CoreTelephony.framework */; };
@@ -116,6 +119,9 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		B53BF34718BE496400B25AC5 /* msg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg@2x.png"; sourceTree = "<group>"; };
+		B53BF34818BE496400B25AC5 /* send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send@2x.png"; sourceTree = "<group>"; };
+		B53BF34918BE496400B25AC5 /* take@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take@2x.png"; sourceTree = "<group>"; };
 		B54B66B91858E32D000684F0 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
 		B54B66BC1858E36F000684F0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		B54B66BE1858E37A000684F0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -464,6 +470,9 @@
 			children = (
 				B5A00322183411D6005778AB /* icon */,
 				B5A0031818340F1A005778AB /* Default-568h@2x-1.png */,
+				B53BF34718BE496400B25AC5 /* msg@2x.png */,
+				B53BF34818BE496400B25AC5 /* send@2x.png */,
+				B53BF34918BE496400B25AC5 /* take@2x.png */,
 				B5A0031918340F1A005778AB /* Default@2x-1.png */,
 				B5A0031A18340F1A005778AB /* Default@2x.png */,
 				B5A0031B18340F1A005778AB /* Default-568h@2x.png */,
@@ -595,6 +604,7 @@
 				B5A00337183411DB005778AB /* Icon-72.png in Resources */,
 				B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */,
 				B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */,
+				B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */,
 				B5A00335183411DB005778AB /* Icon-60.png in Resources */,
 				B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */,
 				B51A86E41833F3130008F7E4 /* TKDResetPasswordViewController.xib in Resources */,
@@ -606,11 +616,13 @@
 				B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */,
 				B5A00340183411DB005778AB /* Icon@2x.png in Resources */,
 				B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */,
+				B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
 				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
 				B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */,
 				B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */,
+				B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */,
 				B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */,
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
 				B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */,
