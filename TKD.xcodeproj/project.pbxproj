@@ -20,6 +20,16 @@
 		B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A86FB1833FF230008F7E4 /* CHKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FD1834019C0008F7E4 /* check@2x.png */; };
 		B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FE1834019C0008F7E4 /* uncheck@2x.png */; };
+		B535775918C23A16008B28A9 /* TKDExpressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B535775818C23A16008B28A9 /* TKDExpressListViewController.m */; };
+		B535775C18C2403E008B28A9 /* TKDExpressSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */; };
+		B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535776E18C25702008B28A9 /* 中通快递@2x.png */; };
+		B535777718C25702008B28A9 /* 圆通快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535776F18C25702008B28A9 /* 圆通快递@2x.png */; };
+		B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777018C25702008B28A9 /* 申通快递@2x.png */; };
+		B535777918C25702008B28A9 /* EMS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777118C25702008B28A9 /* EMS@2x.png */; };
+		B535777A18C25702008B28A9 /* 顺丰快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777218C25702008B28A9 /* 顺丰快递@2x.png */; };
+		B535777C18C25702008B28A9 /* 韵达快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777418C25702008B28A9 /* 韵达快递@2x.png */; };
+		B535777D18C25702008B28A9 /* 宅急送@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777518C25702008B28A9 /* 宅急送@2x.png */; };
+		B535777F18C25C1D008B28A9 /* 天天快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535777E18C25C1D008B28A9 /* 天天快递@2x.png */; };
 		B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34718BE496400B25AC5 /* msg@2x.png */; };
 		B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34818BE496400B25AC5 /* send@2x.png */; };
 		B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34918BE496400B25AC5 /* take@2x.png */; };
@@ -120,6 +130,18 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		B535775718C23A16008B28A9 /* TKDExpressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressListViewController.h; sourceTree = "<group>"; };
+		B535775818C23A16008B28A9 /* TKDExpressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressListViewController.m; sourceTree = "<group>"; };
+		B535775A18C2403E008B28A9 /* TKDExpressSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteViewController.h; sourceTree = "<group>"; };
+		B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressSiteViewController.m; sourceTree = "<group>"; };
+		B535776E18C25702008B28A9 /* 中通快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中通快递@2x.png"; sourceTree = "<group>"; };
+		B535776F18C25702008B28A9 /* 圆通快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆通快递@2x.png"; sourceTree = "<group>"; };
+		B535777018C25702008B28A9 /* 申通快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "申通快递@2x.png"; sourceTree = "<group>"; };
+		B535777118C25702008B28A9 /* EMS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EMS@2x.png"; sourceTree = "<group>"; };
+		B535777218C25702008B28A9 /* 顺丰快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顺丰快递@2x.png"; sourceTree = "<group>"; };
+		B535777418C25702008B28A9 /* 韵达快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "韵达快递@2x.png"; sourceTree = "<group>"; };
+		B535777518C25702008B28A9 /* 宅急送@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "宅急送@2x.png"; sourceTree = "<group>"; };
+		B535777E18C25C1D008B28A9 /* 天天快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天天快递@2x.png"; sourceTree = "<group>"; };
 		B53BF34718BE496400B25AC5 /* msg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg@2x.png"; sourceTree = "<group>"; };
 		B53BF34818BE496400B25AC5 /* send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send@2x.png"; sourceTree = "<group>"; };
 		B53BF34918BE496400B25AC5 /* take@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take@2x.png"; sourceTree = "<group>"; };
@@ -328,6 +350,21 @@
 			name = RegisterController;
 			sourceTree = "<group>";
 		};
+		B535775D18C2567D008B28A9 /* expressSite */ = {
+			isa = PBXGroup;
+			children = (
+				B535776E18C25702008B28A9 /* 中通快递@2x.png */,
+				B535776F18C25702008B28A9 /* 圆通快递@2x.png */,
+				B535777018C25702008B28A9 /* 申通快递@2x.png */,
+				B535777E18C25C1D008B28A9 /* 天天快递@2x.png */,
+				B535777118C25702008B28A9 /* EMS@2x.png */,
+				B535777218C25702008B28A9 /* 顺丰快递@2x.png */,
+				B535777418C25702008B28A9 /* 韵达快递@2x.png */,
+				B535777518C25702008B28A9 /* 宅急送@2x.png */,
+			);
+			name = expressSite;
+			sourceTree = "<group>";
+		};
 		B56FAA15182F6DE6009E974A = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +508,7 @@
 		B56FAA93182F9C06009E974A /* res */ = {
 			isa = PBXGroup;
 			children = (
+				B535775D18C2567D008B28A9 /* expressSite */,
 				B5A00322183411D6005778AB /* icon */,
 				B5A0031818340F1A005778AB /* Default-568h@2x-1.png */,
 				B53BF34718BE496400B25AC5 /* msg@2x.png */,
@@ -522,8 +560,12 @@
 			children = (
 				B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */,
 				B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */,
+				B535775A18C2403E008B28A9 /* TKDExpressSiteViewController.h */,
+				B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */,
 				B5C6DE0018C1D54F001A5A64 /* TKDSendDetailViewController.h */,
 				B5C6DE0118C1D54F001A5A64 /* TKDSendDetailViewController.m */,
+				B535775718C23A16008B28A9 /* TKDExpressListViewController.h */,
+				B535775818C23A16008B28A9 /* TKDExpressListViewController.m */,
 			);
 			name = SendExpressController;
 			sourceTree = "<group>";
@@ -605,8 +647,10 @@
 				B5A00338183411DB005778AB /* Icon-72@2x.png in Resources */,
 				B5BE5FCF1841EA4F004248C8 /* InfoPlist.strings in Resources */,
 				B56FAA59182F792A009E974A /* TKDActivateViewController.xib in Resources */,
+				B535777C18C25702008B28A9 /* 韵达快递@2x.png in Resources */,
 				B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */,
 				B5A00337183411DB005778AB /* Icon-72.png in Resources */,
+				B535777D18C25702008B28A9 /* 宅急送@2x.png in Resources */,
 				B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */,
 				B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */,
 				B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */,
@@ -615,6 +659,8 @@
 				B51A86E41833F3130008F7E4 /* TKDResetPasswordViewController.xib in Resources */,
 				B5A0034418341A3D005778AB /* btn@2x.png in Resources */,
 				B5A0031D18340F1A005778AB /* Default-568h@2x-1.png in Resources */,
+				B535777A18C25702008B28A9 /* 顺丰快递@2x.png in Resources */,
+				B535777718C25702008B28A9 /* 圆通快递@2x.png in Resources */,
 				B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */,
 				B5A0033F183411DB005778AB /* Icon.png in Resources */,
 				B5A0033B183411DB005778AB /* Icon-Small-50.png in Resources */,
@@ -623,6 +669,8 @@
 				B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */,
 				B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
+				B535777F18C25C1D008B28A9 /* 天天快递@2x.png in Resources */,
+				B535777918C25702008B28A9 /* EMS@2x.png in Resources */,
 				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
 				B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */,
@@ -632,9 +680,11 @@
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
 				B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */,
 				B5A0033D183411DB005778AB /* Icon-Small.png in Resources */,
+				B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */,
 				B51A86EC1833F36B0008F7E4 /* TKDMainDetailViewController.xib in Resources */,
 				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
 				B5CADF6A1860A0C3000D6FB3 /* button_b@2x.png in Resources */,
+				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
 				B5A0031E18340F1A005778AB /* Default@2x-1.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
 				B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */,
@@ -698,6 +748,7 @@
 				B51A86E31833F3130008F7E4 /* TKDResetPasswordViewController.m in Sources */,
 				B56FAA77182F8302009E974A /* ASIFormDataRequest.m in Sources */,
 				B56FAA75182F8302009E974A /* ASIDataDecompressor.m in Sources */,
+				B535775918C23A16008B28A9 /* TKDExpressListViewController.m in Sources */,
 				B56FAAA5183117C8009E974A /* NSObject+JSONCategories.m in Sources */,
 				B56FAA2E182F6DE6009E974A /* main.m in Sources */,
 				B56FAA79182F8302009E974A /* ASIInputStream.m in Sources */,
@@ -708,6 +759,7 @@
 				B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */,
 				B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */,
 				B51A86EF1833F3A60008F7E4 /* TKDUser.m in Sources */,
+				B535775C18C2403E008B28A9 /* TKDExpressSiteViewController.m in Sources */,
 				B56FAAA4183117C8009E974A /* NSString+JSONCategories.m in Sources */,
 				B5C74F651831497800E33386 /* UIKeyboardView.m in Sources */,
 				B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */,

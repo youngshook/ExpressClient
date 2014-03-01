@@ -181,6 +181,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TKDMainDetailViewController *detailVC = [TKDMainDetailViewController new];
     detailVC.dic = [self.dataArray objectAtIndex:indexPath.row];
+	detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

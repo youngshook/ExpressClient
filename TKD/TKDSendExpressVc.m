@@ -9,12 +9,19 @@
 #import "TKDSendExpressVc.h"
 #import "ODRefreshControl.h"
 #import "TKDSendDetailViewController.h"
-@interface TKDSendExpressVc ()<UITableViewDelegate,UITableViewDataSource>
+#import "TKDExpressListViewController.h"
+#import "TKDExpressSiteViewController.h"
+
+typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
+
+@interface TKDSendExpressVc ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,copy)NSMutableArray *dataArray;
 @property(nonatomic,strong)ODRefreshControl *refreshControl;
+@property(nonatomic,copy)NSString *expressID;
+@property(nonatomic,copy)NSString *expressSiteStr;
 
 @end
 
@@ -32,12 +39,31 @@
     self.myTableView.dataSource = self;
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.myTableView];
+	
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
+		
+		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
+		[alert addButtonWithTitle:@"手动输入单号" handler:^{
+			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+			[av setAlertViewStyle:UIAlertViewStylePlainTextInput];
+			[av show];
+		}];
+		[alert addButtonWithTitle:@"扫描获得单号" handler:^{
+			
+		}];
+		[alert addButtonWithTitle:@"取消"];
+		[alert show];
+
+	}];
+	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"寄快递" style:UIBarButtonItemStylePlain handler:^(id sender) {
+		TKDExpressListViewController *expressListVC = [TKDExpressListViewController new];
+		[self presentViewController:expressListVC animated:YES completion:nil];
+	}];
     
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-
-	
 }
 
 -(void)fetchDataSource{
@@ -59,7 +85,6 @@
                 self.dataArray = [data mutableCopy];
                 ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
-                [self fetchSiteList];
             }
         }
     }];
@@ -68,6 +93,20 @@
         NetworkError_HUD
     }];
     [request startAsynchronous];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+	if (buttonIndex == 1) {
+		self.expressID = [(UITextField *)[alertView textFieldAtIndex:0] text];
+		TKDExpressSiteViewController *expressSite = [TKDExpressSiteViewController new];
+		__weak TKDSendExpressVc *weakSelf = self;
+		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
+			weakSelf.expressSiteStr = expressStr;
+			NSLog(@"%@",expressStr);
+		};
+		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
+		[self presentViewController:nav animated:YES completion:nil];
+	}
 }
 
 #pragma mark -
@@ -111,6 +150,50 @@
     return sectionView;
 }
 
+/** 创建TableViewCell*/
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
+    
+    UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 34)];
+    sheetSN.text = [dic objectForKey:@"SheetNo"];
+    [cell.contentView addSubview:sheetSN];
+    
+    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
+    [cell.contentView addSubview:expressType];
+    NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
+    NSString *ID = [dic objectForKey:@"VendorId"];
+    [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *dic = obj;
+        if ([[dic objectForKey:@"Id"] isEqualToString:ID]) {
+            expressType.text = [dic objectForKey:@"Name"];
+        }
+    }];
+    
+    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
+    Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
+    [cell.contentView addSubview:Status];
+    
+    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
+        sheetSN.textColor = RGBACOLOR(64, 128, 0, 1);
+        expressType.textColor = RGBACOLOR(64, 128, 0, 1);
+        Status.textColor = RGBACOLOR(64, 128, 0, 1);
+    }
+    
+    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieved"]) {
+        sheetSN.textColor = RGBACOLOR(237, 97, 96, 1);
+        expressType.textColor = RGBACOLOR(237, 97, 96, 1);
+        Status.textColor = RGBACOLOR(237, 97, 96, 1);
+    }
+    
+    return cell;
+}
+
 /** 返回一共有几组记录*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataArray count];
@@ -121,9 +204,6 @@
 {
     return 35;
 }
-
-
-
 
 /** 处理Cell点击*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -143,31 +223,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+		// Dispose of any resources that can be recreated.
 }
-
--(void)fetchSiteList{
-    NSURL *url = [NSURL URLWithString:API_INFO_STATION];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request setCompletionBlock:^{
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        return ;
-        if ([[[request responseString]JSONValue] isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dic = [[request responseString]JSONValue];
-            WarningAlert
-        }else{
-            NSArray *data = [[request responseString]JSONValue];
-            if ([data count] > 0) {
-                self.dataArray = [data mutableCopy];
-                [self.myTableView reloadData];
-            }
-        }
-    }];
-    [request setFailedBlock:^{
-    }];
-    [request startAsynchronous];
-}
-
 
 @end
