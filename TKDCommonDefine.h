@@ -53,11 +53,25 @@
 
 #define API_SHEET_AUTHORIZE_REJECT [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/AuthorizeReject"]
 
+//-----------------SENT
+
+#define API_SENT_INDEX [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sent/Index"]
+
+#define API_SENT_CONTACT [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sent/Contact"]
+
+#define API_SENT_CREATE [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sent/Create"]
+
+#define API_SENT_DETAILS [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sent/Details"]
+
 //-----------------NEWS
 
 #define API_NEWS_INDEX [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Index"]
 
 #define API_NEWS_DETAILS [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Details"]
+
+
+
+//----------------- Static Value
 
 #define APP_ID [NSString stringWithFormat:@"1591b8bf-12d2-4006-b4d0-6f1622937f66"]
 
@@ -66,6 +80,9 @@
 #define APP_TOKEN  [[NSUserDefaults standardUserDefaults]objectForKey:@"ApplicationToken"]
 
 #define USER_LOGIN [USER_DEFAULTS boolForKey:@"userLogined"]
+
+
+//----------------- Define code
 
 #define WarningAlert \
 if (!dic) {\
