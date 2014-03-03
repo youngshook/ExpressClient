@@ -78,12 +78,9 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
         NSLog(@"%@:%@",[url path],[request responseString]);
         if ([[[request responseString]JSONValue] isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic = [[request responseString]JSONValue];
-            WarningAlert
-        }else{
-            NSArray *data = [[request responseString]JSONValue];
-            if ([data count] > 0) {
+			NSArray *data = [dic objectForKey:@"Items"];
+			if ([data count] > 0) {
                 self.dataArray = [data mutableCopy];
-                ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
             }
         }
@@ -126,13 +123,17 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 {
     UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
     
-    UILabel *expressID = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 30)];
-    expressID.text = @"运单号";
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 30)];
+    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 30)];
+	expressType.textAlignment = NSTextAlignmentCenter;
     expressType.text = @"快递";
     
+	UILabel *expressID = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 56, 30)];
+	expressID.textAlignment = NSTextAlignmentCenter;
+	expressID.center = sectionView.center;
+    expressID.text = @"运单号";
+	
     UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 56, 30)];
+	Status.textAlignment = NSTextAlignmentCenter;
     Status.text = @"状态";
     expressType.backgroundColor = [UIColor clearColor];
     expressID.backgroundColor = [UIColor clearColor];
@@ -160,11 +161,9 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
     
-    UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 34)];
-    sheetSN.text = [dic objectForKey:@"SheetNo"];
-    [cell.contentView addSubview:sheetSN];
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
+	
+	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 34)];
+	expressType.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:expressType];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
@@ -174,22 +173,28 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
             expressType.text = [dic objectForKey:@"Name"];
         }
     }];
+	
+	
+    UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 34)];
+	sheetSN.center = cell.contentView.center;
+	NSString *sheetNoStirng = [dic objectForKey:@"SheetNo"];
+	sheetSN.textAlignment = NSTextAlignmentCenter;
+	if (sheetNoStirng.length > 6) {
+		sheetSN.text = [sheetNoStirng substringFromIndex:sheetNoStirng.length - 6];
+	}else{
+		sheetSN.text = sheetNoStirng;
+	}
+
+    [cell.contentView addSubview:sheetSN];
+
     
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
-    Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
+    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(220, 0, 90, 34)];
+	Status.font = [UIFont systemFontOfSize:12];
+    Status.text = [dic objectForKey:@"Status"];
+	Status.numberOfLines = 0;
+	Status.lineBreakMode = NSLineBreakByWordWrapping;
+	Status.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:Status];
-    
-    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
-        sheetSN.textColor = RGBACOLOR(64, 128, 0, 1);
-        expressType.textColor = RGBACOLOR(64, 128, 0, 1);
-        Status.textColor = RGBACOLOR(64, 128, 0, 1);
-    }
-    
-    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieved"]) {
-        sheetSN.textColor = RGBACOLOR(237, 97, 96, 1);
-        expressType.textColor = RGBACOLOR(237, 97, 96, 1);
-        Status.textColor = RGBACOLOR(237, 97, 96, 1);
-    }
     
     return cell;
 }
@@ -207,8 +212,6 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
 /** 处理Cell点击*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TKDSendDetailViewController *detailVC = [TKDSendDetailViewController new];
-    [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

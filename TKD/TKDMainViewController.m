@@ -98,13 +98,19 @@
 {
     UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
     
-    UILabel *expressID = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 30)];
+	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 30)];
+	expressType.textAlignment = NSTextAlignmentCenter;
+    expressType.text = @"快递";
+	
+	
+    UILabel *expressID = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 56, 30)];
+	expressID.textAlignment = NSTextAlignmentCenter;
+	expressID.center = sectionView.center;
     expressID.text = @"运单号";
     
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 30)];
-    expressType.text = @"快递";
     
     UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 56, 30)];
+	Status.textAlignment = NSTextAlignmentCenter;
     Status.text = @"状态";
     expressType.backgroundColor = [UIColor clearColor];
     expressID.backgroundColor = [UIColor clearColor];
@@ -143,11 +149,7 @@
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
     
-    UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 144, 34)];
-    sheetSN.text = [dic objectForKey:@"SheetNo"];
-    [cell.contentView addSubview:sheetSN];
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(178, 0, 56, 34)];
+    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 34)];
     [cell.contentView addSubview:expressType];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
@@ -157,9 +159,21 @@
             expressType.text = [dic objectForKey:@"Name"];
         }
     }];
+	
+	
+	UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 56, 34)];
+	sheetSN.center = cell.contentView.center;
+	NSString *sheetNoStirng = [dic objectForKey:@"SheetNo"];
+	if (sheetNoStirng.length > 6) {
+		sheetSN.text = [sheetNoStirng substringFromIndex:sheetNoStirng.length - 6];
+	}else{
+		sheetSN.text = sheetNoStirng;
+	}
+    [cell.contentView addSubview:sheetSN];
     
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 144, 34)];
+    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(220, 0, 90, 34)];
     Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
+	Status.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:Status];
     
     if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
