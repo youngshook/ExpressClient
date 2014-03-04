@@ -23,7 +23,18 @@
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}];
 	
-	self.dataArray = @[@"EMS",@"天天快递",@"顺丰快递",@"韵达快递",@"圆通快递",@"中通快递",@"申通快递",@"宅急送"];
+	NSArray *expressSite = [USER_DEFAULTS objectForKey:@"expressList"];
+	
+	NSMutableArray *expreeSiteAllowSend = [NSMutableArray new];
+	
+	[expressSite enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		NSDictionary *dic = (NSDictionary *)obj;
+		if ([[dic objectForKey:@"AllowSend"] boolValue ]) {
+			[expreeSiteAllowSend addObject:dic];
+		}
+	}];
+	
+	self.dataArray = [expreeSiteAllowSend mutableCopy];
 	self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 548 - 44)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
@@ -54,24 +65,20 @@
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-	cell.textLabel.text = [self.dataArray objectAtIndex:indexPath.row];
+	cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
 	cell.textLabel.textAlignment = NSTextAlignmentCenter;
-
-	UIImageView *expressImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[self.dataArray objectAtIndex:indexPath.row]]];
-	expressImageView.frame = CGRectMake(10, 2, 40, 40);
-
-	[cell.contentView addSubview:expressImageView];
 	
     return cell;
 }
 
 /** 处理Cell点击*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	NSString *expressSiteStr = [self.dataArray objectAtIndex:indexPath.row];
+	NSString *expressSiteStr = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"Id"];
 	if (self.expressSiteSelectBlock) {
 		self.expressSiteSelectBlock(expressSiteStr);
 	}
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

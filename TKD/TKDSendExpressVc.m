@@ -33,7 +33,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     self.title = @"寄快递";
     self.dataArray = [NSMutableArray new];
     
-    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 548 - 44)];
+    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
@@ -64,6 +64,32 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+	[self fetchDataSource];
+}
+
+- (void)createExpress{
+	
+	if (IS_NULL_STRING(self.expressID) || IS_NULL_STRING(self.expressSiteStr)) {
+		QFAlert(@"提示", @"请选择快递公司", @"确定");
+		return;
+	}
+	
+    [self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_SENT_CREATE];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+	[request setPostValue:self.expressID forKey:@"sheetNo"];
+	[request setPostValue:self.expressSiteStr forKey:@"vendorId"];
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+		[self fetchDataSource];
+    }];
+    [request setFailedBlock:^{
+        [_refreshControl endRefreshing];
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
 }
 
 -(void)fetchDataSource{
@@ -81,7 +107,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 			NSArray *data = [dic objectForKey:@"Items"];
 			if ([data count] > 0) {
                 self.dataArray = [data mutableCopy];
-                [self.myTableView reloadData];
+				[self.myTableView reloadData];
             }
         }
     }];
@@ -99,7 +125,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 		__weak TKDSendExpressVc *weakSelf = self;
 		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
 			weakSelf.expressSiteStr = expressStr;
-			NSLog(@"%@",expressStr);
+			[self createExpress];
 		};
 		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
 		[self presentViewController:nav animated:YES completion:nil];
@@ -160,7 +186,6 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     }
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
-    
 	
 	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 34)];
 	expressType.textAlignment = NSTextAlignmentCenter;

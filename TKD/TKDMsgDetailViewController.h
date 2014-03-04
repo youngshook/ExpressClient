@@ -11,4 +11,5 @@
 @interface TKDMsgDetailViewController : UIViewController
 @property(nonatomic,copy)NSString *messageId;
 @property(nonatomic,copy)NSString *messageTitle;
+@property(nonatomic,copy)NSString *messageContent;
 @end

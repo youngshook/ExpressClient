@@ -9,7 +9,7 @@
 #import "TKDMsgDetailViewController.h"
 
 @interface TKDMsgDetailViewController ()
-@property(nonatomic,strong)UITextView *textView;
+@property(nonatomic,strong)UIWebView *webview;
 @property(nonatomic,strong)UILabel *titleView;
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @end
@@ -27,20 +27,19 @@
     self.titleView.adjustsFontSizeToFitWidth = YES;
     self.titleView.text = self.messageTitle;
     [self.view addSubview:self.titleView];
-    
-    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height)];
-    [self.textView setUserInteractionEnabled:NO];
-    self.textView.font = [UIFont systemFontOfSize:17];
-    [self.view addSubview:self.textView];
-    self.textView.textColor = [UIColor colorWithWhite:0.183 alpha:1.000];
-    
+	
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height)];
+    [self.webview setUserInteractionEnabled:NO];
+    [self.view addSubview:self.webview];
+	
     if (IS_NULL_STRING(self.messageTitle)) {
         UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
         [self.navigationItem setRightBarButtonItem:backBtn animated:YES];
     }
     HUD_Define
     
-    [self refreshMessageDetail];
+	[self.webview loadHTMLString:self.messageContent baseURL:nil];
+		//[self refreshMessageDetail];
 }
 
 -(void)onLeftBtn{
@@ -59,7 +58,6 @@
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
         NSString *messageBody = [dic objectForKey:@"Content"];
-        self.textView.text = messageBody;
     }];
     [request setFailedBlock:^{
         NetworkError_HUD

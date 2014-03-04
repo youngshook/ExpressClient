@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     self.title = @"服务之窗";
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -98,9 +98,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *msgId = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Id"];
     NSString *msgTitle = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Title"];
+	NSString *msgContent = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Content"];
     TKDMsgDetailViewController *msgDetailVc = [TKDMsgDetailViewController new];
     msgDetailVc.messageId = msgId;
     msgDetailVc.messageTitle = msgTitle;
+	msgDetailVc.messageContent = msgContent;
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
