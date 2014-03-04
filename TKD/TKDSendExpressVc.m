@@ -11,10 +11,10 @@
 #import "TKDSendDetailViewController.h"
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
-
+#import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
-@interface TKDSendExpressVc ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface TKDSendExpressVc ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,ZBarReaderDelegate>
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)UITableView *myTableView;
@@ -40,16 +40,25 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.myTableView];
 	
+	__weak TKDSendExpressVc *weakself = self;
+	
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
 		
 		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
 		[alert addButtonWithTitle:@"手动输入单号" handler:^{
-			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:weakself cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
 			[av setAlertViewStyle:UIAlertViewStylePlainTextInput];
 			[av show];
 		}];
 		[alert addButtonWithTitle:@"扫描获得单号" handler:^{
-			
+			ZBarReaderViewController *reader = [ZBarReaderViewController new];
+			reader.readerDelegate = weakself;
+			reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+			ZBarImageScanner *scanner = reader.scanner;
+			[scanner setSymbology: ZBAR_I25
+						   config: ZBAR_CFG_ENABLE
+							   to: 0];
+			[weakself presentViewController:reader animated:YES completion:nil];
 		}];
 		[alert addButtonWithTitle:@"取消"];
 		[alert show];
@@ -119,17 +128,39 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+	__weak TKDSendExpressVc *weakSelf = self;
 	if (buttonIndex == 1) {
 		self.expressID = [(UITextField *)[alertView textFieldAtIndex:0] text];
 		TKDExpressSiteViewController *expressSite = [TKDExpressSiteViewController new];
-		__weak TKDSendExpressVc *weakSelf = self;
+
 		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
 			weakSelf.expressSiteStr = expressStr;
-			[self createExpress];
+			[weakSelf createExpress];
 		};
 		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
 		[self presentViewController:nav animated:YES completion:nil];
 	}
+}
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    id<NSFastEnumeration> results =   [info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        break;
+	self.expressID = symbol.data;
+	__weak TKDSendExpressVc *weakSelf = self;
+	[reader dismissViewControllerAnimated:YES completion:^{
+		QFAlert(@"提示",[NSString stringWithFormat:@"识别成功,运单号[%@]",symbol.data], @"我知道了");
+		TKDExpressSiteViewController *expressSite = [TKDExpressSiteViewController new];
+		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
+			weakSelf.expressSiteStr = expressStr;
+			[weakSelf createExpress];
+		};
+		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
+		[self presentViewController:nav animated:YES completion:nil];
+	}];
 }
 
 #pragma mark -
