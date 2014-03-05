@@ -95,6 +95,8 @@
 		B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00331183411DB005778AB /* iTunesArtwork.png */; };
 		B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00332183411DB005778AB /* iTunesArtwork@2x.png */; };
 		B5A0034418341A3D005778AB /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0034318341A3D005778AB /* btn@2x.png */; };
+		B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */; };
+		B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */; };
 		B5BDC86F1848A37B001963D7 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */; };
 		B5BE5FCF1841EA4F004248C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5BE5FCE1841EA4F004248C8 /* InfoPlist.strings */; };
 		B5C6DE0218C1D54F001A5A64 /* TKDSendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C6DE0118C1D54F001A5A64 /* TKDSendDetailViewController.m */; };
@@ -237,6 +239,9 @@
 		B5A00331183411DB005778AB /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		B5A00332183411DB005778AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B5A0034318341A3D005778AB /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
+		B5B3117818C77462005A4569 /* TKDExpressSiteContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteContactViewController.h; sourceTree = "<group>"; };
+		B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressSiteContactViewController.m; sourceTree = "<group>"; };
+		B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDExpressSiteContactViewController.xib; sourceTree = "<group>"; };
 		B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		B5BE5FCE1841EA4F004248C8 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		B5BE5FD01841EA55004248C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/TKDTests-Info.plist"; sourceTree = "<group>"; };
@@ -564,6 +569,9 @@
 				B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */,
 				B5C6DE0018C1D54F001A5A64 /* TKDSendDetailViewController.h */,
 				B5C6DE0118C1D54F001A5A64 /* TKDSendDetailViewController.m */,
+				B5B3117818C77462005A4569 /* TKDExpressSiteContactViewController.h */,
+				B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */,
+				B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */,
 				B535775718C23A16008B28A9 /* TKDExpressListViewController.h */,
 				B535775818C23A16008B28A9 /* TKDExpressListViewController.m */,
 			);
@@ -687,6 +695,7 @@
 				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
 				B5A0031E18340F1A005778AB /* Default@2x-1.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
+				B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */,
 				B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */,
 				B5CADF6C1860A112000D6FB3 /* button_y@2x.png in Resources */,
 				B5A00333183411DB005778AB /* Icon-40.png in Resources */,
@@ -755,6 +764,7 @@
 				B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */,
 				B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */,
 				B51A86E71833F3490008F7E4 /* TKDMainViewController.m in Sources */,
+				B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */,
 				B5C6DE0218C1D54F001A5A64 /* TKDSendDetailViewController.m in Sources */,
 				B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */,
 				B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */,
@@ -889,15 +899,15 @@
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
 				PRODUCT_NAME = "淘快递";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "DC2040B1-F9E6-4708-BDF0-BC5480574649";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

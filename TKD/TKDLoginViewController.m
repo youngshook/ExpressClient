@@ -116,6 +116,10 @@
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
+		if ([dic objectForKey:@"DefaultStationId"]) {
+			[USER_DEFAULTS setBool:YES forKey:@"isHasDefaultStationId"];
+		}
+		
         [self getExpressList];
         [self getAddressList];
         [self updateUserInfo:dic];

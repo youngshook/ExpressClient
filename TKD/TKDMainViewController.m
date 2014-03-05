@@ -71,7 +71,6 @@
                 self.dataArray = [data mutableCopy];
                 ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
-                [self fetchSiteList];
             }
         }
     }];
@@ -212,29 +211,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)fetchSiteList{
-    NSURL *url = [NSURL URLWithString:API_INFO_STATION];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request setCompletionBlock:^{
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        return ;
-        if ([[[request responseString]JSONValue] isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dic = [[request responseString]JSONValue];
-            WarningAlert
-        }else{
-            NSArray *data = [[request responseString]JSONValue];
-            if ([data count] > 0) {
-                self.dataArray = [data mutableCopy];
-                [self.myTableView reloadData];
-            }
-        }
-    }];
-    [request setFailedBlock:^{
-    }];
-    [request startAsynchronous];
 }
 
 @end

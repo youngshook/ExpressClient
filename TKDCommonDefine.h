@@ -27,6 +27,8 @@
 
 #define API_ACCOUNT_EDIT [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Account/Edit"]
 
+#define API_ACCOUNT_SET_DEFAULT_STATION [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Account/SetDefaultStation"]
+
 //-----------------INFO
 
 #define API_INFO_VENDOR [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Info/Vendor"]

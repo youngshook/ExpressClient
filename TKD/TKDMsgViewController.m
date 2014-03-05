@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"服务之窗";
+    self.title = @"校园100";
     self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

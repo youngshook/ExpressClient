@@ -11,6 +11,7 @@
 #import "TKDSendDetailViewController.h"
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
+#import "TKDExpressSiteContactViewController.h"
 #import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
@@ -66,8 +67,9 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 	}];
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"寄快递" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		TKDExpressListViewController *expressListVC = [TKDExpressListViewController new];
-		[self presentViewController:expressListVC animated:YES completion:nil];
+		TKDExpressSiteContactViewController *expressSiteContactVC = [TKDExpressSiteContactViewController new];
+		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
+		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
 	}];
     
     HUD_Define
