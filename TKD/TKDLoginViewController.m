@@ -39,7 +39,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor redColor];
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(activateAccount)];
     [self.navigationItem setRightBarButtonItem:rightBtn animated:YES];
-    [self.LoginBtn setBackgroundImage:[[UIImage imageNamed:@"button_b"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     HUD_Define
     
     if ([USER_DEFAULTS boolForKey:@"remPassword"]) {

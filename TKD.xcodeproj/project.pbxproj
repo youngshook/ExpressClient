@@ -37,6 +37,11 @@
 		B54B66BD1858E36F000684F0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BC1858E36F000684F0 /* CoreFoundation.framework */; };
 		B54B66BF1858E37A000684F0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BE1858E37A000684F0 /* CoreTelephony.framework */; };
 		B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B54B66C01858E3F8000684F0 /* PushConfig.plist */; };
+		B562B98F18CD2FFA0020534E /* login_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98A18CD2FFA0020534E /* login_btn@2x.png */; };
+		B562B99018CD2FFA0020534E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98B18CD2FFA0020534E /* check.png */; };
+		B562B99118CD2FFA0020534E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98C18CD2FFA0020534E /* back@2x.png */; };
+		B562B99218CD2FFA0020534E /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98D18CD2FFA0020534E /* plus@2x.png */; };
+		B562B99318CD2FFA0020534E /* set@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98E18CD2FFA0020534E /* set@2x.png */; };
 		B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA21182F6DE6009E974A /* Foundation.framework */; };
 		B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA23182F6DE6009E974A /* CoreGraphics.framework */; };
 		B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA25182F6DE6009E974A /* UIKit.framework */; };
@@ -151,6 +156,11 @@
 		B54B66BC1858E36F000684F0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		B54B66BE1858E37A000684F0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B54B66C01858E3F8000684F0 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		B562B98A18CD2FFA0020534E /* login_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_btn@2x.png"; sourceTree = "<group>"; };
+		B562B98B18CD2FFA0020534E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		B562B98C18CD2FFA0020534E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		B562B98D18CD2FFA0020534E /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		B562B98E18CD2FFA0020534E /* set@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set@2x.png"; sourceTree = "<group>"; };
 		B56D7DA11847B338006CD91D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -519,6 +529,11 @@
 				B53BF34718BE496400B25AC5 /* msg@2x.png */,
 				B53BF34818BE496400B25AC5 /* send@2x.png */,
 				B53BF34918BE496400B25AC5 /* take@2x.png */,
+				B562B98A18CD2FFA0020534E /* login_btn@2x.png */,
+				B562B98B18CD2FFA0020534E /* check.png */,
+				B562B98C18CD2FFA0020534E /* back@2x.png */,
+				B562B98D18CD2FFA0020534E /* plus@2x.png */,
+				B562B98E18CD2FFA0020534E /* set@2x.png */,
 				B5A0031918340F1A005778AB /* Default@2x-1.png */,
 				B5A0031A18340F1A005778AB /* Default@2x.png */,
 				B5A0031B18340F1A005778AB /* Default-568h@2x.png */,
@@ -671,18 +686,22 @@
 				B535777718C25702008B28A9 /* 圆通快递@2x.png in Resources */,
 				B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */,
 				B5A0033F183411DB005778AB /* Icon.png in Resources */,
+				B562B99118CD2FFA0020534E /* back@2x.png in Resources */,
 				B5A0033B183411DB005778AB /* Icon-Small-50.png in Resources */,
 				B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */,
 				B5A00340183411DB005778AB /* Icon@2x.png in Resources */,
 				B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */,
 				B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
+				B562B98F18CD2FFA0020534E /* login_btn@2x.png in Resources */,
+				B562B99218CD2FFA0020534E /* plus@2x.png in Resources */,
 				B535777F18C25C1D008B28A9 /* 天天快递@2x.png in Resources */,
 				B535777918C25702008B28A9 /* EMS@2x.png in Resources */,
 				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
 				B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */,
 				B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */,
+				B562B99018CD2FFA0020534E /* check.png in Resources */,
 				B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */,
 				B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */,
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
@@ -695,6 +714,7 @@
 				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
 				B5A0031E18340F1A005778AB /* Default@2x-1.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
+				B562B99318CD2FFA0020534E /* set@2x.png in Resources */,
 				B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */,
 				B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */,
 				B5CADF6C1860A112000D6FB3 /* button_y@2x.png in Resources */,

@@ -22,8 +22,6 @@
 {
     [super viewDidLoad];
     self.title = @"重置密码";
-    UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000);
-    [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     HUD_Define
     
 }
