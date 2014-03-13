@@ -42,7 +42,7 @@ echo  "Step Done ----------3" >> $LOG
 gitcommit=`git --git-dir="${SRCDIR}/.git" log -1 --oneline --pretty=format:'%s'`
 
 echo  "Uploading to Fir.im  ....4 " >> $LOG
-fir_upload_url=`curl "http://fir.im/api/upload_url?appid="${APPID}` 
+fir_upload_url=`curl "http://firapp.duapp.com/api/upload_url?appid="${APPID}` 
 POST_FILE=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['postFile'];"`
 POST_ICON=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['postIcon'];"`
 SHORT_URL=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['short'];"`
@@ -53,14 +53,14 @@ if [ "${gitcommit}" ]; then
 gitcommit=$(perl -MURI::Escape -e 'print uri_escape("'"${gitcommit}"'");' "$2")
 POST_DATA=${POST_DATA}'&changelog='${gitcommit}
 fi
-r=`curl -X POST -d ${POST_DATA} -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" "http://fir.im/api/finish"`
+r=`curl -X POST -d ${POST_DATA} -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" "http://firapp.duapp.com/api/finish"`
 SHORT=`echo ${r}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['short'];"`
 
 #Open Download Url
-open "http://fir.im/${SHORT}"
+open "http://firapp.duapp.com/${SHORT}"
 
 echo  "finish load ----------OK" >> $LOG
-echo  "To visit Http://fir.im/${SHORT} download!" >> $LOG
+echo  "To visit http://firapp.duapp.com/${SHORT} download!" >> $LOG
 
 fi
 exit 0
