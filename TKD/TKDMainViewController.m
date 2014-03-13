@@ -160,11 +160,11 @@
     }];
 	
 	
-	UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 56, 34)];
+	UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 34)];
 	sheetSN.center = cell.contentView.center;
 	NSString *sheetNoStirng = [dic objectForKey:@"SheetNo"];
 	if (sheetNoStirng.length > 6) {
-		sheetSN.text = [sheetNoStirng substringFromIndex:sheetNoStirng.length - 6];
+		sheetSN.text = [NSString stringWithFormat:@"...%@",[sheetNoStirng substringFromIndex:sheetNoStirng.length - 6]];
 	}else{
 		sheetSN.text = sheetNoStirng;
 	}

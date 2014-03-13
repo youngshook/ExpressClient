@@ -13,7 +13,12 @@
 @property(nonatomic,weak)IBOutlet UILabel *expressLabel;
 @property(nonatomic,weak)IBOutlet UILabel *dateLabel;
 @property(nonatomic,weak)IBOutlet UILabel *localLabel;
-@property(nonatomic,weak)IBOutlet UITextView *addressTextView;
+@property(nonatomic,weak)IBOutlet UILabel *sheetStatus;
+@property(nonatomic,weak)IBOutlet UILabel *addressTextView;
+
+@property(nonatomic,weak)IBOutlet UILabel *noticeLabel;
+@property(nonatomic,weak)IBOutlet UITextField *areaCodeT;
+
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)NSString *mobile;
 @end
@@ -23,39 +28,77 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"运单快递";
-    self.idLabel.text = [self.dic objectForKey:@"SheetNo"];
-    self.dateLabel.text = [self.dic objectForKey:@"ArrivalTime"];
-    NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
-    NSString *ID = [self.dic objectForKey:@"VendorId"];
-    [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    self.title = @"运单详情";
+
+	for (int i = 0; i < 2; i++) {
+        UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
+        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+    }
+	
+	
+
+    if ([self.type isEqualToString:@"apns"]) {
+        UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
+        self.navigationItem.leftBarButtonItem = backBtnItem;
+    }
+	
+    HUD_Define
+	
+	[self fetchSheetDetails];
+}
+
+- (void)fetchSheetDetails {
+	[self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_SHEET_DETAILS];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+	[request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"Id"];
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+		[self updateSheetInfo:[[request responseString]JSONValue]];
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
+}
+
+-(void)updateSheetInfo:(NSDictionary *)dicData{
+	self.idLabel.text = [dicData objectForKey:@"SheetNo"];
+	
+	NSString *ID = [dicData objectForKey:@"VendorId"];
+
+    [[USER_DEFAULTS objectForKey:@"expressList"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary *dic = obj;
         if ([[dic objectForKey:@"Id"] isEqualToString:ID]) {
             self.expressLabel.text = [dic objectForKey:@"Name"];
         }
     }];
-    
+	
+    self.dateLabel.text = [dicData objectForKey:@"ArrivalTime"];
+
+    self.localLabel.text = [dicData objectForKey:@"Position"];
+	
+	if ([[dicData objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
+		[VIEWWITHTAG(self.view, 3000) setHidden:NO];
+		self.noticeLabel.text = [NSString stringWithFormat:@"请您站到柜台<%@>正前方输入区域码,否则可能造成丢失!",[dicData objectForKey:@"Position"]];
+	}else{
+		[VIEWWITHTAG(self.view, 3000) setHidden:YES];
+	}
+	
     NSArray *addressList = [USER_DEFAULTS objectForKey:@"addressList"];
-    NSString *stationID = [self.dic objectForKey:@"StationId"];
+    NSString *stationID = [dicData objectForKey:@"StationId"];
     [addressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary *dic = obj;
         if ([[dic objectForKey:@"Id"] isEqualToString:stationID]) {
             self.addressTextView.text = [dic objectForKey:@"Address"];
         }
     }];
-    
-    for (int i = 0; i < 2; i++) {
-        UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
-        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
-    }
-    if ([self.type isEqualToString:@"apns"]) {
-        UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
-        self.navigationItem.leftBarButtonItem = backBtnItem;
-    }
-    HUD_Define
-    
-    self.localLabel.text = [USER_DEFAULTS objectForKey:[self.dic objectForKey:@"Id"]];
+	
+	self.sheetStatus.text = [USER_DEFAULTS objectForKey:[dicData objectForKey:@"Status"]];
 }
+
 
 -(void)onLeftBtn{
 
@@ -71,6 +114,11 @@
 }
 -(IBAction)verifyBtn{
     
+	if (self.areaCodeT.text.length == 0) {
+		QFAlert(@"提示", @"请输入区域码", @"我知道了");
+		return;
+	}
+	
     UIAlertView * av = [UIAlertView alertViewWithTitle:@"提示" message:@"请务必于在取件处3米范围内点击，否则可能造成丢失，请确认!"];
     [av addButtonWithTitle:@"取消"];
     [av addButtonWithTitle:@"确认" handler:^{
@@ -86,6 +134,7 @@
         [request addPostValue:latitude?:@0.00 forKey:@"latitude"];
         [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
         [request addPostValue:@1 forKey:@"version"];
+		[request addPostValue:self.areaCodeT.text forKey:@"regionCode"];
         [request setCompletionBlock:^{
             [self.HUD hide:YES];
             NSLog(@"%@:%@",[url path],[request responseString]);
@@ -93,7 +142,9 @@
             WarningAlert
             self.localLabel.text = [dic objectForKey:@"GroupChest"];
             [USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[self.dic objectForKey:@"Id"]];
-            QFAlert(@"提示", @"已请求取件,请稍等", @"我知道了");
+            QFAlert(@"提示", @"验证成功,请取件", @"我知道了");
+			self.sheetStatus.text = @"已取件";
+			[VIEWWITHTAG(self.view, 3000) setHidden:YES];
         }];
         [request setFailedBlock:^{
             NetworkError_HUD
@@ -134,6 +185,12 @@
         }];
         [request startAsynchronous];
     }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+
+	[[UIApplication sharedApplication].keyWindow endEditing:YES];
+
 }
 
 //手机号校验

@@ -41,6 +41,8 @@
 
 #define API_SHEET_INDEX [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/Index"]
 
+#define API_SHEET_DETAILS [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/Details"]
+
 #define API_SHEET_NEWEST [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/Newest"]
 
 #define API_SHEET_NOTIFIED [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/Notified"]
@@ -54,6 +56,7 @@
 #define API_SHEET_AUTHORIZE_CANCEL [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/AuthorizeCancel"]
 
 #define API_SHEET_AUTHORIZE_REJECT [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/AuthorizeReject"]
+
 
 //-----------------SENT
 
