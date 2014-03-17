@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"校园100";
+    self.title = @"芝麻园";
     self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -34,6 +34,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
     
     [self.view addSubview:self.tableView];
+	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
     HUD_Define
 }
 

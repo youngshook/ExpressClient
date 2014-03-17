@@ -23,7 +23,7 @@
 	
 	HUD_Define
 	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone handler:^(id sender) {
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}];
 	
@@ -40,6 +40,10 @@
 	}else{
 		[self getAddressList];
 	}
+	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
 	
 }
 

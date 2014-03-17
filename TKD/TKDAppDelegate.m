@@ -12,6 +12,8 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	
+	[[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
     [self umengTrack];
     [self loadUserlocalString];
     if (!isFisrtLaunch) {
@@ -81,9 +83,9 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 	UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
 	UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
 	
-	navMainVc.tabBarItem.title = @"取快递";
-	navSendExpressVC.tabBarItem.title = @"寄快递";
-	navMsgVC.tabBarItem.title = @"校园";
+	navMainVc.tabBarItem.title = @"芝麻开门";
+	navSendExpressVC.tabBarItem.title = @"芝麻邮";
+	navMsgVC.tabBarItem.title =  @"芝麻园";
 	
 	navMainVc.tabBarItem.image = [UIImage imageNamed:@"take"];
 	navSendExpressVC.tabBarItem.image = [UIImage imageNamed:@"send"];

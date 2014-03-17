@@ -23,7 +23,7 @@
     self.title = @"设置";
     for (int i = 0; i < 5; i++) {
         UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
-        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[[UIImage imageNamed:@"login_btn"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     }
     
     HUD_Define

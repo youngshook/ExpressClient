@@ -35,10 +35,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"淘快递";
-    self.navigationController.navigationBar.tintColor = [UIColor redColor];
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(activateAccount)];
-    [self.navigationItem setRightBarButtonItem:rightBtn animated:YES];
+    self.title = @"芝麻园";
+
     HUD_Define
     
     if ([USER_DEFAULTS boolForKey:@"remPassword"]) {
@@ -56,6 +54,9 @@
             [self.accountwordT becomeFirstResponder];
         }
     }
+	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 }
 
 
@@ -162,7 +163,7 @@
     }
 }
 
--(void)activateAccount{
+-(IBAction)activateAccount:(id)sender{
     TKDActivateViewController *regVC = [TKDActivateViewController new];
     [self.navigationController pushViewController:regVC animated:YES];
 }

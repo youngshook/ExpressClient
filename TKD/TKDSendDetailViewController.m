@@ -26,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
 	// Do any additional setup after loading the view.
 }
 

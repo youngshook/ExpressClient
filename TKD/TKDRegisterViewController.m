@@ -53,7 +53,10 @@
     RACCommand *createAccountCommand = [RACCommand commandWithCanExecuteSignal:formValid];
     [[self.registerBtn rac_signalForControlEvents:UIControlEventTouchUpInside] executeCommand:createAccountCommand];
     UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000);
-    [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[[UIImage imageNamed:@"login_btn"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
 
 }
 

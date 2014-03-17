@@ -31,7 +31,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"寄快递";
+    self.title = @"芝麻开门";
     self.dataArray = [NSMutableArray new];
     
     self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
@@ -43,14 +43,14 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 	
 	__weak TKDSendExpressVc *weakself = self;
 	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
-		
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
 		[alert addButtonWithTitle:@"手动输入单号" handler:^{
 			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:weakself cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
 			[av setAlertViewStyle:UIAlertViewStylePlainTextInput];
 			[av show];
 		}];
+		
 		[alert addButtonWithTitle:@"扫描获得单号" handler:^{
 			ZBarReaderViewController *reader = [ZBarReaderViewController new];
 			reader.readerDelegate = weakself;
@@ -66,15 +66,22 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
 	}];
 	
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"寄快递" style:UIBarButtonItemStylePlain handler:^(id sender) {
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查询" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		TKDExpressSiteContactViewController *expressSiteContactVC = [TKDExpressSiteContactViewController new];
 		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
 		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
 	}];
+	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
     
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
+	
 	[self fetchDataSource];
 }
 

@@ -42,6 +42,10 @@
         self.navigationItem.leftBarButtonItem = backBtnItem;
     }
 	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
+	
     HUD_Define
 	
 	[self fetchSheetDetails];
@@ -119,39 +123,36 @@
 		return;
 	}
 	
-    UIAlertView * av = [UIAlertView alertViewWithTitle:@"提示" message:@"请务必于在取件处3米范围内点击，否则可能造成丢失，请确认!"];
-    [av addButtonWithTitle:@"取消"];
-    [av addButtonWithTitle:@"确认" handler:^{
-        [self.HUD show:YES];
-        NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
-        __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-        ASIFormDataRequestDefine_ToKen
-        NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
-        NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
+	[self.HUD show:YES];
+	NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
+	__weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	ASIFormDataRequestDefine_ToKen
+	NSNumber *longitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslon"] doubleValue]];
+	NSNumber *latitude = [NSNumber numberWithDouble:[[USER_DEFAULTS objectForKey:@"gpslat"] doubleValue]];
         // NSNumber *longitude = [NSNumber numberWithDouble:[@"116.3087" doubleValue]];
         //NSNumber *latitude = [NSNumber numberWithDouble:[@"39.96578" doubleValue]];
-        [request addPostValue:longitude?:@0.00 forKey:@"longitude"];
-        [request addPostValue:latitude?:@0.00 forKey:@"latitude"];
-        [request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
-        [request addPostValue:@1 forKey:@"version"];
-		[request addPostValue:self.areaCodeT.text forKey:@"regionCode"];
-        [request setCompletionBlock:^{
-            [self.HUD hide:YES];
-            NSLog(@"%@:%@",[url path],[request responseString]);
-            NSDictionary *dic = [[request responseString]JSONValue];
-            WarningAlert
-            self.localLabel.text = [dic objectForKey:@"GroupChest"];
-            [USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[self.dic objectForKey:@"Id"]];
-            QFAlert(@"提示", @"验证成功,请取件", @"我知道了");
-			self.sheetStatus.text = @"已取件";
-			[VIEWWITHTAG(self.view, 3000) setHidden:YES];
-        }];
-        [request setFailedBlock:^{
-            NetworkError_HUD
-        }];
-        [request startAsynchronous];
-    }];
-    [av show];
+	[request addPostValue:longitude?:@0.00 forKey:@"longitude"];
+	[request addPostValue:latitude?:@0.00 forKey:@"latitude"];
+	[request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
+	[request addPostValue:@1 forKey:@"version"];
+	[request addPostValue:self.areaCodeT.text forKey:@"regionCode"];
+	[request setCompletionBlock:^{
+		[self.HUD hide:YES];
+		NSLog(@"%@:%@",[url path],[request responseString]);
+		NSDictionary *dic = [[request responseString]JSONValue];
+		WarningAlert
+		self.localLabel.text = [dic objectForKey:@"GroupChest"];
+		[USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[self.dic objectForKey:@"Id"]];
+		QFAlert(@"提示", @"验证成功,请取件", @"我知道了");
+		self.sheetStatus.text = @"已取件";
+		[VIEWWITHTAG(self.view, 3000) setHidden:YES];
+	}];
+	[request setFailedBlock:^{
+		NetworkError_HUD
+	}];
+	[request startAsynchronous];
+
+	
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

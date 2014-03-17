@@ -38,7 +38,7 @@
     QFListenEvent(@"fetchDataSource", self, @selector(fetchDataSource));
     self.navigationItem.hidesBackButton = YES;
     self.dataArray = [NSMutableArray new];
-    self.title = @"取快递";
+    self.title = @"芝麻园";
 
     self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.myTableView.backgroundColor = [UIColor whiteColor];

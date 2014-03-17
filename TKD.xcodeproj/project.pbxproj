@@ -20,6 +20,7 @@
 		B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A86FB1833FF230008F7E4 /* CHKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FD1834019C0008F7E4 /* check@2x.png */; };
 		B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51A86FE1834019C0008F7E4 /* uncheck@2x.png */; };
+		B51B24F318D768AA006721FF /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = B51B24F218D768AA006721FF /* qrcode.png */; };
 		B535775918C23A16008B28A9 /* TKDExpressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B535775818C23A16008B28A9 /* TKDExpressListViewController.m */; };
 		B535775C18C2403E008B28A9 /* TKDExpressSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */; };
 		B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B535776E18C25702008B28A9 /* 中通快递@2x.png */; };
@@ -33,15 +34,12 @@
 		B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34718BE496400B25AC5 /* msg@2x.png */; };
 		B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34818BE496400B25AC5 /* send@2x.png */; };
 		B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53BF34918BE496400B25AC5 /* take@2x.png */; };
+		B543F64918D4C6DC002345AB /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B543F64818D4C6DC002345AB /* nav_bg@2x.png */; };
 		B54B66BA1858E32D000684F0 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66B91858E32D000684F0 /* libPushSDK.a */; };
 		B54B66BD1858E36F000684F0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BC1858E36F000684F0 /* CoreFoundation.framework */; };
 		B54B66BF1858E37A000684F0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54B66BE1858E37A000684F0 /* CoreTelephony.framework */; };
 		B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B54B66C01858E3F8000684F0 /* PushConfig.plist */; };
 		B562B98F18CD2FFA0020534E /* login_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98A18CD2FFA0020534E /* login_btn@2x.png */; };
-		B562B99018CD2FFA0020534E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98B18CD2FFA0020534E /* check.png */; };
-		B562B99118CD2FFA0020534E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98C18CD2FFA0020534E /* back@2x.png */; };
-		B562B99218CD2FFA0020534E /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98D18CD2FFA0020534E /* plus@2x.png */; };
-		B562B99318CD2FFA0020534E /* set@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B562B98E18CD2FFA0020534E /* set@2x.png */; };
 		B56FAA22182F6DE6009E974A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA21182F6DE6009E974A /* Foundation.framework */; };
 		B56FAA24182F6DE6009E974A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA23182F6DE6009E974A /* CoreGraphics.framework */; };
 		B56FAA26182F6DE6009E974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56FAA25182F6DE6009E974A /* UIKit.framework */; };
@@ -73,13 +71,11 @@
 		B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */; };
 		B56FAA99182FA351009E974A /* TKDSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAA97182FA351009E974A /* TKDSetViewController.m */; };
 		B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA98182FA351009E974A /* TKDSetViewController.xib */; };
-		B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56FAA9B182FA4AF009E974A /* erweima@2x.png */; };
 		B56FAAA4183117C8009E974A /* NSString+JSONCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA0183117C8009E974A /* NSString+JSONCategories.m */; };
 		B56FAAA5183117C8009E974A /* NSObject+JSONCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA2183117C8009E974A /* NSObject+JSONCategories.m */; };
 		B56FAAA9183121E1009E974A /* TKDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA7183121E1009E974A /* TKDRegisterViewController.m */; };
 		B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */; };
 		B5A0031D18340F1A005778AB /* Default-568h@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031818340F1A005778AB /* Default-568h@2x-1.png */; };
-		B5A0031E18340F1A005778AB /* Default@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031918340F1A005778AB /* Default@2x-1.png */; };
 		B5A0031F18340F1A005778AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031A18340F1A005778AB /* Default@2x.png */; };
 		B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031B18340F1A005778AB /* Default-568h@2x.png */; };
 		B5A0032118340F1A005778AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031C18340F1A005778AB /* Default.png */; };
@@ -99,7 +95,6 @@
 		B5A00340183411DB005778AB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00330183411DB005778AB /* Icon@2x.png */; };
 		B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00331183411DB005778AB /* iTunesArtwork.png */; };
 		B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00332183411DB005778AB /* iTunesArtwork@2x.png */; };
-		B5A0034418341A3D005778AB /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0034318341A3D005778AB /* btn@2x.png */; };
 		B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */; };
 		B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */; };
 		B5BDC86F1848A37B001963D7 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */; };
@@ -109,8 +104,6 @@
 		B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F631831497800E33386 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5C74F6E1833D34700E33386 /* TKDMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */; };
 		B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */; };
-		B5CADF6A1860A0C3000D6FB3 /* button_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CADF691860A0C3000D6FB3 /* button_b@2x.png */; };
-		B5CADF6C1860A112000D6FB3 /* button_y@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CADF6B1860A112000D6FB3 /* button_y@2x.png */; };
 		B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */; };
 		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -137,6 +130,7 @@
 		B51A86FB1833FF230008F7E4 /* CHKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHKeychain.m; sourceTree = "<group>"; };
 		B51A86FD1834019C0008F7E4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		B51A86FE1834019C0008F7E4 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		B51B24F218D768AA006721FF /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
 		B535775718C23A16008B28A9 /* TKDExpressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressListViewController.h; sourceTree = "<group>"; };
 		B535775818C23A16008B28A9 /* TKDExpressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressListViewController.m; sourceTree = "<group>"; };
 		B535775A18C2403E008B28A9 /* TKDExpressSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteViewController.h; sourceTree = "<group>"; };
@@ -152,15 +146,12 @@
 		B53BF34718BE496400B25AC5 /* msg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg@2x.png"; sourceTree = "<group>"; };
 		B53BF34818BE496400B25AC5 /* send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send@2x.png"; sourceTree = "<group>"; };
 		B53BF34918BE496400B25AC5 /* take@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take@2x.png"; sourceTree = "<group>"; };
+		B543F64818D4C6DC002345AB /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
 		B54B66B91858E32D000684F0 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
 		B54B66BC1858E36F000684F0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		B54B66BE1858E37A000684F0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B54B66C01858E3F8000684F0 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		B562B98A18CD2FFA0020534E /* login_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_btn@2x.png"; sourceTree = "<group>"; };
-		B562B98B18CD2FFA0020534E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		B562B98C18CD2FFA0020534E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
-		B562B98D18CD2FFA0020534E /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
-		B562B98E18CD2FFA0020534E /* set@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set@2x.png"; sourceTree = "<group>"; };
 		B56D7DA11847B338006CD91D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -217,7 +208,6 @@
 		B56FAA96182FA351009E974A /* TKDSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSetViewController.h; sourceTree = "<group>"; };
 		B56FAA97182FA351009E974A /* TKDSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSetViewController.m; sourceTree = "<group>"; };
 		B56FAA98182FA351009E974A /* TKDSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDSetViewController.xib; sourceTree = "<group>"; };
-		B56FAA9B182FA4AF009E974A /* erweima@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erweima@2x.png"; sourceTree = "<group>"; };
 		B56FAA9D18310C42009E974A /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		B56FAAA0183117C8009E974A /* NSString+JSONCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONCategories.m"; sourceTree = "<group>"; };
 		B56FAAA1183117C8009E974A /* NSString+JSONCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONCategories.h"; sourceTree = "<group>"; };
@@ -228,7 +218,6 @@
 		B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRegisterViewController.xib; sourceTree = "<group>"; };
 		B58CD6531860344F004488FB /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		B5A0031818340F1A005778AB /* Default-568h@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x-1.png"; sourceTree = "<group>"; };
-		B5A0031918340F1A005778AB /* Default@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x-1.png"; sourceTree = "<group>"; };
 		B5A0031A18340F1A005778AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B5A0031B18340F1A005778AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B5A0031C18340F1A005778AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -248,7 +237,6 @@
 		B5A00330183411DB005778AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		B5A00331183411DB005778AB /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		B5A00332183411DB005778AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		B5A0034318341A3D005778AB /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
 		B5B3117818C77462005A4569 /* TKDExpressSiteContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteContactViewController.h; sourceTree = "<group>"; };
 		B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressSiteContactViewController.m; sourceTree = "<group>"; };
 		B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDExpressSiteContactViewController.xib; sourceTree = "<group>"; };
@@ -265,8 +253,6 @@
 		B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgViewController.m; sourceTree = "<group>"; };
 		B5C74F6F1833E4E700E33386 /* TKDMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDMsgDetailViewController.h; sourceTree = "<group>"; };
 		B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgDetailViewController.m; sourceTree = "<group>"; };
-		B5CADF691860A0C3000D6FB3 /* button_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_b@2x.png"; sourceTree = "<group>"; };
-		B5CADF6B1860A112000D6FB3 /* button_y@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_y@2x.png"; sourceTree = "<group>"; };
 		B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressVc.h; sourceTree = "<group>"; };
 		B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressVc.m; sourceTree = "<group>"; };
 		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -538,20 +524,13 @@
 				B53BF34818BE496400B25AC5 /* send@2x.png */,
 				B53BF34918BE496400B25AC5 /* take@2x.png */,
 				B562B98A18CD2FFA0020534E /* login_btn@2x.png */,
-				B562B98B18CD2FFA0020534E /* check.png */,
-				B562B98C18CD2FFA0020534E /* back@2x.png */,
-				B562B98D18CD2FFA0020534E /* plus@2x.png */,
-				B562B98E18CD2FFA0020534E /* set@2x.png */,
-				B5A0031918340F1A005778AB /* Default@2x-1.png */,
+				B543F64818D4C6DC002345AB /* nav_bg@2x.png */,
 				B5A0031A18340F1A005778AB /* Default@2x.png */,
+				B51B24F218D768AA006721FF /* qrcode.png */,
 				B5A0031B18340F1A005778AB /* Default-568h@2x.png */,
 				B5A0031C18340F1A005778AB /* Default.png */,
-				B5CADF691860A0C3000D6FB3 /* button_b@2x.png */,
 				B51A86F71833FB800008F7E4 /* about.html */,
 				B51A86F11833F4D40008F7E4 /* xieyi.html */,
-				B5A0034318341A3D005778AB /* btn@2x.png */,
-				B56FAA9B182FA4AF009E974A /* erweima@2x.png */,
-				B5CADF6B1860A112000D6FB3 /* button_y@2x.png */,
 				B56FAA94182F9C10009E974A /* contact_input_bg@2x.png */,
 				B51A86FD1834019C0008F7E4 /* check@2x.png */,
 				B51A86FE1834019C0008F7E4 /* uncheck@2x.png */,
@@ -688,13 +667,11 @@
 				B5A00335183411DB005778AB /* Icon-60.png in Resources */,
 				B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */,
 				B51A86E41833F3130008F7E4 /* TKDResetPasswordViewController.xib in Resources */,
-				B5A0034418341A3D005778AB /* btn@2x.png in Resources */,
 				B5A0031D18340F1A005778AB /* Default-568h@2x-1.png in Resources */,
 				B535777A18C25702008B28A9 /* 顺丰快递@2x.png in Resources */,
 				B535777718C25702008B28A9 /* 圆通快递@2x.png in Resources */,
-				B56FAA9C182FA4AF009E974A /* erweima@2x.png in Resources */,
+				B543F64918D4C6DC002345AB /* nav_bg@2x.png in Resources */,
 				B5A0033F183411DB005778AB /* Icon.png in Resources */,
-				B562B99118CD2FFA0020534E /* back@2x.png in Resources */,
 				B5A0033B183411DB005778AB /* Icon-Small-50.png in Resources */,
 				B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */,
 				B5A00340183411DB005778AB /* Icon@2x.png in Resources */,
@@ -702,14 +679,12 @@
 				B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
 				B562B98F18CD2FFA0020534E /* login_btn@2x.png in Resources */,
-				B562B99218CD2FFA0020534E /* plus@2x.png in Resources */,
 				B535777F18C25C1D008B28A9 /* 天天快递@2x.png in Resources */,
 				B535777918C25702008B28A9 /* EMS@2x.png in Resources */,
 				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
 				B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */,
 				B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */,
-				B562B99018CD2FFA0020534E /* check.png in Resources */,
 				B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */,
 				B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */,
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
@@ -718,14 +693,11 @@
 				B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */,
 				B51A86EC1833F36B0008F7E4 /* TKDMainDetailViewController.xib in Resources */,
 				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
-				B5CADF6A1860A0C3000D6FB3 /* button_b@2x.png in Resources */,
 				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
-				B5A0031E18340F1A005778AB /* Default@2x-1.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
-				B562B99318CD2FFA0020534E /* set@2x.png in Resources */,
 				B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */,
 				B51A86FF1834019C0008F7E4 /* check@2x.png in Resources */,
-				B5CADF6C1860A112000D6FB3 /* button_y@2x.png in Resources */,
+				B51B24F318D768AA006721FF /* qrcode.png in Resources */,
 				B5A00333183411DB005778AB /* Icon-40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

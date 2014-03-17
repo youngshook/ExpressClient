@@ -33,17 +33,16 @@
     [self.view addSubview:self.webview];
 	
     if (IS_NULL_STRING(self.messageTitle)) {
-        UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
-        [self.navigationItem setRightBarButtonItem:backBtn animated:YES];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}];
     }
     HUD_Define
-    
+	
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
 	[self.webview loadHTMLString:self.messageContent baseURL:nil];
-		//[self refreshMessageDetail];
-}
-
--(void)onLeftBtn{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)refreshMessageDetail{
@@ -57,7 +56,6 @@
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
         WarningAlert
-        NSString *messageBody = [dic objectForKey:@"Content"];
     }];
     [request setFailedBlock:^{
         NetworkError_HUD

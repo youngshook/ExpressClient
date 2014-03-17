@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" tag="2001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JMT-Pg-NGH">
-                    <rect key="frame" x="69" y="27" width="183" height="44"/>
+                    <rect key="frame" x="0.0" y="27" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="版本检测">
@@ -27,7 +27,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yKR-1E-f1x">
-                    <rect key="frame" x="69" y="86" width="183" height="44"/>
+                    <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="关于我们">
@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JE1-rd-vqa">
-                    <rect key="frame" x="69" y="145" width="183" height="44"/>
+                    <rect key="frame" x="0.0" y="145" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="会员协议">
@@ -49,7 +49,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QqJ-6D-qhm">
-                    <rect key="frame" x="69" y="204" width="183" height="44"/>
+                    <rect key="frame" x="0.0" y="204" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="退出登录">
@@ -59,7 +59,7 @@
                         <action selector="logout:" destination="-1" eventType="touchUpInside" id="bLX-BP-e7I"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="erweima.png" id="ig0-Z9-gI4">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode.png" id="ig0-Z9-gI4">
                     <rect key="frame" x="104" y="273" width="112" height="112"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -71,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="erweima.png" width="140" height="140"/>
+        <image name="qrcode.png" width="286" height="283"/>
     </resources>
 </document>
