@@ -12,6 +12,7 @@
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
 #import "TKDExpressSiteContactViewController.h"
+#import "TKDSendExpressDetailVC.h"
 #import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
@@ -31,9 +32,8 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"芝麻开门";
     self.dataArray = [NSMutableArray new];
-    
+    self.title = @"芝麻邮";
     self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
@@ -44,6 +44,13 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 	__weak TKDSendExpressVc *weakself = self;
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
+		TKDExpressSiteContactViewController *expressSiteContactVC = [TKDExpressSiteContactViewController new];
+		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
+		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
+
+	}];
+	
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查询" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
 		[alert addButtonWithTitle:@"手动输入单号" handler:^{
 			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:weakself cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
@@ -63,13 +70,6 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 		}];
 		[alert addButtonWithTitle:@"取消"];
 		[alert show];
-
-	}];
-	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查询" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		TKDExpressSiteContactViewController *expressSiteContactVC = [TKDExpressSiteContactViewController new];
-		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
-		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
 	}];
 	
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
@@ -277,6 +277,9 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
 /** 处理Cell点击*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	TKDSendExpressDetailVC *expressDetailVC = [TKDSendExpressDetailVC new];
+	expressDetailVC.dic = [self.dataArray objectAtIndex:indexPath.row];
+	[self.navigationController pushViewController:expressDetailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

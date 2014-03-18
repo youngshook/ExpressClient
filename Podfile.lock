@@ -24,6 +24,9 @@ PODS:
     - libextobjc/EXTScope (~> 0.2.5)
   - ReactiveCocoa/RACExtensions (1.5.0):
     - ReactiveCocoa/Core
+  - SDWebImage (3.5.4):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5.4)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
@@ -33,6 +36,7 @@ DEPENDENCIES:
   - ODRefreshControl (~> 1.1.0)
   - Reachability (~> 3.1.1)
   - ReactiveCocoa (~> 1.5.0)
+  - SDWebImage
   - ZBarSDK (~> 1.3.1)
 
 SPEC CHECKSUMS:
@@ -45,6 +49,7 @@ SPEC CHECKSUMS:
   ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   ReactiveCocoa: fd1154d51223db76172d3a644bf6ade275c821bb
+  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
   ZBarSDK: 6ae54d2077fea894d6a24bd1d7035192c0a7471e
 
 COCOAPODS: 0.29.0

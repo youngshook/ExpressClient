@@ -8,7 +8,7 @@
 
 #import "TKDMsgViewController.h"
 #import "TKDMsgDetailViewController.h"
-
+#import "UIImageView+WebCache.h"
 @interface TKDMsgViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -25,12 +25,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"芝麻园";
+	self.title = @"芝麻园";
     self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
     
     [self.view addSubview:self.tableView];
@@ -65,7 +64,6 @@
 
 -(void)setting{
     TKDSetViewController *setVC = [TKDSetViewController new];
-	setVC.hidesBottomBarWhenPushed =YES;
     [self.navigationController pushViewController:setVC animated:YES];
 }
 
@@ -85,16 +83,24 @@
 /** 行高*/
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    return 150;
 }
 
 /** 创建TableViewCell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Title"];
-    cell.textLabel.font = [UIFont systemFontOfSize:16];
-    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+	NSString *URL = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"SmallImageUrl"]];
+	UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 280, 100)];
+	[imageView setImageWithURL:[NSURL URLWithString:URL] placeholderImage:[UIImage imageNamed:@"loading"]];
+	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 120, 280, 30)];
+	
+	[cell.contentView addSubview:imageView];
+	[cell.contentView addSubview:nameLabel];
+    nameLabel.text = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Title"];
+    nameLabel.font = [UIFont systemFontOfSize:16];
+    nameLabel.adjustsFontSizeToFitWidth = YES;
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -109,7 +115,6 @@
 	msgDetailVc.messageContent = msgContent;
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

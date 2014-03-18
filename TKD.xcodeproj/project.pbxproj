@@ -75,6 +75,11 @@
 		B56FAAA5183117C8009E974A /* NSObject+JSONCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA2183117C8009E974A /* NSObject+JSONCategories.m */; };
 		B56FAAA9183121E1009E974A /* TKDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56FAAA7183121E1009E974A /* TKDRegisterViewController.m */; };
 		B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */; };
+		B580883E18D8A9CF00205DAB /* 03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580883D18D8A9CF00205DAB /* 03@2x.png */; };
+		B580884018D8AB0600205DAB /* 02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580883F18D8AB0500205DAB /* 02@2x.png */; };
+		B580884218D8AB0A00205DAB /* 01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580884118D8AB0A00205DAB /* 01@2x.png */; };
+		B580884518D8ABF600205DAB /* DMFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B580884418D8ABF600205DAB /* DMFilterView.m */; };
+		B580884718D8BE7600205DAB /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580884618D8BE7600205DAB /* loading@2x.png */; };
 		B5A0031D18340F1A005778AB /* Default-568h@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031818340F1A005778AB /* Default-568h@2x-1.png */; };
 		B5A0031F18340F1A005778AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031A18340F1A005778AB /* Default@2x.png */; };
 		B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0031B18340F1A005778AB /* Default-568h@2x.png */; };
@@ -83,18 +88,12 @@
 		B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00324183411DB005778AB /* Icon-40@2x.png */; };
 		B5A00335183411DB005778AB /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00325183411DB005778AB /* Icon-60.png */; };
 		B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00326183411DB005778AB /* Icon-60@2x.png */; };
-		B5A00337183411DB005778AB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00327183411DB005778AB /* Icon-72.png */; };
-		B5A00338183411DB005778AB /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00328183411DB005778AB /* Icon-72@2x.png */; };
 		B5A00339183411DB005778AB /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00329183411DB005778AB /* Icon-76.png */; };
 		B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032A183411DB005778AB /* Icon-76@2x.png */; };
-		B5A0033B183411DB005778AB /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032B183411DB005778AB /* Icon-Small-50.png */; };
-		B5A0033C183411DB005778AB /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032C183411DB005778AB /* Icon-Small-50@2x.png */; };
 		B5A0033D183411DB005778AB /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032D183411DB005778AB /* Icon-Small.png */; };
 		B5A0033E183411DB005778AB /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032E183411DB005778AB /* Icon-Small@2x.png */; };
 		B5A0033F183411DB005778AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032F183411DB005778AB /* Icon.png */; };
 		B5A00340183411DB005778AB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00330183411DB005778AB /* Icon@2x.png */; };
-		B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00331183411DB005778AB /* iTunesArtwork.png */; };
-		B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00332183411DB005778AB /* iTunesArtwork@2x.png */; };
 		B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */; };
 		B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */; };
 		B5BDC86F1848A37B001963D7 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */; };
@@ -104,6 +103,8 @@
 		B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F631831497800E33386 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5C74F6E1833D34700E33386 /* TKDMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */; };
 		B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */; };
+		B5CA579A18D8A1F5006FA92F /* TKDSendExpressDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */; };
+		B5CA579B18D8A1F5006FA92F /* TKDSendExpressDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */; };
 		B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */; };
 		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -153,7 +154,7 @@
 		B54B66C01858E3F8000684F0 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		B562B98A18CD2FFA0020534E /* login_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_btn@2x.png"; sourceTree = "<group>"; };
 		B56D7DA11847B338006CD91D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		B56FAA1E182F6DE6009E974A /* 淘快递.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "淘快递.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56FAA1E182F6DE6009E974A /* 芝麻邦.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "芝麻邦.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56FAA21182F6DE6009E974A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B56FAA23182F6DE6009E974A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B56FAA25182F6DE6009E974A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -216,6 +217,12 @@
 		B56FAAA6183121E1009E974A /* TKDRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRegisterViewController.h; sourceTree = "<group>"; };
 		B56FAAA7183121E1009E974A /* TKDRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRegisterViewController.m; sourceTree = "<group>"; };
 		B56FAAA8183121E1009E974A /* TKDRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRegisterViewController.xib; sourceTree = "<group>"; };
+		B580883D18D8A9CF00205DAB /* 03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03@2x.png"; sourceTree = "<group>"; };
+		B580883F18D8AB0500205DAB /* 02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02@2x.png"; sourceTree = "<group>"; };
+		B580884118D8AB0A00205DAB /* 01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01@2x.png"; sourceTree = "<group>"; };
+		B580884318D8ABF600205DAB /* DMFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFilterView.h; sourceTree = "<group>"; };
+		B580884418D8ABF600205DAB /* DMFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFilterView.m; sourceTree = "<group>"; };
+		B580884618D8BE7600205DAB /* loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@2x.png"; sourceTree = "<group>"; };
 		B58CD6531860344F004488FB /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		B5A0031818340F1A005778AB /* Default-568h@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x-1.png"; sourceTree = "<group>"; };
 		B5A0031A18340F1A005778AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -225,18 +232,12 @@
 		B5A00324183411DB005778AB /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		B5A00325183411DB005778AB /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		B5A00326183411DB005778AB /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
-		B5A00327183411DB005778AB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		B5A00328183411DB005778AB /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		B5A00329183411DB005778AB /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		B5A0032A183411DB005778AB /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		B5A0032B183411DB005778AB /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		B5A0032C183411DB005778AB /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		B5A0032D183411DB005778AB /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		B5A0032E183411DB005778AB /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		B5A0032F183411DB005778AB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B5A00330183411DB005778AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		B5A00331183411DB005778AB /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		B5A00332183411DB005778AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B5B3117818C77462005A4569 /* TKDExpressSiteContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteContactViewController.h; sourceTree = "<group>"; };
 		B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressSiteContactViewController.m; sourceTree = "<group>"; };
 		B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDExpressSiteContactViewController.xib; sourceTree = "<group>"; };
@@ -253,6 +254,9 @@
 		B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgViewController.m; sourceTree = "<group>"; };
 		B5C74F6F1833E4E700E33386 /* TKDMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDMsgDetailViewController.h; sourceTree = "<group>"; };
 		B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgDetailViewController.m; sourceTree = "<group>"; };
+		B5CA579718D8A1F5006FA92F /* TKDSendExpressDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressDetailVC.h; sourceTree = "<group>"; };
+		B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressDetailVC.m; sourceTree = "<group>"; };
+		B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDSendExpressDetailVC.xib; sourceTree = "<group>"; };
 		B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressVc.h; sourceTree = "<group>"; };
 		B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressVc.m; sourceTree = "<group>"; };
 		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -378,6 +382,12 @@
 			children = (
 				B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */,
 				B56FAA8F182F8F8C009E974A /* TKDCommonDefine.h */,
+				B580884318D8ABF600205DAB /* DMFilterView.h */,
+				B580884418D8ABF600205DAB /* DMFilterView.m */,
+				B580883D18D8A9CF00205DAB /* 03@2x.png */,
+				B580883F18D8AB0500205DAB /* 02@2x.png */,
+				B580884618D8BE7600205DAB /* loading@2x.png */,
+				B580884118D8AB0A00205DAB /* 01@2x.png */,
 				B56FAA9D18310C42009E974A /* SynthesizeSingleton.h */,
 				B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */,
 				B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */,
@@ -394,7 +404,7 @@
 		B56FAA1F182F6DE6009E974A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B56FAA1E182F6DE6009E974A /* 淘快递.app */,
+				B56FAA1E182F6DE6009E974A /* 芝麻邦.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -546,18 +556,12 @@
 				B5A00324183411DB005778AB /* Icon-40@2x.png */,
 				B5A00325183411DB005778AB /* Icon-60.png */,
 				B5A00326183411DB005778AB /* Icon-60@2x.png */,
-				B5A00327183411DB005778AB /* Icon-72.png */,
-				B5A00328183411DB005778AB /* Icon-72@2x.png */,
 				B5A00329183411DB005778AB /* Icon-76.png */,
 				B5A0032A183411DB005778AB /* Icon-76@2x.png */,
-				B5A0032B183411DB005778AB /* Icon-Small-50.png */,
-				B5A0032C183411DB005778AB /* Icon-Small-50@2x.png */,
 				B5A0032D183411DB005778AB /* Icon-Small.png */,
 				B5A0032E183411DB005778AB /* Icon-Small@2x.png */,
 				B5A0032F183411DB005778AB /* Icon.png */,
 				B5A00330183411DB005778AB /* Icon@2x.png */,
-				B5A00331183411DB005778AB /* iTunesArtwork.png */,
-				B5A00332183411DB005778AB /* iTunesArtwork@2x.png */,
 			);
 			name = icon;
 			sourceTree = "<group>";
@@ -567,6 +571,9 @@
 			children = (
 				B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */,
 				B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */,
+				B5CA579718D8A1F5006FA92F /* TKDSendExpressDetailVC.h */,
+				B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */,
+				B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */,
 				B535775A18C2403E008B28A9 /* TKDExpressSiteViewController.h */,
 				B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */,
 				B5C6DE0018C1D54F001A5A64 /* TKDSendDetailViewController.h */,
@@ -610,7 +617,7 @@
 			);
 			name = TKD;
 			productName = TKD;
-			productReference = B56FAA1E182F6DE6009E974A /* 淘快递.app */;
+			productReference = B56FAA1E182F6DE6009E974A /* 芝麻邦.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -652,18 +659,16 @@
 			files = (
 				B5A0031F18340F1A005778AB /* Default@2x.png in Resources */,
 				B5A0032118340F1A005778AB /* Default.png in Resources */,
-				B5A0033C183411DB005778AB /* Icon-Small-50@2x.png in Resources */,
 				B5A0033E183411DB005778AB /* Icon-Small@2x.png in Resources */,
-				B5A00338183411DB005778AB /* Icon-72@2x.png in Resources */,
 				B5BE5FCF1841EA4F004248C8 /* InfoPlist.strings in Resources */,
 				B56FAA59182F792A009E974A /* TKDActivateViewController.xib in Resources */,
+				B580883E18D8A9CF00205DAB /* 03@2x.png in Resources */,
 				B535777C18C25702008B28A9 /* 韵达快递@2x.png in Resources */,
-				B5A00341183411DB005778AB /* iTunesArtwork.png in Resources */,
-				B5A00337183411DB005778AB /* Icon-72.png in Resources */,
 				B535777D18C25702008B28A9 /* 宅急送@2x.png in Resources */,
 				B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */,
 				B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */,
 				B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */,
+				B580884218D8AB0A00205DAB /* 01@2x.png in Resources */,
 				B5A00335183411DB005778AB /* Icon-60.png in Resources */,
 				B56FAA95182F9C10009E974A /* contact_input_bg@2x.png in Resources */,
 				B51A86E41833F3130008F7E4 /* TKDResetPasswordViewController.xib in Resources */,
@@ -672,26 +677,27 @@
 				B535777718C25702008B28A9 /* 圆通快递@2x.png in Resources */,
 				B543F64918D4C6DC002345AB /* nav_bg@2x.png in Resources */,
 				B5A0033F183411DB005778AB /* Icon.png in Resources */,
-				B5A0033B183411DB005778AB /* Icon-Small-50.png in Resources */,
 				B5A00334183411DB005778AB /* Icon-40@2x.png in Resources */,
 				B5A00340183411DB005778AB /* Icon@2x.png in Resources */,
+				B580884718D8BE7600205DAB /* loading@2x.png in Resources */,
 				B5A0032018340F1A005778AB /* Default-568h@2x.png in Resources */,
 				B53BF34A18BE496400B25AC5 /* msg@2x.png in Resources */,
 				B56FAAAA183121E1009E974A /* TKDRegisterViewController.xib in Resources */,
 				B562B98F18CD2FFA0020534E /* login_btn@2x.png in Resources */,
 				B535777F18C25C1D008B28A9 /* 天天快递@2x.png in Resources */,
 				B535777918C25702008B28A9 /* EMS@2x.png in Resources */,
-				B5A00342183411DB005778AB /* iTunesArtwork@2x.png in Resources */,
 				B51A86F31833F4D40008F7E4 /* xieyi.html in Resources */,
 				B5A0033A183411DB005778AB /* Icon-76@2x.png in Resources */,
 				B51A87001834019C0008F7E4 /* uncheck@2x.png in Resources */,
 				B53BF34C18BE496400B25AC5 /* take@2x.png in Resources */,
 				B5A00336183411DB005778AB /* Icon-60@2x.png in Resources */,
 				B51A86F81833FB800008F7E4 /* about.html in Resources */,
+				B580884018D8AB0600205DAB /* 02@2x.png in Resources */,
 				B54B66C11858E3F8000684F0 /* PushConfig.plist in Resources */,
 				B5A0033D183411DB005778AB /* Icon-Small.png in Resources */,
 				B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */,
 				B51A86EC1833F36B0008F7E4 /* TKDMainDetailViewController.xib in Resources */,
+				B5CA579B18D8A1F5006FA92F /* TKDSendExpressDetailVC.xib in Resources */,
 				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
 				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
@@ -752,6 +758,7 @@
 				B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */,
 				B56FAA32182F6DE6009E974A /* TKDAppDelegate.m in Sources */,
 				B56FAA73182F8302009E974A /* ASIAuthenticationDialog.m in Sources */,
+				B5CA579A18D8A1F5006FA92F /* TKDSendExpressDetailVC.m in Sources */,
 				B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */,
 				B51A86DA1833F0DC0008F7E4 /* TKDAboutViewController.m in Sources */,
 				B51A86E31833F3130008F7E4 /* TKDResetPasswordViewController.m in Sources */,
@@ -762,6 +769,7 @@
 				B56FAA2E182F6DE6009E974A /* main.m in Sources */,
 				B56FAA79182F8302009E974A /* ASIInputStream.m in Sources */,
 				B56FAA7A182F8302009E974A /* ASINetworkQueue.m in Sources */,
+				B580884518D8ABF600205DAB /* DMFilterView.m in Sources */,
 				B56FAA78182F8302009E974A /* ASIHTTPRequest.m in Sources */,
 				B51A86E71833F3490008F7E4 /* TKDMainViewController.m in Sources */,
 				B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */,
@@ -886,7 +894,7 @@
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
-				PRODUCT_NAME = "淘快递";
+				PRODUCT_NAME = "芝麻邦";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -906,7 +914,7 @@
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
-				PRODUCT_NAME = "淘快递";
+				PRODUCT_NAME = "芝麻邦";
 				PROVISIONING_PROFILE = "DC2040B1-F9E6-4708-BDF0-BC5480574649";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";

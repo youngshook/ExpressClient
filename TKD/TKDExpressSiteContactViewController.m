@@ -17,7 +17,13 @@
 @end
 
 @implementation TKDExpressSiteContactViewController
+-(void)viewWillAppear:(BOOL)animated{
+	[ApplicationDelegate hideTabBar];
+}
 
+-(void)viewWillDisappear:(BOOL)animated{
+	[ApplicationDelegate showTabBar];
+}
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	if ([USER_DEFAULTS boolForKey:@"isHasDefaultStationId"]) {

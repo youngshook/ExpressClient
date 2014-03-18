@@ -5,6 +5,7 @@
 //  Created by YoungShook on 13-11-10.
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 
 static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
@@ -83,20 +84,56 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 	UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
 	UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
 	
-	navMainVc.tabBarItem.title = @"芝麻开门";
-	navSendExpressVC.tabBarItem.title = @"芝麻邮";
-	navMsgVC.tabBarItem.title =  @"芝麻园";
-	
-	navMainVc.tabBarItem.image = [UIImage imageNamed:@"take"];
-	navSendExpressVC.tabBarItem.image = [UIImage imageNamed:@"send"];
-	navMsgVC.tabBarItem.image = [UIImage imageNamed:@"msg"];
-	
-	UITabBarController *tabBarVC = [UITabBarController new];
+	UITabBarController  *tabBarVC = [[UITabBarController alloc] init];
 	[tabBarVC setViewControllers:@[navMainVc,navSendExpressVC,navMsgVC]];
-	
 	self.tabBarVC = tabBarVC;
+	self.tabBarVC.tabBar.hidden = YES;
+	
+	self.filterView = [[DMFilterView alloc]initWithStrings:@[@"芝麻开门", @"芝麻邮", @"芝麻园"] containerView:self.tabBarVC.view];
+    [self.filterView attachToContainerView];
+    [self.filterView setDelegate:self];
+	[self.filterView setBackgroundColor:[UIColor whiteColor]];
+	[self.filterView setSelectedItemTopBackgroundColor:[UIColor greenColor]];
+	[self.filterView setSelectedItemBackgroundColor:[UIColor clearColor]];
+	[self.filterView setTitlesColor:[UIColor blackColor]];
 
 }
+
+-(void) hideTabBar{
+	[ApplicationDelegate.filterView setHidden:YES];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+	NSArray *views = [self.tabBarVC.view subviews];
+	for(id v in views){
+		if([v isKindOfClass:[UITabBar class]]){
+			[(UITabBar *)v setHidden:YES];
+		}
+	}
+	
+    [UIView commitAnimations];
+}
+
+-(void) showTabBar{
+	[ApplicationDelegate.filterView setHidden:NO];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+	NSArray *views = [self.tabBarVC.view subviews];
+	for(id v in views){
+		if([v isKindOfClass:[UITabBar class]]){
+			[(UITabBar *)v setHidden:NO];
+		}
+	}
+	
+    [UIView commitAnimations];
+}
+
+
+#pragma mark - FilterVie delegate
+- (void)filterView:(DMFilterView *)filterView didSelectedAtIndex:(NSInteger)index
+{
+	self.tabBarVC.selectedViewController = [self.tabBarVC.viewControllers objectAtIndex:index];
+}
+
 
 -(void)loadUserlocalString{
     [USER_DEFAULTS setObject:@"可取" forKey:@"Retrieveable"];
