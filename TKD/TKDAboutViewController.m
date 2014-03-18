@@ -13,7 +13,13 @@
 @end
 
 @implementation TKDAboutViewController
+-(void)viewWillAppear:(BOOL)animated{
+	[ApplicationDelegate hideTabBar];
+}
 
+-(void)viewWillDisappear:(BOOL)animated{
+	[ApplicationDelegate showTabBar];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

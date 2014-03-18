@@ -9,10 +9,12 @@
 #import "TKDMsgViewController.h"
 #import "TKDMsgDetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ODRefreshControl.h"
 @interface TKDMsgViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)MBProgressHUD *HUD;
+@property(nonatomic,strong)ODRefreshControl *refreshControl;
 @end
 
 @implementation TKDMsgViewController
@@ -38,6 +40,8 @@
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
     HUD_Define
+	self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.tableView];
+    [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)refreshMessage{
@@ -46,6 +50,7 @@
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
     [request setCompletionBlock:^{
+		[_refreshControl endRefreshing];
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
@@ -57,6 +62,7 @@
         }
     }];
     [request setFailedBlock:^{
+		[_refreshControl endRefreshing];
         NetworkError_HUD
     }];
     [request startAsynchronous];
@@ -116,6 +122,15 @@
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
 }
+
+#pragma mark - ODRefreshControl Delegate
+#pragma mark -
+
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshCon{
+    [self.refreshControl beginRefreshing];
+    [self refreshMessage];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -15,6 +15,11 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 {
 	
 	[[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setBackgroundImage:[self barButtonImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:[self backButtonImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+														  UITextAttributeTextColor,[UIFont fontWithName:@"Arial" size:16.0],UITextAttributeFont,nil]forState:UIControlStateNormal];
+	
     [self umengTrack];
     [self loadUserlocalString];
     if (!isFisrtLaunch) {
@@ -42,6 +47,54 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     [APService setupWithOption:launchOptions];
     
     return YES;
+}
+
+- (UIImage *)backButtonImage
+{
+    static UIImage *image;
+    
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        CGSize size = CGSizeMake(50.0, 44.0);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        
+        [[UIColor whiteColor] setStroke];
+        [[UIColor whiteColor] setFill];
+        
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        path.lineWidth = 1.5;
+        path.lineCapStyle = kCGLineCapButt;
+        path.lineJoinStyle = kCGLineJoinMiter;
+        [path moveToPoint:CGPointMake(11.0, 11.0)];
+        [path addLineToPoint:CGPointMake(1.0, 21.0)];
+        [path addLineToPoint:CGPointMake(11.0, 31.0)];
+        [path stroke];
+        
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    });
+    
+    return image;
+}
+
+
+- (UIImage *)barButtonImage
+{
+    static UIImage *image;
+    
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        CGSize size = CGSizeMake(40.0, 35.0);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        
+        [[UIColor clearColor] setStroke];
+        [[UIColor clearColor] setFill];
+        
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    });
+    
+    return image;
 }
 
 -(void)umengTrack{

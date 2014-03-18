@@ -13,7 +13,13 @@
 @end
 
 @implementation TKDSendDetailViewController
+-(void)viewWillAppear:(BOOL)animated{
+	[ApplicationDelegate hideTabBar];
+}
 
+-(void)viewWillDisappear:(BOOL)animated{
+	[ApplicationDelegate showTabBar];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
