@@ -9,10 +9,10 @@
 #import "TKDSendExpressVc.h"
 #import "ODRefreshControl.h"
 #import "TKDSendDetailViewController.h"
+#import "TKDSentDetailsViewController.h"
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
 #import "TKDExpressSiteContactViewController.h"
-#import "TKDSendExpressDetailVC.h"
 #import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
@@ -277,8 +277,9 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
 /** 处理Cell点击*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	TKDSendExpressDetailVC *expressDetailVC = [TKDSendExpressDetailVC new];
+	TKDSentDetailsViewController *expressDetailVC = [TKDSentDetailsViewController new];
 	expressDetailVC.dic = [self.dataArray objectAtIndex:indexPath.row];
+	expressDetailVC.hidesBottomBarWhenPushed = YES;
 	[self.navigationController pushViewController:expressDetailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

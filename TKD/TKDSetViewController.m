@@ -29,7 +29,7 @@
     self.title = @"设置";
     for (int i = 0; i < 5; i++) {
         UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
-        [btn setBackgroundImage:[[UIImage imageNamed:@"login_btn"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[[UIImage imageNamed:@"03"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     }
     
     HUD_Define
@@ -59,11 +59,13 @@
 
 -(IBAction)aboutUs:(id)sender{
     TKDAboutViewController *aboutC = [TKDAboutViewController new];
+	aboutC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:aboutC animated:YES];
 }
 
 -(IBAction)agreement:(id)sender{
     TKDAgreementViewController *agreementC = [TKDAgreementViewController new];
+	agreementC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:agreementC animated:YES];
 }
 

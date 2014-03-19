@@ -94,6 +94,8 @@
 		B5A0033E183411DB005778AB /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032E183411DB005778AB /* Icon-Small@2x.png */; };
 		B5A0033F183411DB005778AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A0032F183411DB005778AB /* Icon.png */; };
 		B5A00340183411DB005778AB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A00330183411DB005778AB /* Icon@2x.png */; };
+		B5A9971F18DA0862009852CD /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A9971E18DA0862009852CD /* Cell.xib */; };
+		B5A9972518DA0DAF009852CD /* TKDSentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9972418DA0DAF009852CD /* TKDSentDetailsViewController.m */; };
 		B5B3117B18C77462005A4569 /* TKDExpressSiteContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */; };
 		B5B3117C18C77462005A4569 /* TKDExpressSiteContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */; };
 		B5BDC86F1848A37B001963D7 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BDC86E1848A37B001963D7 /* libMobClickLibrary.a */; };
@@ -103,8 +105,6 @@
 		B5C74F661831497800E33386 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F631831497800E33386 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5C74F6E1833D34700E33386 /* TKDMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */; };
 		B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */; };
-		B5CA579A18D8A1F5006FA92F /* TKDSendExpressDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */; };
-		B5CA579B18D8A1F5006FA92F /* TKDSendExpressDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */; };
 		B5F9B26918B91B25000D8B92 /* TKDSendExpressVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */; };
 		B702E55E925843C989D762CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 822A41E2FE8A4AFDA8AEB05E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -238,6 +238,9 @@
 		B5A0032E183411DB005778AB /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		B5A0032F183411DB005778AB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B5A00330183411DB005778AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B5A9971E18DA0862009852CD /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
+		B5A9972318DA0DAF009852CD /* TKDSentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSentDetailsViewController.h; sourceTree = "<group>"; };
+		B5A9972418DA0DAF009852CD /* TKDSentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSentDetailsViewController.m; sourceTree = "<group>"; };
 		B5B3117818C77462005A4569 /* TKDExpressSiteContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDExpressSiteContactViewController.h; sourceTree = "<group>"; };
 		B5B3117918C77462005A4569 /* TKDExpressSiteContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDExpressSiteContactViewController.m; sourceTree = "<group>"; };
 		B5B3117A18C77462005A4569 /* TKDExpressSiteContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDExpressSiteContactViewController.xib; sourceTree = "<group>"; };
@@ -254,9 +257,6 @@
 		B5C74F6D1833D34700E33386 /* TKDMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgViewController.m; sourceTree = "<group>"; };
 		B5C74F6F1833E4E700E33386 /* TKDMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDMsgDetailViewController.h; sourceTree = "<group>"; };
 		B5C74F701833E4E700E33386 /* TKDMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMsgDetailViewController.m; sourceTree = "<group>"; };
-		B5CA579718D8A1F5006FA92F /* TKDSendExpressDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressDetailVC.h; sourceTree = "<group>"; };
-		B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressDetailVC.m; sourceTree = "<group>"; };
-		B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDSendExpressDetailVC.xib; sourceTree = "<group>"; };
 		B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSendExpressVc.h; sourceTree = "<group>"; };
 		B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSendExpressVc.m; sourceTree = "<group>"; };
 		E047CE83864F49FAB18D2970 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -571,9 +571,9 @@
 			children = (
 				B5F9B26718B91B25000D8B92 /* TKDSendExpressVc.h */,
 				B5F9B26818B91B25000D8B92 /* TKDSendExpressVc.m */,
-				B5CA579718D8A1F5006FA92F /* TKDSendExpressDetailVC.h */,
-				B5CA579818D8A1F5006FA92F /* TKDSendExpressDetailVC.m */,
-				B5CA579918D8A1F5006FA92F /* TKDSendExpressDetailVC.xib */,
+				B5A9972318DA0DAF009852CD /* TKDSentDetailsViewController.h */,
+				B5A9972418DA0DAF009852CD /* TKDSentDetailsViewController.m */,
+				B5A9971E18DA0862009852CD /* Cell.xib */,
 				B535775A18C2403E008B28A9 /* TKDExpressSiteViewController.h */,
 				B535775B18C2403E008B28A9 /* TKDExpressSiteViewController.m */,
 				B5C6DE0018C1D54F001A5A64 /* TKDSendDetailViewController.h */,
@@ -666,6 +666,7 @@
 				B535777C18C25702008B28A9 /* 韵达快递@2x.png in Resources */,
 				B535777D18C25702008B28A9 /* 宅急送@2x.png in Resources */,
 				B56FAA54182F78F7009E974A /* TKDLoginViewController.xib in Resources */,
+				B5A9971F18DA0862009852CD /* Cell.xib in Resources */,
 				B56FAA2C182F6DE6009E974A /* InfoPlist.strings in Resources */,
 				B53BF34B18BE496400B25AC5 /* send@2x.png in Resources */,
 				B580884218D8AB0A00205DAB /* 01@2x.png in Resources */,
@@ -697,7 +698,6 @@
 				B5A0033D183411DB005778AB /* Icon-Small.png in Resources */,
 				B535777618C25702008B28A9 /* 中通快递@2x.png in Resources */,
 				B51A86EC1833F36B0008F7E4 /* TKDMainDetailViewController.xib in Resources */,
-				B5CA579B18D8A1F5006FA92F /* TKDSendExpressDetailVC.xib in Resources */,
 				B56FAA9A182FA351009E974A /* TKDSetViewController.xib in Resources */,
 				B535777818C25702008B28A9 /* 申通快递@2x.png in Resources */,
 				B5A00339183411DB005778AB /* Icon-76.png in Resources */,
@@ -758,7 +758,6 @@
 				B5C74F711833E4E700E33386 /* TKDMsgDetailViewController.m in Sources */,
 				B56FAA32182F6DE6009E974A /* TKDAppDelegate.m in Sources */,
 				B56FAA73182F8302009E974A /* ASIAuthenticationDialog.m in Sources */,
-				B5CA579A18D8A1F5006FA92F /* TKDSendExpressDetailVC.m in Sources */,
 				B51A86FC1833FF230008F7E4 /* CHKeychain.m in Sources */,
 				B51A86DA1833F0DC0008F7E4 /* TKDAboutViewController.m in Sources */,
 				B51A86E31833F3130008F7E4 /* TKDResetPasswordViewController.m in Sources */,
@@ -783,6 +782,7 @@
 				B56FAA76182F8302009E974A /* ASIDownloadCache.m in Sources */,
 				B5C74F6E1833D34700E33386 /* TKDMsgViewController.m in Sources */,
 				B56FAA53182F78F7009E974A /* TKDLoginViewController.m in Sources */,
+				B5A9972518DA0DAF009852CD /* TKDSentDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

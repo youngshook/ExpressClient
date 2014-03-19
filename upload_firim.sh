@@ -4,7 +4,7 @@
 if [ "${CONFIGURATION}" = "Release" ]; then
 
 # Local Display App Name And Default Icon@2x.png ------------ need developer custom
-DISPLAY_NAME="淘快递"
+DISPLAY_NAME="芝麻邦"
 ICON_NAME="Icon-76@2x.png"
 
 #Clear

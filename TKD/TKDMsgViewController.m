@@ -70,6 +70,7 @@
 
 -(void)setting{
     TKDSetViewController *setVC = [TKDSetViewController new];
+	setVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:setVC animated:YES];
 }
 
@@ -89,7 +90,7 @@
 /** 行高*/
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 130;
 }
 
 /** 创建TableViewCell*/
@@ -99,12 +100,13 @@
 	NSString *URL = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"SmallImageUrl"]];
 	UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 280, 100)];
 	[imageView setImageWithURL:[NSURL URLWithString:URL] placeholderImage:[UIImage imageNamed:@"loading"]];
-	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 120, 280, 30)];
-	
+	[imageView setContentMode:UIViewContentModeScaleAspectFill];
+	[imageView setClipsToBounds:YES];
+	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 105, 280, 30)];
 	[cell.contentView addSubview:imageView];
 	[cell.contentView addSubview:nameLabel];
     nameLabel.text = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Title"];
-    nameLabel.font = [UIFont systemFontOfSize:16];
+    nameLabel.font = [UIFont systemFontOfSize:14];
     nameLabel.adjustsFontSizeToFitWidth = YES;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -119,6 +121,7 @@
     msgDetailVc.messageId = msgId;
     msgDetailVc.messageTitle = msgTitle;
 	msgDetailVc.messageContent = msgContent;
+	msgDetailVc.hidesBottomBarWhenPushed = YES;
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
 }

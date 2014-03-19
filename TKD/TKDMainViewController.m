@@ -11,6 +11,8 @@
 #import "TKDMainDetailViewController.h"
 #import "ODRefreshControl.h"
 #import "TKDAppDelegate.h"
+#import "UIImageView+WebCache.h"
+#import <QuartzCore/QuartzCore.h>
 @interface TKDMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)UITableView *myTableView;
@@ -97,7 +99,7 @@
 {
     UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
     
-	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 30)];
+	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 30)];
 	expressType.textAlignment = NSTextAlignmentCenter;
     expressType.text = @"快递公司";
 	
@@ -147,18 +149,19 @@
     }
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 34)];
-    [cell.contentView addSubview:expressType];
+	
+	UIImageView *expressImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 2, 30, 30)];
+	[cell.contentView addSubview:expressImg];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
     [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary *dic = obj;
         if ([[dic objectForKey:@"Id"] isEqualToString:ID]) {
-            expressType.text = [dic objectForKey:@"Name"];
+			NSString *url = [dic objectForKey:@"LogoUrl"];
+			NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@",url]];
+			[expressImg setImageWithURL:URL];
         }
     }];
-	
 	
 	UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 34)];
 	sheetSN.center = cell.contentView.center;
@@ -174,18 +177,14 @@
     Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
 	Status.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:Status];
-    
-    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
-        sheetSN.textColor = RGBACOLOR(64, 128, 0, 1);
-        expressType.textColor = RGBACOLOR(64, 128, 0, 1);
-        Status.textColor = RGBACOLOR(64, 128, 0, 1);
-    }
-    
-    if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieved"]) {
-        sheetSN.textColor = RGBACOLOR(237, 97, 96, 1);
-        expressType.textColor = RGBACOLOR(237, 97, 96, 1);
-        Status.textColor = RGBACOLOR(237, 97, 96, 1);
-    }
+	
+	if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
+		UIView *redPoint = [[UIView alloc]initWithFrame:CGRectMake(50,10, 8, 8)];
+		redPoint.backgroundColor = [UIColor redColor];
+		redPoint.layer.cornerRadius = 3.5;
+		redPoint.clipsToBounds = YES;
+		[cell.contentView addSubview:redPoint];
+	}
     
     return cell;
 }
@@ -194,6 +193,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TKDMainDetailViewController *detailVC = [TKDMainDetailViewController new];
     detailVC.dic = [self.dataArray objectAtIndex:indexPath.row];
+	detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
