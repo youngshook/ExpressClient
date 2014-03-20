@@ -245,6 +245,13 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	
+	[[UIApplication sharedApplication].keyWindow endEditing:YES];
+	
+}
+
 -(BOOL)shouldAutorotate
 {
     return YES;
