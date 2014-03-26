@@ -10,4 +10,5 @@
 
 @interface TKDResetPasswordViewController : UIViewController
 @property(nonatomic,copy)NSString *verCode;
+@property(nonatomic,copy)NSString *phoneTel;
 @end

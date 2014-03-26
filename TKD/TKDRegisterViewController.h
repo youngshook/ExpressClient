@@ -12,4 +12,5 @@
     UIKeyboardViewController *keyBoardController;
 }
 @property(nonatomic,copy)NSString *verifyCode;
+@property(nonatomic,copy)NSString *phoneTel;
 @end

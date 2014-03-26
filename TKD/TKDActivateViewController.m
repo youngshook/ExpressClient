@@ -107,13 +107,22 @@
     if ([self.activateType isEqualToString:@"ResetPassword"]) {
         TKDResetPasswordViewController *regVC = [TKDResetPasswordViewController new];
         regVC.verCode = verificationId;
+		regVC.phoneTel = self.verifyPhoneT.text;
         [self.navigationController pushViewController:regVC animated:YES];
     }else{
         TKDRegisterViewController *regVC = [TKDRegisterViewController new];
         regVC.verifyCode = verificationId;
+		regVC.phoneTel = self.verifyPhoneT.text;
         [self.navigationController pushViewController:regVC animated:YES];
     }
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	
+	[[UIApplication sharedApplication].keyWindow endEditing:YES];
+	
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self verifyCode:nil];

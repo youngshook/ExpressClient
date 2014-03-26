@@ -9,7 +9,6 @@
 #import "TKDResetPasswordViewController.h"
 
 @interface TKDResetPasswordViewController ()
-@property(nonatomic,weak)IBOutlet UITextField *phoneNumT;
 @property(nonatomic,weak)IBOutlet UITextField *passwordT;
 @property(nonatomic,weak)IBOutlet UITextField *reNewPasswordT;
 @property(nonatomic,weak)IBOutlet UITextField *verifyCode;
@@ -31,12 +30,12 @@
 
 -(IBAction)modifyPassword:(id)sender{
 
-    if (IS_NULL_STRING(self.phoneNumT.text ) || IS_NULL_STRING(self.passwordT.text) || IS_NULL_STRING(self.reNewPasswordT.text)|| IS_NULL_STRING(self.verifyCode.text)) {
+    if (IS_NULL_STRING(self.phoneTel ) || IS_NULL_STRING(self.passwordT.text) || IS_NULL_STRING(self.reNewPasswordT.text)|| IS_NULL_STRING(self.verifyCode.text)) {
         QFAlert(@"提示", @"请把信息填写完整", @"确定");
         return;
     }
     
-    if (![self VerifyPhoneNum:self.phoneNumT.text]) {
+    if (![self VerifyPhoneNum:self.phoneTel]) {
         QFAlert(@"提示", @"无效手机号,请重新输入", @"我知道了");
         return;
     }
@@ -50,7 +49,7 @@
     NSURL *url = [NSURL URLWithString:API_ACCOUNT_RECOVER];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
-    [request addPostValue:self.phoneNumT.text forKey:@"mobile"];
+    [request addPostValue:self.phoneTel forKey:@"mobile"];
     [request addPostValue:self.passwordT.text forKey:@"password"];
     [request addPostValue:self.verifyCode.text forKey:@"verifycode"];
     [request addPostValue:self.verCode forKey:@"verificationId"];
@@ -68,6 +67,13 @@
     [request startAsynchronous];
     
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	
+	[[UIApplication sharedApplication].keyWindow endEditing:YES];
+	
+}
+
 
 //手机号校验
 -(BOOL)VerifyPhoneNum:(NSString *)phoneString{

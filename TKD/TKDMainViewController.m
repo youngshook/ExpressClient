@@ -150,7 +150,7 @@
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
 	
-	UIImageView *expressImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 30, 15)];
+	UIImageView *expressImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 2, 60, 30)];
 	[cell.contentView addSubview:expressImg];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
@@ -179,7 +179,7 @@
     [cell.contentView addSubview:Status];
 	
 	if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
-		UIView *redPoint = [[UIView alloc]initWithFrame:CGRectMake(50,14, 8, 8)];
+		UIView *redPoint = [[UIView alloc]initWithFrame:CGRectMake(80,14, 8, 8)];
 		redPoint.backgroundColor = [UIColor redColor];
 		redPoint.layer.cornerRadius = 3.5;
 		redPoint.clipsToBounds = YES;

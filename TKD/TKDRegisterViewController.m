@@ -10,7 +10,6 @@
 #import "TKDActivateViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 @interface TKDRegisterViewController ()
-@property(nonatomic,weak)IBOutlet UITextField *phoneT;
 @property(nonatomic,weak)IBOutlet UITextField *passwordT;
 @property(nonatomic,weak)IBOutlet UITextField *rePasswordT;
 @property(nonatomic,weak)IBOutlet UITextField *usernameT;
@@ -34,15 +33,13 @@
     HUD_Define
     RACSignal *formValid = [RACSignal
                             combineLatest:@[
-                                            self.phoneT.rac_textSignal,
                                             self.passwordT.rac_textSignal,
                                             self.rePasswordT.rac_textSignal,
                                             self.usernameT.rac_textSignal,
                                             self.verifyCodeT.rac_textSignal
                                             ]
-                            reduce:^(NSString *phoneNum, NSString *password, NSString *rePassword, NSString *username, NSString *verifyCode) {
-                                return @(phoneNum.length > 0
-                                && password.length > 0
+                            reduce:^(NSString *password, NSString *rePassword, NSString *username, NSString *verifyCode) {
+                                return @(password.length > 0
                                 && rePassword.length > 0
                                 && username.length > 0
                                 && [password isEqualToString:rePassword]
@@ -73,12 +70,12 @@
 
 -(IBAction)registerBtn:(id)sender{
     
-    if (IS_NULL_STRING(self.phoneT.text ) || IS_NULL_STRING(self.passwordT.text) || IS_NULL_STRING(self.usernameT.text)|| IS_NULL_STRING(self.verifyCodeT.text) || IS_NULL_STRING(self.rePasswordT.text)) {
+    if (IS_NULL_STRING(self.phoneTel ) || IS_NULL_STRING(self.passwordT.text) || IS_NULL_STRING(self.usernameT.text)|| IS_NULL_STRING(self.verifyCodeT.text) || IS_NULL_STRING(self.rePasswordT.text)) {
         QFAlert(@"提示", @"请把信息填写完整", @"确定");
         return;
     }
     
-    if (![self VerifyPhoneNum:self.phoneT.text]) {
+    if (![self VerifyPhoneNum:self.phoneTel]) {
         QFAlert(@"提示", @"无效手机号,请重新输入", @"我知道了");
         return;
     }
@@ -87,7 +84,7 @@
     NSURL *url = [NSURL URLWithString:API_ACCOUNT_REGISTER];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
-    [request addPostValue:self.phoneT.text forKey:@"mobile"];
+    [request addPostValue:self.phoneTel forKey:@"mobile"];
     [request addPostValue:self.passwordT.text forKey:@"password"];
     [request addPostValue:self.usernameT.text forKey:@"realname"];
     [request addPostValue:self.verifyCodeT.text forKey:@"verifycode"];
@@ -106,6 +103,12 @@
     }];
     [request startAsynchronous];
 
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	
+	[[UIApplication sharedApplication].keyWindow endEditing:YES];
+	
 }
 
 - (void)didReceiveMemoryWarning

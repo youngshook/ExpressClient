@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TKDRegisterViewController">
             <connections>
                 <outlet property="passwordT" destination="SuB-K4-M18" id="SyE-Du-Voj"/>
-                <outlet property="phoneT" destination="ZYJ-7o-mU2" id="eBW-Kn-7jl"/>
                 <outlet property="rePasswordT" destination="K4D-gx-akd" id="xfS-Rx-MrZ"/>
                 <outlet property="registerBtn" destination="kTs-Pd-OTy" id="9bq-jW-Orx"/>
                 <outlet property="usernameT" destination="0NL-S3-caG" id="1Gk-rM-tF1"/>
@@ -21,17 +20,8 @@
             <rect key="frame" x="0.0" y="64" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号:" minimumFontSize="17" clearButtonMode="whileEditing" id="ZYJ-7o-mU2">
-                    <rect key="frame" x="37" y="26" width="246" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="VIh-cY-aDq"/>
-                    </connections>
-                </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码:" minimumFontSize="17" clearButtonMode="whileEditing" id="SuB-K4-M18">
-                    <rect key="frame" x="37" y="80" width="246" height="40"/>
+                    <rect key="frame" x="37" y="39" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -40,7 +30,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码:" minimumFontSize="17" clearButtonMode="whileEditing" id="K4D-gx-akd">
-                    <rect key="frame" x="37" y="136" width="246" height="40"/>
+                    <rect key="frame" x="37" y="95" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -49,7 +39,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入有效证件姓名:" minimumFontSize="17" clearButtonMode="whileEditing" id="0NL-S3-caG">
-                    <rect key="frame" x="37" y="191" width="246" height="40"/>
+                    <rect key="frame" x="37" y="150" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -58,7 +48,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码:" minimumFontSize="17" clearButtonMode="whileEditing" id="cFW-If-IzK">
-                    <rect key="frame" x="37" y="246" width="246" height="40"/>
+                    <rect key="frame" x="37" y="205" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -67,36 +57,32 @@
                         <outlet property="delegate" destination="-1" id="xi6-VX-dOT"/>
                     </connections>
                 </textField>
-                <view contentMode="scaleToFill" id="ny6-Bu-vRB">
-                    <rect key="frame" x="37" y="65" width="246" height="1"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" id="DhQ-li-KPG">
-                    <rect key="frame" x="37" y="120" width="246" height="1"/>
+                    <rect key="frame" x="37" y="79" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="wpc-uy-THv">
-                    <rect key="frame" x="37" y="230" width="246" height="1"/>
+                    <rect key="frame" x="37" y="189" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="9lz-iM-hfS">
-                    <rect key="frame" x="37" y="285" width="246" height="1"/>
+                    <rect key="frame" x="37" y="244" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Geu-h7-o6s">
-                    <rect key="frame" x="37" y="175" width="246" height="1"/>
+                    <rect key="frame" x="37" y="134" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="2000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kTs-Pd-OTy">
-                    <rect key="frame" x="37" y="329" width="246" height="44"/>
+                    <rect key="frame" x="37" y="277" width="246" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <size key="titleShadowOffset" width="0.0" height="1"/>
                     <state key="normal" title="注册账号" backgroundImage="login_btn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

@@ -38,13 +38,6 @@
     [super viewDidLoad];
     self.title = @"运单详情";
 
-	for (int i = 0; i < 2; i++) {
-        UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
-        [btn setBackgroundImage:[[UIImage imageNamed:@"button_y"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
-    }
-	
-	
-
     if ([self.type isEqualToString:@"apns"]) {
         UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
         self.navigationItem.leftBarButtonItem = backBtnItem;
@@ -90,11 +83,17 @@
 	
     self.dateLabel.text = [dicData objectForKey:@"ArrivalTime"];
 
-    self.localLabel.text = [dicData objectForKey:@"Position"];
+	if (IS_NULL_STRING([dicData objectForKey:@"Position"])) {
+		self.localLabel.text = [USER_DEFAULTS objectForKey:[self.dic objectForKey:@"Id"]];
+	}else{
+		self.localLabel.text = [dicData objectForKey:@"Position"];
+		[USER_DEFAULTS setObject:[dicData objectForKey:@"Position"] forKey:[self.dic objectForKey:@"Id"]];
+	}
 	
+    
 	if ([[dicData objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
 		[VIEWWITHTAG(self.view, 3000) setHidden:NO];
-		self.noticeLabel.text = [NSString stringWithFormat:@"请您站到柜台<%@>正前方输入区域码,否则可能造成丢失!",[dicData objectForKey:@"Position"]];
+		self.noticeLabel.text = [NSString stringWithFormat:@"请您站到柜台<%@>正前方输入芝麻口令,否则可能造成丢失!",[dicData objectForKey:@"Position"]];
 	}else{
 		[VIEWWITHTAG(self.view, 3000) setHidden:YES];
 	}
@@ -124,10 +123,11 @@
     alertView.delegate = self;
     [alertView show];
 }
+
 -(IBAction)verifyBtn{
     
 	if (self.areaCodeT.text.length == 0) {
-		QFAlert(@"提示", @"请输入区域码", @"我知道了");
+		QFAlert(@"提示", @"请输入芝麻口令", @"我知道了");
 		return;
 	}
 	
@@ -149,8 +149,8 @@
 		NSLog(@"%@:%@",[url path],[request responseString]);
 		NSDictionary *dic = [[request responseString]JSONValue];
 		WarningAlert
-		self.localLabel.text = [dic objectForKey:@"GroupChest"];
-		[USER_DEFAULTS setObject:[dic objectForKey:@"GroupChest"] forKey:[self.dic objectForKey:@"Id"]];
+		self.localLabel.text = [dic objectForKey:@"Position"];
+		[USER_DEFAULTS setObject:[dic objectForKey:@"Position"] forKey:[self.dic objectForKey:@"Id"]];
 		QFAlert(@"提示", @"验证成功,请取件", @"我知道了");
 		self.sheetStatus.text = @"已取件";
 		[VIEWWITHTAG(self.view, 3000) setHidden:YES];
@@ -160,7 +160,6 @@
 	}];
 	[request startAsynchronous];
 
-	
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
