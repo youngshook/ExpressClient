@@ -599,7 +599,7 @@
 				ORGANIZATIONNAME = qfpay;
 				TargetAttributes = {
 					B56FAA1D182F6DE6009E974A = {
-						DevelopmentTeam = 6XX8659PN2;
+						DevelopmentTeam = K6ZLA6KJ6D;
 					};
 				};
 			};
@@ -867,15 +867,15 @@
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Keeper-Store Technology Co.Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Keeper-Store Technology Co.Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";
 				INFOPLIST_FILE = "TKD/TKD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/YoungShook/TKD;
 				PRODUCT_NAME = "芝麻邦";
-				PROVISIONING_PROFILE = "DC2040B1-F9E6-4708-BDF0-BC5480574649";
+				PROVISIONING_PROFILE = "A44E9246-C9F2-44BE-8FAC-A66BF1196BB4";
 				SDKROOT = iphoneos6.1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
