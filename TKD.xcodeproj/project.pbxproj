@@ -204,8 +204,8 @@
 		B580883D18D8A9CF00205DAB /* 03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03@2x.png"; sourceTree = "<group>"; };
 		B580883F18D8AB0500205DAB /* 02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02@2x.png"; sourceTree = "<group>"; };
 		B580884118D8AB0A00205DAB /* 01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01@2x.png"; sourceTree = "<group>"; };
-		B580884318D8ABF600205DAB /* DMFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFilterView.h; sourceTree = "<group>"; };
-		B580884418D8ABF600205DAB /* DMFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFilterView.m; sourceTree = "<group>"; };
+		B580884318D8ABF600205DAB /* DMFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMFilterView.h; path = ../DMFilterView.h; sourceTree = "<group>"; };
+		B580884418D8ABF600205DAB /* DMFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMFilterView.m; path = ../DMFilterView.m; sourceTree = "<group>"; };
 		B580884618D8BE7600205DAB /* loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@2x.png"; sourceTree = "<group>"; };
 		B58CD6531860344F004488FB /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		B5A0031818340F1A005778AB /* Default-568h@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x-1.png"; sourceTree = "<group>"; };
@@ -339,24 +339,11 @@
 			name = RegisterController;
 			sourceTree = "<group>";
 		};
-		B543F64718D22761002345AB /* Waterfall */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Waterfall;
-			sourceTree = "<group>";
-		};
 		B56FAA15182F6DE6009E974A = {
 			isa = PBXGroup;
 			children = (
 				B56FAA2F182F6DE6009E974A /* TKD-Prefix.pch */,
 				B56FAA8F182F8F8C009E974A /* TKDCommonDefine.h */,
-				B580884318D8ABF600205DAB /* DMFilterView.h */,
-				B580884418D8ABF600205DAB /* DMFilterView.m */,
-				B580883D18D8A9CF00205DAB /* 03@2x.png */,
-				B580883F18D8AB0500205DAB /* 02@2x.png */,
-				B580884618D8BE7600205DAB /* loading@2x.png */,
-				B580884118D8AB0A00205DAB /* 01@2x.png */,
 				B56FAA9D18310C42009E974A /* SynthesizeSingleton.h */,
 				B56FAA30182F6DE6009E974A /* TKDAppDelegate.h */,
 				B56FAA31182F6DE6009E974A /* TKDAppDelegate.m */,
@@ -449,7 +436,8 @@
 		B56FAA5D182F8302009E974A /* External */ = {
 			isa = PBXGroup;
 			children = (
-				B543F64718D22761002345AB /* Waterfall */,
+				B580884318D8ABF600205DAB /* DMFilterView.h */,
+				B580884418D8ABF600205DAB /* DMFilterView.m */,
 				B58CD6531860344F004488FB /* APService.h */,
 				B51A86FA1833FF230008F7E4 /* CHKeychain.h */,
 				B51A86FB1833FF230008F7E4 /* CHKeychain.m */,
@@ -498,6 +486,10 @@
 			children = (
 				B5A00322183411D6005778AB /* icon */,
 				B5A0031818340F1A005778AB /* Default-568h@2x-1.png */,
+				B580883D18D8A9CF00205DAB /* 03@2x.png */,
+				B580883F18D8AB0500205DAB /* 02@2x.png */,
+				B580884618D8BE7600205DAB /* loading@2x.png */,
+				B580884118D8AB0A00205DAB /* 01@2x.png */,
 				B53BF34718BE496400B25AC5 /* msg@2x.png */,
 				B53BF34818BE496400B25AC5 /* send@2x.png */,
 				B53BF34918BE496400B25AC5 /* take@2x.png */,
