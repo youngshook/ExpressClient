@@ -12,7 +12,7 @@
 #import "TKDSentDetailsViewController.h"
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
-#import "TKDExpressSiteContactViewController.h"
+#import "TKDExpressSiteContactVC.h"
 #import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
@@ -44,7 +44,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 	__weak TKDSendExpressVc *weakself = self;
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		TKDExpressSiteContactViewController *expressSiteContactVC = [TKDExpressSiteContactViewController new];
+		TKDExpressSiteContactVC *expressSiteContactVC = [TKDExpressSiteContactVC new];
 		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
 		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
 
@@ -126,6 +126,8 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 			if ([data count] > 0) {
                 self.dataArray = [data mutableCopy];
 				[self.myTableView reloadData];
+            }else{
+                QFAlert(@"提示", @"“您还没有查询追踪记录，请添加查询单号或呼唤附近邮寄小哥！", @"确定");
             }
         }
     }];

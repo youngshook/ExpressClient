@@ -72,6 +72,8 @@
                 self.dataArray = [data mutableCopy];
                 ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
+            }else{
+                QFAlert(@"提示", @"您还没有到件信息，请尽情网购并耐心等候吧！", @"确定");
             }
         }
     }];

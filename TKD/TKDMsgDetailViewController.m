@@ -48,6 +48,7 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
+    self.messageContent = [NSString stringWithFormat:@"<p> <img src=\"%@\" width=\"305\" height=\"200\" /> </p> %@",self.messageImgUrl,self.messageContent];
 	[self.webview loadHTMLString:self.messageContent baseURL:nil];
 }
 

@@ -121,7 +121,7 @@
     msgDetailVc.messageId = msgId;
     msgDetailVc.messageTitle = msgTitle;
 	msgDetailVc.messageContent = msgContent;
-	msgDetailVc.hidesBottomBarWhenPushed = YES;
+	msgDetailVc.messageImgUrl = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"LargeImageUrl"]];
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];
 }
