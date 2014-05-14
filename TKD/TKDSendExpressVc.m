@@ -13,6 +13,7 @@
 #import "TKDExpressListViewController.h"
 #import "TKDExpressSiteViewController.h"
 #import "TKDExpressSiteContactVC.h"
+#import "TKDSendExpressCell.h"
 #import "ZBarSDK.h"
 typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
@@ -29,51 +30,58 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 
 @implementation TKDSendExpressVc
 
+-(void)viewWillAppear:(BOOL)animated{
+	[ApplicationDelegate hideTabBar];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+	[ApplicationDelegate showTabBar];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.dataArray = [NSMutableArray new];
-    self.title = @"芝麻邮";
-    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
+    self.title = @"查询";
+    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
-    [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.myTableView registerNib:[UINib nibWithNibName:@"TKDSendExpressCell" bundle:nil] forCellReuseIdentifier:@"TKDSendExpressCell"];
     [self.view addSubview:self.myTableView];
-	
-	__weak TKDSendExpressVc *weakself = self;
-	
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		TKDExpressSiteContactVC *expressSiteContactVC = [TKDExpressSiteContactVC new];
-		expressSiteContactVC.hidesBottomBarWhenPushed = YES;
-		[self.navigationController pushViewController:expressSiteContactVC animated:YES];
-
-	}];
-	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查询" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
+    
+    WEAKSELF
+    UIView *tableHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    tableHeader.backgroundColor = [UIColor whiteColor];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor greenColor];
+    [btn setTitle:@"添加查询" forState:UIControlStateNormal];
+    [tableHeader addSubview:btn];
+    btn.frame = CGRectMake(0, 0, 280, 40);
+    btn.center = tableHeader.center;
+    [self.myTableView setTableHeaderView:tableHeader];
+    [btn addEventHandler:^(id sender) {
+        STRONGSELF
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
 		[alert addButtonWithTitle:@"手动输入单号" handler:^{
-			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:weakself cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:strongSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
 			[av setAlertViewStyle:UIAlertViewStylePlainTextInput];
 			[av show];
 		}];
 		
 		[alert addButtonWithTitle:@"扫描获得单号" handler:^{
 			ZBarReaderViewController *reader = [ZBarReaderViewController new];
-			reader.readerDelegate = weakself;
+			reader.readerDelegate = strongSelf;
 			reader.supportedOrientationsMask = ZBarOrientationMaskAll;
 			ZBarImageScanner *scanner = reader.scanner;
 			[scanner setSymbology: ZBAR_I25
 						   config: ZBAR_CFG_ENABLE
 							   to: 0];
-			[weakself presentViewController:reader animated:YES completion:nil];
+			[strongSelf presentViewController:reader animated:YES completion:nil];
 		}];
 		[alert addButtonWithTitle:@"取消"];
 		[alert show];
-	}];
-	
-	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
-	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
+    } forControlEvents:UIControlEventTouchUpInside];
     
     HUD_Define
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.myTableView];
@@ -138,21 +146,6 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     [request startAsynchronous];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	__weak TKDSendExpressVc *weakSelf = self;
-	if (buttonIndex == 1) {
-		self.expressID = [(UITextField *)[alertView textFieldAtIndex:0] text];
-		TKDExpressSiteViewController *expressSite = [TKDExpressSiteViewController new];
-
-		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
-			weakSelf.expressSiteStr = expressStr;
-			[weakSelf createExpress];
-		};
-		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
-		[self presentViewController:nav animated:YES completion:nil];
-	}
-}
-
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
@@ -161,13 +154,14 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     for(symbol in results)
         break;
 	self.expressID = symbol.data;
-	__weak TKDSendExpressVc *weakSelf = self;
+    WEAKSELF
 	[reader dismissViewControllerAnimated:YES completion:^{
+        STRONGSELF
 		QFAlert(@"提示",[NSString stringWithFormat:@"识别成功,运单号[%@]",symbol.data], @"我知道了");
 		TKDExpressSiteViewController *expressSite = [TKDExpressSiteViewController new];
 		expressSite.expressSiteSelectBlock = (ExpressSiteSelectBlock)^(NSString *expressStr){
-			weakSelf.expressSiteStr = expressStr;
-			[weakSelf createExpress];
+			strongSelf.expressSiteStr = expressStr;
+			[strongSelf createExpress];
 		};
 		UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:expressSite];
 		[self presentViewController:nav animated:YES completion:nil];
@@ -177,91 +171,30 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 #pragma mark -
 #pragma mark UITableView Delgate
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
-}
-
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
-    
-    UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 30)];
-	expressType.textAlignment = NSTextAlignmentCenter;
-    expressType.text = @"快递";
-    
-	UILabel *expressID = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 56, 30)];
-	expressID.textAlignment = NSTextAlignmentCenter;
-	expressID.center = sectionView.center;
-    expressID.text = @"运单号";
-	
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 56, 30)];
-	Status.textAlignment = NSTextAlignmentCenter;
-    Status.text = @"状态";
-    expressType.backgroundColor = [UIColor clearColor];
-    expressID.backgroundColor = [UIColor clearColor];
-    Status.backgroundColor = [UIColor clearColor];
-    sectionView.backgroundColor = [UIColor grayColor];
-    
-    expressID.font = [UIFont boldSystemFontOfSize:18];
-    expressType.font = [UIFont boldSystemFontOfSize:18];
-    Status.font = [UIFont boldSystemFontOfSize:18];
-    
-    [sectionView addSubview:expressID];
-    [sectionView addSubview:expressType];
-    [sectionView addSubview:Status];
-    
-    return sectionView;
-}
-
 /** 创建TableViewCell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    for (UIView *view in cell.contentView.subviews) {
-        [view removeFromSuperview];
-    }
+    TKDSendExpressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TKDSendExpressCell" forIndexPath:indexPath];
     
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
 	
-	UILabel *expressType = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 56, 34)];
-	expressType.textAlignment = NSTextAlignmentCenter;
-    [cell.contentView addSubview:expressType];
     NSArray *expressList = [USER_DEFAULTS objectForKey:@"expressList"];
     NSString *ID = [dic objectForKey:@"VendorId"];
     [expressList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary *dic = obj;
         if ([[dic objectForKey:@"Id"] isEqualToString:ID]) {
-            expressType.text = [dic objectForKey:@"Name"];
+            cell.expressType.text = [dic objectForKey:@"Name"];
         }
     }];
 	
-	
-    UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 34)];
-	sheetSN.center = cell.contentView.center;
 	NSString *sheetNoStirng = [dic objectForKey:@"SheetNo"];
-	sheetSN.textAlignment = NSTextAlignmentCenter;
+
 	if (sheetNoStirng.length > 6) {
-		sheetSN.text = [sheetNoStirng substringFromIndex:sheetNoStirng.length - 6];
+		cell.expressID.text = [sheetNoStirng substringFromIndex:sheetNoStirng.length - 6];
 	}else{
-		sheetSN.text = sheetNoStirng;
+		cell.expressID.text = sheetNoStirng;
 	}
-
-    [cell.contentView addSubview:sheetSN];
-
-    
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(220, 0, 90, 34)];
-	Status.font = [UIFont systemFontOfSize:12];
-    Status.text = [dic objectForKey:@"Status"];
-	Status.numberOfLines = 0;
-	Status.lineBreakMode = NSLineBreakByWordWrapping;
-	Status.textAlignment = NSTextAlignmentCenter;
-    [cell.contentView addSubview:Status];
+    cell.expressStatus.text = [dic objectForKey:@"Status"];
     
     return cell;
 }
@@ -274,7 +207,7 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
 /** 行高*/
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    return 80;
 }
 
 /** 处理Cell点击*/

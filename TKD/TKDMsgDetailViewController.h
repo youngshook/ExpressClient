@@ -13,4 +13,6 @@
 @property(nonatomic,copy)NSString *messageTitle;
 @property(nonatomic,copy)NSString *messageContent;
 @property(nonatomic,copy)NSString *messageImgUrl;
+@property(nonatomic,copy)NSString *linkURL;
+@property(nonatomic,copy)NSString *linkTitle;
 @end

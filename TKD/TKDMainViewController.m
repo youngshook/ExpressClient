@@ -112,7 +112,7 @@
     expressID.text = @"运单号";
     
     
-    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(254, 0, 56, 30)];
+    UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(237, 0, 56, 30)];
 	Status.textAlignment = NSTextAlignmentCenter;
     Status.text = @"状态";
     expressType.backgroundColor = [UIColor clearColor];
@@ -149,7 +149,7 @@
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-    
+
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
 	
 	UIImageView *expressImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 2, 60, 30)];
@@ -174,7 +174,7 @@
 		sheetSN.text = sheetNoStirng;
 	}
     [cell.contentView addSubview:sheetSN];
-    
+
     UILabel *Status = [[UILabel alloc]initWithFrame:CGRectMake(220, 0, 90, 34)];
     Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
 	Status.textAlignment = NSTextAlignmentCenter;

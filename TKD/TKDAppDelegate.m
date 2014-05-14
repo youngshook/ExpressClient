@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
-
+#import "TKDExpressSiteContactVC.h"
 static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
 @implementation TKDAppDelegate
@@ -130,7 +130,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 -(void)resetTabBarVC{
 	
 	TKDMainViewController *mainVC = [TKDMainViewController new];
-	TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
+	TKDExpressSiteContactVC *sendExpressVC = [TKDExpressSiteContactVC new];
 	TKDMsgViewController *msgVC = [TKDMsgViewController new];
 	
 	UINavigationController *navMainVc = [[UINavigationController alloc]initWithRootViewController:mainVC];

@@ -1,20 +1,20 @@
 //
-//  TKDContactCellCell.m
+//  TKDSendExpressCell.m
 //  TKD
 //
-//  Created by YoungShook on 14-5-13.
+//  Created by YoungShook on 14-5-15.
 //  Copyright (c) 2014年 qfpay. All rights reserved.
 //
 
-#import "TKDContactCellCell.h"
+#import "TKDSendExpressCell.h"
 
-@implementation TKDContactCellCell
+@implementation TKDSendExpressCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        // Initialization code
     }
     return self;
 }
@@ -24,10 +24,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
--(IBAction)expressCallTel:(id)sender{
-    [self.delegate expressSiteCallTel:sender];
 }
 
 @end

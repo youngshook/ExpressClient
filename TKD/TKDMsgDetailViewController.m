@@ -34,8 +34,8 @@
     self.titleView.text = self.messageTitle;
     [self.view addSubview:self.titleView];
 	
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height)];
-    [self.webview setUserInteractionEnabled:NO];
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height-70)];
+    [self.webview setUserInteractionEnabled:YES];
     [self.view addSubview:self.webview];
 	
     if (IS_NULL_STRING(self.messageTitle)) {
@@ -50,6 +50,30 @@
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
     self.messageContent = [NSString stringWithFormat:@"<p> <img src=\"%@\" width=\"305\" height=\"200\" /> </p> %@",self.messageImgUrl,self.messageContent];
 	[self.webview loadHTMLString:self.messageContent baseURL:nil];
+    
+    
+    if (IS_NULL_STRING(self.linkURL)) {
+        return;
+    }
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.tag = 1200;
+    [btn setTitle:self.linkTitle forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, self.view.frame.size.height - 70, 200, 40);
+    btn.center = self.view.center;
+    btn.frame = CGRectMake(btn.frame.origin.x, self.view.bounds.size.height-90, 200, 40);
+    btn.backgroundColor = [UIColor greenColor];
+    [btn addTarget:self action:@selector(jumpGoodPage) forControlEvents:UIControlEventTouchUpInside];
+    [btn setUserInteractionEnabled:YES];
+    [self.view addSubview:btn];
+    
+    self.linkURL = [NSString stringWithFormat:@"http://%@",self.linkURL];
+    
+}
+
+-(void)jumpGoodPage{
+    [VIEWWITHTAG(self.view, 1200) removeFromSuperview];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.linkURL]]];;
 }
 
 -(void)refreshMessageDetail{
