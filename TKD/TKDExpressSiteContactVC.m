@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     self.title = @"芝麻邮";
-    self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44)];
+    self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame)-44-49)];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
     [self.tableView setRowHeight:207];
