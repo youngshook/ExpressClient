@@ -602,11 +602,6 @@
 				CLASSPREFIX = TKD;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = qfpay;
-				TargetAttributes = {
-					B56FAA1D182F6DE6009E974A = {
-						DevelopmentTeam = K6ZLA6KJ6D;
-					};
-				};
 			};
 			buildConfigurationList = B56FAA19182F6DE6009E974A /* Build configuration list for PBXProject "TKD" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -875,7 +870,7 @@
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Keeper-Store Technology Co.Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Keeper-Store Technology Co.Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TKD/TKD-Prefix.pch";

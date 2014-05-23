@@ -18,9 +18,11 @@
 
 @property(nonatomic,weak)IBOutlet UILabel *noticeLabel;
 @property(nonatomic,weak)IBOutlet UITextField *areaCodeT;
+@property(nonatomic,weak)IBOutlet UILabel *areaCodeLabel;
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)NSString *mobile;
+@property(nonatomic,assign)BOOL isNeedPasswordCode;
 @end
 
 @implementation TKDMainDetailViewController
@@ -62,11 +64,37 @@
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
 		[self updateSheetInfo:[[request responseString]JSONValue]];
+        [self fetchSheetLock];
     }];
     [request setFailedBlock:^{
         NetworkError_HUD
     }];
     [request startAsynchronous];
+}
+
+- (void)fetchSheetLock {
+	[self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_SHEET_LOCK];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+	[request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"Id"];
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        if ([dic[@"RegionCodeRequired"] intValue]) {
+            QFAlert(@"提示", @"请到达指定的位置,进行取件", @"好的");
+        }else{
+            self.isNeedPasswordCode = YES;
+            self.areaCodeT.hidden = NO;
+            self.areaCodeLabel.hidden = NO;
+            QFAlert(@"提示", @"输入柜门上印着的区域码,方可取件", @"好的");
+        }
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startSynchronous];
 }
 
 -(void)updateSheetInfo:(NSDictionary *)dicData{
@@ -110,7 +138,6 @@
 	self.sheetStatus.text = [USER_DEFAULTS objectForKey:[dicData objectForKey:@"Status"]];
 }
 
-
 -(void)onLeftBtn{
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -126,11 +153,13 @@
 
 -(IBAction)verifyBtn{
     
-	if (self.areaCodeT.text.length == 0) {
-		QFAlert(@"提示", @"请输入芝麻口令", @"我知道了");
-		return;
-	}
-	
+    if (self.isNeedPasswordCode) {
+       	if (self.areaCodeT.text.length == 0) {
+            QFAlert(@"提示", @"请输入芝麻口令", @"我知道了");
+            return;
+        }
+    }
+
 	[self.HUD show:YES];
 	NSURL *url = [NSURL URLWithString:API_SHEET_RETRIEVE];
 	__weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -143,7 +172,9 @@
 	[request addPostValue:latitude?:@0.00 forKey:@"latitude"];
 	[request addPostValue:[self.dic objectForKey:@"Id"] forKey:@"id"];
 	[request addPostValue:@1 forKey:@"version"];
-	[request addPostValue:self.areaCodeT.text forKey:@"regionCode"];
+    if (self.isNeedPasswordCode) {
+     	[request addPostValue:self.areaCodeT.text forKey:@"regionCode"];
+    }
 	[request setCompletionBlock:^{
 		[self.HUD hide:YES];
 		NSLog(@"%@:%@",[url path],[request responseString]);

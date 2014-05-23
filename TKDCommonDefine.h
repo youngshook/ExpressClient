@@ -57,6 +57,8 @@
 
 #define API_SHEET_AUTHORIZE_REJECT [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/AuthorizeReject"]
 
+#define API_SHEET_LOCK [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/Sheet/Lock"]
+
 
 //-----------------SENT
 
