@@ -19,6 +19,8 @@
 @property(nonatomic,weak)IBOutlet UILabel *noticeLabel;
 @property(nonatomic,weak)IBOutlet UITextField *areaCodeT;
 @property(nonatomic,weak)IBOutlet UILabel *areaCodeLabel;
+@property(nonatomic,weak)IBOutlet UIView *areaCodeView;
+@property(nonatomic,weak)IBOutlet UILabel *areaCodeText;
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,strong)NSString *mobile;
@@ -82,12 +84,14 @@
         [self.HUD hide:YES];
         NSLog(@"%@:%@",[url path],[request responseString]);
         NSDictionary *dic = [[request responseString]JSONValue];
-        if ([dic[@"RegionCodeRequired"] intValue]) {
+        if (![dic[@"RegionCodeRequired"] intValue]) {
             QFAlert(@"提示", @"请到达指定的位置,进行取件", @"好的");
         }else{
             self.isNeedPasswordCode = YES;
             self.areaCodeT.hidden = NO;
             self.areaCodeLabel.hidden = NO;
+            self.areaCodeView.hidden = NO;
+            self.areaCodeText.hidden = NO;
             QFAlert(@"提示", @"输入柜门上印着的区域码,方可取件", @"好的");
         }
     }];

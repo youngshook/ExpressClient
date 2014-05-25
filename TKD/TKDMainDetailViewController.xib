@@ -10,6 +10,8 @@
                 <outlet property="addressTextView" destination="9fb-3l-XaS" id="lDD-W9-hcS"/>
                 <outlet property="areaCodeLabel" destination="muH-x0-wnW" id="Te1-1r-6Z3"/>
                 <outlet property="areaCodeT" destination="NWv-M4-DS0" id="F5V-K1-x7n"/>
+                <outlet property="areaCodeText" destination="5vr-ve-tHN" id="GCm-r4-dsp"/>
+                <outlet property="areaCodeView" destination="YZa-3L-u7H" id="QOB-7P-Wat"/>
                 <outlet property="dateLabel" destination="vSb-gx-c5j" id="vnY-ge-s21"/>
                 <outlet property="expressLabel" destination="PHD-tF-n78" id="QXx-J7-Et7"/>
                 <outlet property="idLabel" destination="qBg-A6-7hc" id="1GB-um-vhM"/>
@@ -101,7 +103,7 @@
                     <rect key="frame" x="20" y="200" width="290" height="197"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vr-ve-tHN">
+                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vr-ve-tHN">
                             <rect key="frame" x="1" y="0.0" width="280" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -120,7 +122,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <view contentMode="scaleToFill" id="YZa-3L-u7H">
+                        <view hidden="YES" contentMode="scaleToFill" id="YZa-3L-u7H">
                             <rect key="frame" x="86" y="85" width="200" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
