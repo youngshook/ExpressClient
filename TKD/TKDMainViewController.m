@@ -28,7 +28,7 @@
     [TKDKit refreshGPS];
     NSString *enabel = [MobClick getConfigParams:@"enabel"];
     if ([enabel isEqualToString:@"NO"]) {
-        UIAlertView *av = [UIAlertView alertViewWithTitle:@"警告" message:@"当前应用被锁定,请联系开发者!"];
+        UIAlertView *av = [UIAlertView bk_alertViewWithTitle:@"警告" message:@"当前应用被锁定,请联系开发者!"];
         [av show];
     }
 }
@@ -161,7 +161,7 @@
         if ([[dic objectForKey:@"Id"] isEqualToString:ID]) {
 			NSString *url = [dic objectForKey:@"LogoUrl"];
 			NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@",url]];
-			[expressImg setImageWithURL:URL];
+			[expressImg sd_setImageWithURL:URL];
         }
     }];
 	

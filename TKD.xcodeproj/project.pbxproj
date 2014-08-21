@@ -849,7 +849,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -869,7 +872,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E047CE83864F49FAB18D2970 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Keeper-Store Technology Co.Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

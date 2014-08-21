@@ -29,9 +29,7 @@
 	
 	HUD_Define
 	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		[self dismissViewControllerAnimated:YES completion:nil];
-	}];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
 	
 	self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 548 - 44)];
     self.myTableView.backgroundColor = [UIColor whiteColor];
@@ -124,6 +122,10 @@
 	self.stationId = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"Id"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 	[self choiceDefaultExpressSite];
+}
+
+- (void)popViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

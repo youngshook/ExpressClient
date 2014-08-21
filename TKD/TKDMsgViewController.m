@@ -99,7 +99,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 	NSString *URL = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"SmallImageUrl"]];
 	UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 280, 100)];
-	[imageView setImageWithURL:[NSURL URLWithString:URL] placeholderImage:[UIImage imageNamed:@"loading"]];
+	[imageView sd_setImageWithURL:[NSURL URLWithString:URL] placeholderImage:[UIImage imageNamed:@"loading"]];
 	[imageView setContentMode:UIViewContentModeScaleAspectFill];
 	[imageView setClipsToBounds:YES];
 	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 105, 280, 30)];

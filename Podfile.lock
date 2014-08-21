@@ -1,55 +1,66 @@
 PODS:
   - ALAlertBanner (0.3.1)
-  - BlocksKit (1.8.3):
-    - libffi
+  - BlocksKit (2.2.5):
+    - BlocksKit/All
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - JRSwizzle (1.0)
-  - libextobjc/EXTConcreteProtocol (0.2.5):
+  - libextobjc/EXTConcreteProtocol (0.3):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.2.5):
+  - libextobjc/EXTKeyPathCoding (0.3):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.2.5):
+  - libextobjc/EXTScope (0.3):
     - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.2.5)
-  - libffi (3.0.13)
-  - MBProgressHUD (0.8)
+  - libextobjc/RuntimeExtensions (0.3)
+  - MBProgressHUD (0.9)
   - ODRefreshControl (1.1.0)
   - Reachability (3.1.1)
-  - ReactiveCocoa (1.5.0):
+  - ReactiveCocoa (1.9.7):
     - ReactiveCocoa/Core
     - ReactiveCocoa/RACExtensions
-  - ReactiveCocoa/Core (1.5.0):
+  - ReactiveCocoa/Core (1.9.7):
     - JRSwizzle (~> 1.0)
-    - libextobjc/EXTConcreteProtocol (~> 0.2.5)
-    - libextobjc/EXTKeyPathCoding (~> 0.2.5)
-    - libextobjc/EXTScope (~> 0.2.5)
-  - ReactiveCocoa/RACExtensions (1.5.0):
+    - libextobjc/EXTConcreteProtocol (~> 0.3.0)
+    - libextobjc/EXTKeyPathCoding (~> 0.3.0)
+    - libextobjc/EXTScope (~> 0.3.0)
+  - ReactiveCocoa/RACExtensions (1.9.7):
     - ReactiveCocoa/Core
-  - SDWebImage (3.5.4):
+  - SDWebImage (3.7.1):
     - SDWebImage/Core
-  - SDWebImage/Core (3.5.4)
+  - SDWebImage/Core (3.7.1)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
   - ALAlertBanner (~> 0.3.1)
-  - BlocksKit (~> 1.8.3)
+  - BlocksKit
   - MBProgressHUD (~> 0.8)
   - ODRefreshControl (~> 1.1.0)
   - Reachability (~> 3.1.1)
-  - ReactiveCocoa (~> 1.5.0)
+  - ReactiveCocoa (~> 1.9.7)
   - SDWebImage
   - ZBarSDK (~> 1.3.1)
 
 SPEC CHECKSUMS:
-  ALAlertBanner: 16235298226059cd876a9de0a5d7f9bac6a79459
-  BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
-  JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
-  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
-  libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
-  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  ReactiveCocoa: fd1154d51223db76172d3a644bf6ade275c821bb
-  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
-  ZBarSDK: 6ae54d2077fea894d6a24bd1d7035192c0a7471e
+  ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
+  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  libextobjc: f1b1ea2e42fbfe7ae5d4f8624bbb4f56002e8536
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  ODRefreshControl: 7bc75258d9dba1f93c4e34654d1e4b5aa39529f0
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  ReactiveCocoa: 4b785d2ee8f8687572422144bd01ce2e933ed493
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1

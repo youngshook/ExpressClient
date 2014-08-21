@@ -39,9 +39,8 @@
     [self.view addSubview:self.webview];
 	
     if (IS_NULL_STRING(self.messageTitle)) {
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
-			[self dismissViewControllerAnimated:YES completion:nil];
-		}];
+		
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
     }
     HUD_Define
 	
@@ -94,6 +93,9 @@
     [request startAsynchronous];
 }
 
+- (void)popViewController{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {

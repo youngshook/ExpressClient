@@ -24,6 +24,7 @@
     #import "CHKeychain.h"
     #import "BlocksKit.h"
     #import "MobClick.h"
+	#import "BlocksKit+UIKit.h"
 
 	#import "APService.h"
 	#import "TKDAppDelegate.h"

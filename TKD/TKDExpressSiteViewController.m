@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
 	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]bk_initWithTitle:@"返回" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}];
 	

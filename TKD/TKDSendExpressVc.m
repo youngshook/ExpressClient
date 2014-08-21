@@ -60,16 +60,16 @@ typedef void (^ExpressSiteSelectBlock)(NSString *expressSiteStr);
     btn.frame = CGRectMake(0, 0, 280, 40);
     btn.center = tableHeader.center;
     [self.myTableView setTableHeaderView:tableHeader];
-    [btn addEventHandler:^(id sender) {
+    [btn bk_addEventHandler:^(id sender) {
         STRONGSELF
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
-		[alert addButtonWithTitle:@"手动输入单号" handler:^{
+        UIAlertView *alert = [[UIAlertView alloc]bk_initWithTitle:@"添加新单号" message:@"请选择添加单号的方式"];
+		[alert bk_addButtonWithTitle:@"手动输入单号" handler:^{
 			UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"添加新单号" message:@"请输入快递单号" delegate:strongSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
 			[av setAlertViewStyle:UIAlertViewStylePlainTextInput];
 			[av show];
 		}];
 		
-		[alert addButtonWithTitle:@"扫描获得单号" handler:^{
+		[alert bk_addButtonWithTitle:@"扫描获得单号" handler:^{
 			ZBarReaderViewController *reader = [ZBarReaderViewController new];
 			reader.readerDelegate = strongSelf;
 			reader.supportedOrientationsMask = ZBarOrientationMaskAll;

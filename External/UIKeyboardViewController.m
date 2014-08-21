@@ -55,12 +55,7 @@ static CGFloat viewFrameY = 0;
 		kboardHeight = 264.0f + keyBoardToolbarHeight;
 	}
 	NSValue *keyboardBoundsValue;
-	if (iOS_Version >= 3.2) {
-		keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
-	}
-	else {
-		keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey];
-	}
+	keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
 	[keyboardBoundsValue getValue:&keyboardBounds];
 	BOOL isShow = [[notification name] isEqualToString:UIKeyboardWillShowNotification] ? YES : NO;
 	if ([self firstResponder:objectView]) {

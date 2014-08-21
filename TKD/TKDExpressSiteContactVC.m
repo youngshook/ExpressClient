@@ -48,7 +48,7 @@
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]bk_initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
 		TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
 		sendExpressVC.hidesBottomBarWhenPushed = YES;
 		[self.navigationController pushViewController:sendExpressVC animated:YES];
@@ -118,9 +118,9 @@
 -(void)expressSiteCallTel:(id)sender{
     NSIndexPath *indexPath = [self indexPathForCell:sender];
     NSString *tel = [[self.contactArray objectAtIndex:indexPath.row] objectForKey:@"Phone"];
-    UIAlertView *av = [UIAlertView alertViewWithTitle:@"提示" message:[NSString stringWithFormat:@"是否联系%@",tel]];
-    [av addButtonWithTitle:@"取消" handler:nil];
-    [av addButtonWithTitle:@"拨打" handler:^{
+    UIAlertView *av = [UIAlertView bk_alertViewWithTitle:@"提示" message:[NSString stringWithFormat:@"是否联系%@",tel]];
+    [av bk_addButtonWithTitle:@"取消" handler:nil];
+    [av bk_addButtonWithTitle:@"拨打" handler:^{
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",tel]]];
     }];
     [av show];
