@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"芝麻园";
+    self.title = @"快鸽欢迎您";
 
     HUD_Define
     

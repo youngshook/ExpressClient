@@ -16,18 +16,12 @@
 @end
 
 @implementation TKDSetViewController
--(void)viewWillAppear:(BOOL)animated{
-	[ApplicationDelegate hideTabBar];
-}
 
--(void)viewWillDisappear:(BOOL)animated{
-	[ApplicationDelegate showTabBar];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"设置";
-    for (int i = 0; i < 5; i++) {
+    self.title = @"我的快鸽";
+    for (int i = 0; i < 6; ++i) {
         UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000+i);
         [btn setBackgroundImage:[[UIImage imageNamed:@"03"] stretchableImageWithLeftCapWidth:15 topCapHeight:5] forState:UIControlStateNormal];
     }
@@ -67,6 +61,10 @@
     TKDAgreementViewController *agreementC = [TKDAgreementViewController new];
 	agreementC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:agreementC animated:YES];
+}
+
+-(IBAction)myReservation:(id)sender{
+
 }
 
 -(IBAction)logout:(id)sender{

@@ -20,6 +20,13 @@
 
 @implementation TKDExpressSiteContactVC
 
+-(void)viewWillAppear:(BOOL)animated{
+	[ApplicationDelegate hideTabBar];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+	[ApplicationDelegate showTabBar];
+}
 
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
@@ -32,12 +39,11 @@
 	}
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"芝麻邮";
-    self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame)-44-49)];
+    self.title = @"快易购";
+    self.tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame)-49)];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
     [self.tableView setRowHeight:207];
@@ -47,13 +53,6 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]bk_initWithTitle:@"邮寄" style:UIBarButtonItemStylePlain handler:^(id sender) {
-		TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
-		sendExpressVC.hidesBottomBarWhenPushed = YES;
-		[self.navigationController pushViewController:sendExpressVC animated:YES];
-        
-	}];
     
     self.refreshControl = [[ODRefreshControl alloc]initInScrollView:self.tableView];
     [self.refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];

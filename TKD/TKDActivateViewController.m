@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"获取验证";
+    self.title = @"会员注册";
     HUD_Define
     self.checkImg.tag = 1201;
     UIButton *btn = (UIButton *)VIEWWITHTAG(self.view, 2000);

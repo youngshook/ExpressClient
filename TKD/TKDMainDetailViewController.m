@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"运单详情";
+    self.title = @"签收宝贝";
 
     if ([self.type isEqualToString:@"apns"]) {
         UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftBtn)];
@@ -125,7 +125,7 @@
     
 	if ([[dicData objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
 		[VIEWWITHTAG(self.view, 3000) setHidden:NO];
-		self.noticeLabel.text = [NSString stringWithFormat:@"请您站到柜台<%@>正前方输入芝麻口令,否则可能造成丢失!",[dicData objectForKey:@"Position"]];
+		self.noticeLabel.text = [NSString stringWithFormat:@"请您站到柜台<%@>正前方输入口令,否则可能造成丢失!",[dicData objectForKey:@"Position"]];
 	}else{
 		[VIEWWITHTAG(self.view, 3000) setHidden:YES];
 	}
@@ -159,7 +159,7 @@
     
     if (self.isNeedPasswordCode) {
        	if (self.areaCodeT.text.length == 0) {
-            QFAlert(@"提示", @"请输入芝麻口令", @"我知道了");
+            QFAlert(@"提示", @"请输入口令", @"我知道了");
             return;
         }
     }

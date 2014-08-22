@@ -7,6 +7,8 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "TKDExpressSiteContactVC.h"
+#import "TKDMsgViewController.h"
+#import "TKDSetViewController.h"
 static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 
 @implementation TKDAppDelegate
@@ -14,7 +16,10 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	
-	[[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+	[[UINavigationBar appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor, nil]];
 	[[UIBarButtonItem appearance] setBackgroundImage:[self barButtonImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:[self backButtonImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
@@ -130,25 +135,25 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 -(void)resetTabBarVC{
 	
 	TKDMainViewController *mainVC = [TKDMainViewController new];
-	TKDExpressSiteContactVC *sendExpressVC = [TKDExpressSiteContactVC new];
 	TKDMsgViewController *msgVC = [TKDMsgViewController new];
+	TKDSetViewController *setVC = [TKDSetViewController new];
 	
 	UINavigationController *navMainVc = [[UINavigationController alloc]initWithRootViewController:mainVC];
-	UINavigationController *navSendExpressVC = [[UINavigationController alloc]initWithRootViewController:sendExpressVC];
 	UINavigationController *navMsgVC = [[UINavigationController alloc]initWithRootViewController:msgVC];
+	UINavigationController *navsetVC = [[UINavigationController alloc]initWithRootViewController:setVC];
 	
 	UITabBarController  *tabBarVC = [[UITabBarController alloc] init];
-	[tabBarVC setViewControllers:@[navMainVc,navSendExpressVC,navMsgVC]];
+	[tabBarVC setViewControllers:@[navMainVc,navMsgVC,navsetVC,]];
 	self.tabBarVC = tabBarVC;
 	self.tabBarVC.tabBar.hidden = YES;
 	
-	self.filterView = [[DMFilterView alloc]initWithStrings:@[@"芝麻开门", @"芝麻邮", @"芝麻园"] containerView:self.tabBarVC.view];
+	self.filterView = [[DMFilterView alloc]initWithStrings:@[@"快易取", @"快易购", @"我的快鸽"] containerView:self.tabBarVC.view];
     [self.filterView attachToContainerView];
     [self.filterView setDelegate:self];
-	[self.filterView setBackgroundColor:[UIColor whiteColor]];
-	[self.filterView setSelectedItemTopBackgroundColor:[UIColor greenColor]];
+	[self.filterView setBackgroundColor:RGBACOLOR(78, 76, 75, 1)];
+	[self.filterView setSelectedItemTopBackgroundColor:[UIColor redColor]];
 	[self.filterView setSelectedItemBackgroundColor:[UIColor clearColor]];
-	[self.filterView setTitlesColor:[UIColor blackColor]];
+	[self.filterView setTitlesColor:[UIColor whiteColor]];
 
 }
 
@@ -156,6 +161,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 	[ApplicationDelegate.filterView setHidden:YES];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
+	self.tabBarVC.tabBar.hidden = YES;
 	NSArray *views = [self.tabBarVC.view subviews];
 	for(id v in views){
 		if([v isKindOfClass:[UITabBar class]]){
@@ -170,10 +176,11 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
 	[ApplicationDelegate.filterView setHidden:NO];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
+	self.tabBarVC.tabBar.hidden = YES;
 	NSArray *views = [self.tabBarVC.view subviews];
 	for(id v in views){
 		if([v isKindOfClass:[UITabBar class]]){
-			[(UITabBar *)v setHidden:NO];
+			[(UITabBar *)v setHidden:YES];
 		}
 	}
 	

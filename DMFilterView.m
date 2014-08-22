@@ -92,10 +92,10 @@ const CGFloat kAnimationSpeed = 0.20;
 - (void)applyDefaultStyle
 {
     //Default ugly style
-    [self setBackgroundColor:[UIColor lightGrayColor]];
-    [self setSelectedItemBackgroundColor:[UIColor darkGrayColor]];
+    [self setBackgroundColor:[UIColor colorWithRed:0.306 green:0.298 blue:0.294 alpha:1.000]];
+    [self setSelectedItemBackgroundColor:[UIColor colorWithRed:0.306 green:0.298 blue:0.294 alpha:1.000]];
     [self setSelectedItemTopBackgroundColor:[UIColor blueColor]];
-    [self setTitlesColor:[UIColor blackColor]];
+    [self setTitlesColor:[UIColor whiteColor]];
     [self setTitleInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self setTitlesFont:[UIFont systemFontOfSize:14]];
 }
@@ -144,11 +144,11 @@ const CGFloat kAnimationSpeed = 0.20;
         if ([btn isKindOfClass:[UIButton class]]) {
             if ([button isEqual:btn]) {
                 [btn setUserInteractionEnabled:NO];
-				[btn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+				[btn setTitleColor:[UIColor colorWithRed:0.545 green:0.000 blue:0.000 alpha:1.000] forState:UIControlStateNormal];
             }
             else{
                 [btn setUserInteractionEnabled:YES];
-				[btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+				[btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }
         }
     }

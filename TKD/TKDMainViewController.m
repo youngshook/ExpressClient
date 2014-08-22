@@ -12,6 +12,9 @@
 #import "ODRefreshControl.h"
 #import "TKDAppDelegate.h"
 #import "UIImageView+WebCache.h"
+#import "TKDHeaderView.h"
+#import "TKDExpressSiteContactVC.h"
+#import "TKDSendExpressVc.h"
 #import <QuartzCore/QuartzCore.h>
 @interface TKDMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)MBProgressHUD *HUD;
@@ -36,13 +39,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.title = @"芝麻开门";
+	QFListenEvent(@"sendExpress", self, @selector(sendExpress));
+	QFListenEvent(@"checkExpress", self, @selector(checkExpress));
+	self.title = @"快易取";
+	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgView.png"]];
     QFListenEvent(@"fetchDataSource", self, @selector(fetchDataSource));
     self.navigationItem.hidesBackButton = YES;
     self.dataArray = [NSMutableArray new];
-
-    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetHeight(self.view.frame) - 44 - 49)];
-    self.myTableView.backgroundColor = [UIColor whiteColor];
+	
+	TKDHeaderView *headerView =  [[[NSBundle mainBundle] loadNibNamed:@"TKDHeaderView" owner:nil options:nil] objectAtIndex:0];
+	headerView.frame = CGRectMake(0, 0, headerView.frame.size.width, headerView.frame.size.height);
+	[self.view addSubview:headerView];
+    self.myTableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, 320, CGRectGetHeight(self.view.frame) - 64 - 49 - headerView.frame.size.height)];
+    self.myTableView.backgroundColor = [UIColor clearColor];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -73,7 +82,7 @@
                 ApplicationDelegate.listData = [data mutableCopy];
                 [self.myTableView reloadData];
             }else{
-                QFAlert(@"提示", @"您还没有到件信息，请尽情网购并耐心等候吧！", @"确定");
+                QFAlert(@"提示", @"小主,您的快件可能即将到达快鸽服务点,请耐心等候哦", @"我知道了");
             }
         }
     }];
@@ -87,7 +96,7 @@
 
 #pragma mark -
 #pragma mark UITableView Delgate
-
+/*
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -130,7 +139,7 @@
     
     return sectionView;
 }
-
+*/
 /** 返回一共有几组记录*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataArray count];
@@ -149,7 +158,8 @@
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-
+	cell.backgroundColor = [UIColor clearColor];
+	cell.contentView.backgroundColor = [UIColor clearColor];
     NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
 	
 	UIImageView *expressImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 2, 60, 30)];
@@ -167,6 +177,7 @@
 	
 	UILabel *sheetSN = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 34)];
 	sheetSN.center = cell.contentView.center;
+	sheetSN.backgroundColor = [UIColor clearColor];
 	NSString *sheetNoStirng = [dic objectForKey:@"SheetNo"];
 	if (sheetNoStirng.length > 6) {
 		sheetSN.text = [NSString stringWithFormat:@"...%@",[sheetNoStirng substringFromIndex:sheetNoStirng.length - 6]];
@@ -179,7 +190,7 @@
     Status.text = [USER_DEFAULTS objectForKey:[dic objectForKey:@"Status"]];
 	Status.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:Status];
-	
+	Status.backgroundColor = [UIColor clearColor];
 	if ([[dic objectForKey:@"Status"] isEqualToString:@"Retrieveable"]) {
 		UIView *redPoint = [[UIView alloc]initWithFrame:CGRectMake(80,14, 8, 8)];
 		redPoint.backgroundColor = [UIColor redColor];
@@ -198,6 +209,18 @@
 	detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)sendExpress{
+	TKDSendExpressVc *sendExpressVC = [TKDSendExpressVc new];
+	sendExpressVC.hidesBottomBarWhenPushed = YES;
+	[self.navigationController pushViewController:sendExpressVC animated:YES];
+}
+
+- (void)checkExpress{
+	TKDExpressSiteContactVC *expressSiteVC = [TKDExpressSiteContactVC new];
+	expressSiteVC.hidesBottomBarWhenPushed = YES;
+	[self.navigationController pushViewController:expressSiteVC animated:YES];
 }
 
 #pragma mark - ODRefreshControl Delegate
