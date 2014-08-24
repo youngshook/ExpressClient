@@ -15,4 +15,8 @@
 @property(nonatomic,copy)NSString *messageImgUrl;
 @property(nonatomic,copy)NSString *linkURL;
 @property(nonatomic,copy)NSString *linkTitle;
+@property (nonatomic,getter = isLiked) BOOL liked;
+@property (nonatomic,getter = isReservationed) BOOL reservationed;
+@property (nonatomic,getter = isAllowLike) BOOL allowLike;
+@property (nonatomic,getter = isAllowReserve) BOOL allowReserve;
 @end

@@ -76,6 +76,9 @@
 
 #define API_NEWS_DETAILS [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Details"]
 
+#define API_NEWS_LIKE [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Like"]
+
+#define API_NEWS_RESERVE [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Reserve"]
 
 
 //----------------- Static Value

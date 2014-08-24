@@ -10,12 +10,15 @@
 #import "TKDActivateViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 @interface TKDRegisterViewController ()
+@property(nonatomic,strong) NSString *gender;
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @property(nonatomic,weak)IBOutlet UITextField *passwordT;
 @property(nonatomic,weak)IBOutlet UITextField *rePasswordT;
 @property(nonatomic,weak)IBOutlet UITextField *usernameT;
 @property(nonatomic,weak)IBOutlet UITextField *verifyCodeT;
 @property(nonatomic,weak)IBOutlet UIButton *registerBtn;
-@property(nonatomic,strong)MBProgressHUD *HUD;
+@property (nonatomic, weak) IBOutlet UIImageView *radioSelectedImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *radioUnSelectedImageView;
 @end
 
 @implementation TKDRegisterViewController
@@ -55,7 +58,19 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor clearColor];
 	self.navigationItem.backBarButtonItem.tintColor = [UIColor clearColor];
-
+	self.gender = @"Male";
+	[self.radioSelectedImageView bk_whenTapped:^{
+		self.gender = @"Male";
+		self.radioSelectedImageView.image = [UIImage imageNamed:@"radioSelected.png"];
+		self.radioUnSelectedImageView.image = [UIImage imageNamed:@"radioUnselected.png"];
+	}];
+	
+	[self.radioUnSelectedImageView bk_whenTapped:^{
+		self.gender = @"Female";
+		self.radioUnSelectedImageView.image = [UIImage imageNamed:@"radioSelected.png"];
+		self.radioSelectedImageView.image = [UIImage imageNamed:@"radioUnselected.png"];
+	}];
+	
 }
 
 //手机号校验
@@ -88,6 +103,7 @@
     [request addPostValue:self.phoneTel forKey:@"mobile"];
     [request addPostValue:self.passwordT.text forKey:@"password"];
     [request addPostValue:self.usernameT.text forKey:@"realname"];
+	[request addPostValue:self.gender forKey:@"gender"];
     [request addPostValue:self.verifyCodeT.text forKey:@"verifycode"];
     [request addPostValue:self.verifyCode forKey:@"verificationId"];
     [request setCompletionBlock:^{

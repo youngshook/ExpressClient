@@ -96,19 +96,45 @@
 /** 创建TableViewCell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+	
 	NSString *URL = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"SmallImageUrl"]];
 	UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 280, 100)];
 	[imageView sd_setImageWithURL:[NSURL URLWithString:URL] placeholderImage:[UIImage imageNamed:@"loading"]];
 	[imageView setContentMode:UIViewContentModeScaleAspectFill];
 	[imageView setClipsToBounds:YES];
-	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 105, 280, 30)];
+	UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 105, 210, 30)];
 	[cell.contentView addSubview:imageView];
 	[cell.contentView addSubview:nameLabel];
     nameLabel.text = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Title"];
     nameLabel.font = [UIFont systemFontOfSize:14];
     nameLabel.adjustsFontSizeToFitWidth = YES;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
+	UILabel *likeNum = [[UILabel alloc]initWithFrame:CGRectMake(235, 105, 10, 30)];
+	likeNum.font = [UIFont systemFontOfSize:13];
+	likeNum.backgroundColor = [UIColor clearColor];
+	likeNum.textColor = [UIColor redColor];
+	likeNum.text = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Likes"] stringValue];
+	
+	UIImageView *likeImage = [[UIImageView alloc]initWithFrame:CGRectMake(247, 105, 10, 30)];
+	likeImage.contentMode = UIViewContentModeScaleAspectFit;
+	likeImage.image = [UIImage imageNamed:@"heart"];
+	
+	UILabel *reservationNum = [[UILabel alloc]initWithFrame:CGRectMake(265, 105, 30, 30)];
+	reservationNum.font = [UIFont systemFontOfSize:13];
+	reservationNum.backgroundColor = [UIColor clearColor];
+	reservationNum.textColor = [UIColor redColor];
+	reservationNum.text = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Reservations"]stringValue];
+	reservationNum.text = [reservationNum.text stringByAppendingString:@" 订"];
+	
+	[cell.contentView addSubview:likeNum];
+	[cell.contentView addSubview:likeImage];
+	[cell.contentView addSubview:reservationNum];
+	
     return cell;
 }
 
@@ -123,6 +149,10 @@
 	msgDetailVc.messageContent = msgContent;
     msgDetailVc.linkTitle = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"LinkText"];
     msgDetailVc.linkURL = [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"LinkUrl"];
+	msgDetailVc.liked = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Liked"] boolValue];
+	msgDetailVc.reservationed = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"Reserved"] boolValue];
+	msgDetailVc.allowLike = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"AllowLike"] boolValue];
+	msgDetailVc.allowReserve = [[[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"AllowReserve"] boolValue];
 	msgDetailVc.messageImgUrl = [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/%@", [[self.dataArray objectAtIndex:indexPath.row]objectForKey:@"LargeImageUrl"]];
 	msgDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:msgDetailVc animated:YES];

@@ -11,6 +11,7 @@
 #import "TKDAboutViewController.h"
 #import "TKDAgreementViewController.h"
 #import "TKDLoginViewController.h"
+#import "TKDMyReserveViewController.h"
 @interface TKDSetViewController ()
 @property(nonatomic,strong)MBProgressHUD *HUD;
 @end
@@ -64,7 +65,9 @@
 }
 
 -(IBAction)myReservation:(id)sender{
-
+	TKDMyReserveViewController *myReserveVC = [TKDMyReserveViewController new];
+	myReserveVC.hidesBottomBarWhenPushed = YES;
+	[self.navigationController pushViewController:myReserveVC animated:YES];
 }
 
 -(IBAction)logout:(id)sender{

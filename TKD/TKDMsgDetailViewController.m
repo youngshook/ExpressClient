@@ -34,7 +34,11 @@
     self.titleView.text = self.messageTitle;
     [self.view addSubview:self.titleView];
 	
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height-70)];
+	UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 80 - 64, 320, 70)];
+	footerView.backgroundColor = [UIColor clearColor];
+	[self.view addSubview:footerView];
+	
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 35, 320, self.view.bounds.size.height-80-64-35)];
     [self.webview setUserInteractionEnabled:YES];
     [self.view addSubview:self.webview];
 	
@@ -58,16 +62,75 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.tag = 1200;
     [btn setTitle:self.linkTitle forState:UIControlStateNormal];
-    btn.frame = CGRectMake(0, self.view.frame.size.height - 70, 200, 40);
-    btn.center = self.view.center;
-    btn.frame = CGRectMake(btn.frame.origin.x, self.view.bounds.size.height-90, 200, 40);
-    btn.backgroundColor = [UIColor greenColor];
+	btn.frame = CGRectMake(10, 2, 300, 35);
+    btn.backgroundColor = [UIColor grayColor];
     [btn addTarget:self action:@selector(jumpGoodPage) forControlEvents:UIControlEventTouchUpInside];
-    [btn setUserInteractionEnabled:YES];
-    [self.view addSubview:btn];
+	[footerView addSubview:btn];
     
+	UIButton *likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+	likeBtn.frame = CGRectMake(10, 40, 140, 35);
+	likeBtn.backgroundColor = [UIColor redColor];
+	[likeBtn setTitle:self.isLiked?@"取消赞":@"赞" forState:UIControlStateNormal];
+	[likeBtn addTarget:self action:@selector(likeAction:) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIButton *reservationBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+	reservationBtn.frame = CGRectMake(170, 40, 140, 35);
+	reservationBtn.backgroundColor = [UIColor redColor];
+	[reservationBtn setTitle:@"预定+1" forState:UIControlStateNormal];
+	[reservationBtn addTarget:self action:@selector(reservationAction:) forControlEvents:UIControlEventTouchUpInside];
+	
+	likeBtn.enabled = self.isAllowLike;
+	reservationBtn.enabled = self.isAllowReserve;
+	[footerView addSubview:likeBtn];
+	[footerView addSubview:reservationBtn];
+	
+	
     self.linkURL = [NSString stringWithFormat:@"http://%@",self.linkURL];
     
+}
+
+-(void)likeAction:(id)sender{
+	
+	[self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_NEWS_LIKE];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request addPostValue:self.messageId forKey:@"Id"];
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+		self.liked = !self.isLiked;
+		UIButton *likeBtn = (UIButton *)sender;
+		[likeBtn setTitle:self.isLiked?@"取消赞":@"赞" forState:UIControlStateNormal];
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
+
+}
+
+
+-(void)reservationAction:(id)sender{
+	[self.HUD show:YES];
+    NSURL *url = [NSURL URLWithString:API_NEWS_DETAILS];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    ASIFormDataRequestDefine_ToKen
+    [request addPostValue:self.messageId forKey:@"Id"];
+    [request setCompletionBlock:^{
+        [self.HUD hide:YES];
+        NSLog(@"%@:%@",[url path],[request responseString]);
+        NSDictionary *dic = [[request responseString]JSONValue];
+        WarningAlert
+		QFAlert(@"提示", @"预定成功,预定次数+1", @"我知道了");
+    }];
+    [request setFailedBlock:^{
+        NetworkError_HUD
+    }];
+    [request startAsynchronous];
+
 }
 
 -(void)jumpGoodPage{

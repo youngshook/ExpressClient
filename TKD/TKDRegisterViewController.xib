@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TKDRegisterViewController">
             <connections>
                 <outlet property="passwordT" destination="SuB-K4-M18" id="SyE-Du-Voj"/>
+                <outlet property="radioSelectedImageView" destination="gJa-lX-fYy" id="OQd-dS-zm7"/>
+                <outlet property="radioUnSelectedImageView" destination="DSe-ff-qTc" id="vWo-Ei-xsk"/>
                 <outlet property="rePasswordT" destination="K4D-gx-akd" id="xfS-Rx-MrZ"/>
                 <outlet property="registerBtn" destination="kTs-Pd-OTy" id="9bq-jW-Orx"/>
                 <outlet property="usernameT" destination="0NL-S3-caG" id="1Gk-rM-tF1"/>
@@ -21,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码:" minimumFontSize="17" clearButtonMode="whileEditing" id="SuB-K4-M18">
-                    <rect key="frame" x="37" y="39" width="246" height="40"/>
+                    <rect key="frame" x="37" y="20" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -30,7 +32,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码:" minimumFontSize="17" clearButtonMode="whileEditing" id="K4D-gx-akd">
-                    <rect key="frame" x="37" y="95" width="246" height="40"/>
+                    <rect key="frame" x="37" y="76" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -39,7 +41,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入有效证件姓名:" minimumFontSize="17" clearButtonMode="whileEditing" id="0NL-S3-caG">
-                    <rect key="frame" x="37" y="150" width="246" height="40"/>
+                    <rect key="frame" x="37" y="131" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -48,7 +50,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码:" minimumFontSize="17" clearButtonMode="whileEditing" id="cFW-If-IzK">
-                    <rect key="frame" x="37" y="205" width="246" height="40"/>
+                    <rect key="frame" x="37" y="186" width="246" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -58,30 +60,30 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" id="DhQ-li-KPG">
-                    <rect key="frame" x="37" y="79" width="246" height="1"/>
+                    <rect key="frame" x="37" y="60" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="wpc-uy-THv">
-                    <rect key="frame" x="37" y="189" width="246" height="1"/>
+                    <rect key="frame" x="37" y="170" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="9lz-iM-hfS">
-                    <rect key="frame" x="37" y="244" width="246" height="1"/>
+                    <rect key="frame" x="37" y="225" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Geu-h7-o6s">
-                    <rect key="frame" x="37" y="134" width="246" height="1"/>
+                    <rect key="frame" x="37" y="115" width="246" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="2000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kTs-Pd-OTy">
-                    <rect key="frame" x="37" y="277" width="246" height="44"/>
+                    <rect key="frame" x="37" y="329" width="246" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <size key="titleShadowOffset" width="0.0" height="1"/>
-                    <state key="normal" title="注册账号" backgroundImage="login_btn.png">
+                    <state key="normal" title="注册成为会员" backgroundImage="login_btn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -89,6 +91,39 @@
                         <action selector="registerBtn:" destination="-1" eventType="touchUpInside" id="t7Z-0j-dRb"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fI2-0h-w9I">
+                    <rect key="frame" x="37" y="263" width="44" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大男生" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNr-kQ-h9V">
+                    <rect key="frame" x="125" y="262" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小女生" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pw7-nP-pti">
+                    <rect key="frame" x="223" y="261" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" image="radioSelected.png" id="gJa-lX-fYy">
+                    <rect key="frame" x="92" y="256" width="86" height="31"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" image="radioUnselected.png" id="DSe-ff-qTc">
+                    <rect key="frame" x="193" y="256" width="90" height="31"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员服务: 委托代收 超期保管 寄件优惠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3rT-dd-naK">
+                    <rect key="frame" x="37" y="300" width="246" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -98,5 +133,7 @@
     </objects>
     <resources>
         <image name="login_btn.png" width="233" height="30"/>
+        <image name="radioSelected.png" width="22" height="22"/>
+        <image name="radioUnselected.png" width="22" height="22"/>
     </resources>
 </document>

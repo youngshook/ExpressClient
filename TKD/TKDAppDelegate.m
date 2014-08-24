@@ -52,6 +52,7 @@ static NSString * const UMENG_APPKEY = @"52977b3d56240b0cf8030d2c";
     [APService setupWithOption:launchOptions];
     
     return YES;
+	
 }
 
 - (UIImage *)backButtonImage
