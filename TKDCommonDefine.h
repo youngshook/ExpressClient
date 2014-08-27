@@ -80,6 +80,9 @@
 
 #define API_NEWS_RESERVE [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Reserve"]
 
+#define API_NEWS_RESERVATIONS [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/Reservations"]
+
+#define API_NEWS_CANCEL_RESERVATION [NSString stringWithFormat:@"https://express.xiaoyuan100.net/Api/Client/News/CancelReservation"]
 
 //----------------- Static Value
 

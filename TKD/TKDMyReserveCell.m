@@ -22,4 +22,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)selectReserve:(id)sender{
+	[self.reserveStatus setTitle:@"正在取消中" forState:UIControlStateNormal];
+	[self.delegate selectReserveStatus:self.reserveID];
+}
+
 @end

@@ -32,7 +32,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
     
     [self.view addSubview:self.tableView];
 	
@@ -66,12 +65,6 @@
         NetworkError_HUD
     }];
     [request startAsynchronous];
-}
-
--(void)setting{
-    TKDSetViewController *setVC = [TKDSetViewController new];
-	setVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:setVC animated:YES];
 }
 
 #pragma mark -
@@ -165,7 +158,6 @@
     [self.refreshControl beginRefreshing];
     [self refreshMessage];
 }
-
 
 - (void)didReceiveMemoryWarning
 {

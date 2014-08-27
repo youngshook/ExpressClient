@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TKDMyReserveCell : UITableViewCell
+@protocol TKDReserveAction <NSObject>
+@required
+-(void)selectReserveStatus:(id)sender;
+@end
 
+
+@interface TKDMyReserveCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel *reserveCount;
+@property (nonatomic, weak) IBOutlet UILabel *reserveTime;
+@property (nonatomic, weak) IBOutlet UILabel *reserveTitle;
+@property (nonatomic, weak) IBOutlet UIButton *reserveStatus;
+@property (nonatomic, weak) id<TKDReserveAction> delegate;
+@property (nonatomic, copy) NSString *reserveID;
 @end

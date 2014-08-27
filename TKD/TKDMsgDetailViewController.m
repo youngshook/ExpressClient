@@ -115,7 +115,7 @@
 
 -(void)reservationAction:(id)sender{
 	[self.HUD show:YES];
-    NSURL *url = [NSURL URLWithString:API_NEWS_DETAILS];
+    NSURL *url = [NSURL URLWithString:API_NEWS_RESERVE];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     ASIFormDataRequestDefine_ToKen
     [request addPostValue:self.messageId forKey:@"Id"];
@@ -136,24 +136,6 @@
 -(void)jumpGoodPage{
     [VIEWWITHTAG(self.view, 1200) removeFromSuperview];
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.linkURL]]];;
-}
-
--(void)refreshMessageDetail{
-    [self.HUD show:YES];
-    NSURL *url = [NSURL URLWithString:API_NEWS_DETAILS];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    ASIFormDataRequestDefine_ToKen
-    [request addPostValue:self.messageId forKey:@"Id"];
-    [request setCompletionBlock:^{
-        [self.HUD hide:YES];
-        NSLog(@"%@:%@",[url path],[request responseString]);
-        NSDictionary *dic = [[request responseString]JSONValue];
-        WarningAlert
-    }];
-    [request setFailedBlock:^{
-        NetworkError_HUD
-    }];
-    [request startAsynchronous];
 }
 
 - (void)popViewController{
