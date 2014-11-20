@@ -1,39 +1,57 @@
 #/bin/sh
+# Update: 2014-06-24
+# Author: YoungShook
 
 # compress application.
 if [ "${CONFIGURATION}" = "Release" ]; then
 
-# Local Display App Name And Default Icon@2x.png ------------ need developer custom
-DISPLAY_NAME="芝麻邦"
-ICON_NAME="Icon-76@2x.png"
 
 #Clear
+LOG="/tmp/firim.log"
 /bin/rm "/tmp/firim.log"
 /bin/rm "/tmp/${PRODUCT_NAME}.ipa"
 
-LOG="/tmp/firim.log"
+#==========Define=====================================================================================================================
+
+#set char type
+export LC_CTYPE=en_US.UTF-8
+
+# Local Display App Name And Default Icon@2x.png ------------ need developer custom
+ICON_NAME="AppIcon60x60@2x.png"
+
+#Define
+token="z8M5VQgnJa7VegnLX7lKW4azez4hhlPkyMNj6lu8"
+
 echo  "find Archives Distribution  ${PRODUCT_NAME}.app file ...1 " >> $LOG
 DATE=$( /bin/date +"%Y-%m-%d" )
 ARCHIVE=$( /bin/ls -t "${HOME}/Library/Developer/Xcode/Archives/${DATE}" | /usr/bin/grep xcarchive | /usr/bin/sed -n 1p )
 APP="${HOME}/Library/Developer/Xcode/Archives/${DATE}/${ARCHIVE}/Products/Applications/${PRODUCT_NAME}.app"
 echo  "Step Done ----------1" >> $LOG
 
-echo  "Gets the configuration of ${DISPLAY_NAME} from Info.plist ...2 " >> $LOG
+echo  "Gets the configuration of ${TARGET_NAME} from Info.plist ...2 " >> $LOG
 #SIGNING_IDENTITY="iPhone Distribution: <Your Name>>"
 #PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/<filename>>.mobileprovision"
-SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
-PATH_TO_ARTWORK="${SRCDIR}/${ICON_NAME}"
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#==========Get iCon=====================================================================================================================
+
+cd "${APP}"
+PATH_TO_ARTWORK=`find . -name ${ICON_NAME}`
+/bin/cp ${PATH_TO_ARTWORK} /tmp/iTunesArtwork
+
+#==========Get App Info=========================================================================================================================
+
 #Get Version
+cd "${SRCROOT}"
 VERSION_SHORT=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "${APP}/Info.plist")
 VERSION_BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${APP}/Info.plist")
 VERSION=`echo ${VERSION_SHORT}Build${VERSION_BUILD}`
 #appId
 APPID=$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" "${APP}/Info.plist")
-echo  "Step Done ----------2" >> $LOG 
+echo  "Step Done ----------2" >> $LOG
 
-#Package ipa file 
+#Package ipa file
 echo  "Package .ipa for ${PRODUCT_NAME}...3 " >> $LOG
-/bin/cp ${PATH_TO_ARTWORK} /tmp/iTunesArtwork
 #if need set sign, add (--sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}")
 xcrun -sdk iphoneos PackageApplication -v "${APP}" -o "/tmp/${PRODUCT_NAME}.ipa"
 echo  "Step Done ----------3" >> $LOG
@@ -42,25 +60,34 @@ echo  "Step Done ----------3" >> $LOG
 gitcommit=`git --git-dir="${SRCDIR}/.git" log -1 --oneline --pretty=format:'%s'`
 
 echo  "Uploading to Fir.im  ....4 " >> $LOG
-fir_upload_url=`curl "http://firapp.duapp.com/api/upload_url?appid="${APPID}` 
-POST_FILE=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['postFile'];"`
-POST_ICON=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['postIcon'];"`
-SHORT_URL=`echo ${fir_upload_url}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['short'];"`
-curl -T /tmp/${PRODUCT_NAME}.ipa ${POST_FILE} -X PUT
-curl -T /tmp/iTunesArtwork ${POST_ICON} -X PUT
-POST_DATA='appid='${APPID}'&short='${SHORT_URL}'&version='${VERSION}'&name='${DISPLAY_NAME}
-if [ "${gitcommit}" ]; then
-gitcommit=$(perl -MURI::Escape -e 'print uri_escape("'"${gitcommit}"'");' "$2")
-POST_DATA=${POST_DATA}'&changelog='${gitcommit}
-fi
-r=`curl -X POST -d ${POST_DATA} -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" "http://firapp.duapp.com/api/finish"`
-SHORT=`echo ${r}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['short'];"`
 
+#==========Upload App========================================================================================================================
+
+#Get App Info
+Respones=`curl "http://fir.im/api/v2/app/info/"${APPID}"?token="${token}`
+pkgkey=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['pkg']['key'];"`
+pkgurl=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['pkg']['url'];"`
+pkgtoken=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['pkg']['token'];"`
+iconkey=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['icon']['key'];"`
+iconurl=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['icon']['url'];"`
+icontoken=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['bundle']['icon']['token'];"`
+pkgid=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['id'];"`
+
+#POST App To Fir.im
+upicon=`curl -F "key="${iconkey} -F "token="${icontoken} -F "file=@/tmp/iTunesArtwork" ${iconurl}`
+
+upipa=`curl -F "key="${pkgkey} -F "token="${pkgtoken} -F "file=@/tmp/${PRODUCT_NAME}.ipa" ${pkgurl}`
+
+editinfo=`curl -d "changelog="${gitcommit}"&version="${VERSION} -X PUT "http://fir.im/api/v2/app/"${pkgid}"?token="${token}`
+
+short=`echo ${Respones}| ruby -e "require 'rubygems'; require 'json'; puts JSON[STDIN.read]['short'];"`
+
+echo "${Respones} || ${short} || ${pkgkey} || ${editinfo}" >> $LOG
 #Open Download Url
-open "http://firapp.duapp.com/${SHORT}"
+open "http://fir.im/${short}"
 
 echo  "finish load ----------OK" >> $LOG
-echo  "To visit http://firapp.duapp.com/${SHORT} download!" >> $LOG
+echo  "To visit http://fir.im/${short} download!" >> $LOG
 
 fi
 exit 0
